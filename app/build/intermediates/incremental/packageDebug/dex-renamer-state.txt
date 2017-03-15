@@ -1,0 +1,4 @@
+#Fri Mar 10 16:30:51 MSK 2017
+base.0=E\:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+renamed.0=classes.dex
+file.0=E\:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

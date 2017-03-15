@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu.xml",
+        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\menu\\menu.xml"
+    },
+    {
+        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu.xml",
+        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\menu\\menu.xml"
+    }
+]

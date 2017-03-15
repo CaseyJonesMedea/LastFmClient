@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+        android:layout_gravity="center"
+        app:fonts="font1"
+        android:layout_weight="3"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        android:text="@string/internet_error_screen"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:layout_weight="4"
+        android:src="@drawable/error_icon_4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <View
+        android:layout_weight="5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

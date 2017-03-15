@@ -1,0 +1,39 @@
+<resources>
+    <string name="title">last.fm</string>
+    <string name="app_name">LastFmClient</string>
+    <string name="get_user_top_artists">GetUserTopArtists</string>
+    <string name="get_top_artists">GetTopArtists</string>
+    <string name="recent_tracks">Recent Tracks</string>
+    <string name="loved_tracks">Loved Tracks</string>
+    <string name="library">Library</string>
+    <string name="neighbours">Neighbours</string>
+    <string name="events">Events</string>
+    <string name="shouts">Shouts</string>
+    <string name="popular">Popular</string>
+    <string name="subscribe">subscribe</string>
+    <string name="top_popular_artists">Top Popular Artists</string>
+    <string name="top_popular_albums">Top Popular Albums</string>
+    <string name="top_popular_tracks">Top Popular Tracks</string>
+    <string name="top_artists">Top Artists</string>
+    <string name="top_albums">Top Albums</string>
+    <string name="top_tracks">Top Tracks</string>
+    <string name="more_tracks">More Tracks…</string>
+    <string name="welcome">Hello! Welcome to Last.fm</string>
+    <string name="salutation">We bring together your favourite music services and join up listening, watching and sharing to connect your musical world. Below you can visualise, in real-time, the listening habits and trends of Last.fm\'s global community. Go Explore.</string>
+    <string name="log_in">LogIn</string>
+    <string name="registration">Registration</string>
+    <string name="uri_registration">https://www.last.fm/join?next=/</string>
+    <string name="password">Password</string>
+    <string name="internet_error">Internet connection error</string>
+    <string name="incorrect_error">Incorrect login or password!</string>
+    <string name="scrobbles">scrobbles </string>
+    <string name="internet_error_screen">No access to the network! Please check the connection and try again!</string>
+    <string name="world_chart">World Chart</string>
+    <string name="more">more…</string>
+    <string name="search">Search</string>
+    <string name="artist">Artist</string>
+    <string name="album">Album</string>
+    <string name="track">Track</string>
+    <string name="l">l</string>
+    <string name="tfm">t.fm</string>
+</resources>

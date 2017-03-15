@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/swipe_refresh_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:src="@drawable/logo"/>
+
+        <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="@string/welcome"
+            android:textColor="@color/white"
+            android:textSize="@dimen/header"
+            app:fonts="font3"/>
+
+        <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/salutation"
+            app:fonts="font1"/>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_log_in"
+                style="@style/ButtonStyle"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/log_in"
+                android:visibility="invisible"/>
+
+            <Button
+                android:id="@+id/btn_registration"
+                style="@style/ButtonStyle"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/registration"
+                android:visibility="invisible"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</android.support.v4.widget.SwipeRefreshLayout>
+

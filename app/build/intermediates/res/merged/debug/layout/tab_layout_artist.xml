@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/bottom_tab"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:id="@+id/ll_info_artist"
+        android:gravity="center"
+        android:background="@drawable/rounded_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:src="@drawable/home_white"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_library_artist"
+        android:gravity="center"
+        android:background="@drawable/rounded_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:src="@drawable/compact_disc_1_white"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

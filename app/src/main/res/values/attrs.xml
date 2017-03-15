@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomFontsTextView">
+        // перечень всех ваших шрифтов. name = "fonts" - название xml атрибута
+        <attr name="fonts" format="enum">
+            <enum name="font1" value="0"/>
+            <enum name="font2" value="1"/>
+            <enum name="font3" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>

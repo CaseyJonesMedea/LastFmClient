@@ -1,0 +1,36 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar_list"
+        layout="@layout/toolbar_list"></include>
+
+    <FrameLayout
+        android:background="@color/black"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <FrameLayout
+            android:id="@+id/container_list_activity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </FrameLayout>
+        <include
+            android:id="@+id/progress_load"
+            layout="@layout/fragment_load"
+            android:visibility="invisible">
+        </include>
+    </FrameLayout>
+        <include layout="@layout/tab_layout_commercial"
+            android:layout_weight="7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </include>
+
+
+
+</LinearLayout>

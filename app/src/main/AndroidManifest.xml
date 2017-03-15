@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="by.viachaslau.kukhto.lastfmclient">
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+
+    <application
+        android:name=".Others.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/lastfm_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".View.WelcomeActivity.WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".View.UserActivity.UserActivity">
+        </activity>
+        <activity android:name=".View.ArtistActivity.ArtistActivity"></activity>
+        <activity android:name=".View.AlbumActivity.AlbumActivity"></activity>
+        <activity android:name=".View.ListActivity.ListActivity"></activity>
+        <activity android:name=".View.WorldChardActivity.WorldChartActivity"></activity>
+        <activity android:name=".View.TrackActivity.TrackActivity"></activity>
+
+    </application>
+
+</manifest>
