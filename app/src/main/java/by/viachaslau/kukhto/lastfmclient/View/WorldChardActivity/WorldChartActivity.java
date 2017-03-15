@@ -69,7 +69,7 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
         if (addToBackStack) {
             fragmentTransaction.addToBackStack(fragment.getTag());
         }
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
 

@@ -3,6 +3,7 @@ package by.viachaslau.kukhto.lastfmclient.View.UserActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -97,13 +98,18 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
         if (addToBackStack) {
             fragmentTransaction.addToBackStack(fragment.getTag());
         }
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     @Override
     public void showLoadProgressBar() {
         container.setVisibility(View.INVISIBLE);
         loadFragment.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
     }
 
     @Override

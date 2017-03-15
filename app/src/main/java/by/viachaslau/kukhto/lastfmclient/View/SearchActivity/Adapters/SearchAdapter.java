@@ -1,4 +1,4 @@
-package by.viachaslau.kukhto.lastfmclient.View.UserActivity.Adapters;
+package by.viachaslau.kukhto.lastfmclient.View.SearchActivity.Adapters;
 
 import android.support.v7.widget.RecyclerView;
 

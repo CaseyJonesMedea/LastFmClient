@@ -16,7 +16,7 @@ import android.widget.RadioButton;
 
 import by.viachaslau.kukhto.lastfmclient.Presenter.SearchActivityPresenter;
 import by.viachaslau.kukhto.lastfmclient.R;
-import by.viachaslau.kukhto.lastfmclient.View.UserActivity.Adapters.SearchAdapter;
+import by.viachaslau.kukhto.lastfmclient.View.SearchActivity.Adapters.SearchAdapter;
 
 
 /**
@@ -49,7 +49,7 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
         setContentView(R.layout.activity_search);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         initViews();
-        presenter = new SearchActivityPresenter(this, edtSearch, radioButtonArtist, radioButtonAlbum, radioButtonTrack);
+        presenter = new SearchActivityPresenter(this, this, edtSearch, radioButtonArtist, radioButtonAlbum, radioButtonTrack);
     }
 
 

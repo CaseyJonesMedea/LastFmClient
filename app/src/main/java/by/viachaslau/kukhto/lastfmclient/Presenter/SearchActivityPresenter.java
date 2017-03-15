@@ -1,6 +1,6 @@
 package by.viachaslau.kukhto.lastfmclient.Presenter;
 
-import android.util.Log;
+import android.content.Context;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
@@ -10,11 +10,10 @@ import by.viachaslau.kukhto.lastfmclient.Model.ModelImpl;
 import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.Album;
 import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.Track;
-import by.viachaslau.kukhto.lastfmclient.View.SearchActivity.SearchActivity;
 import by.viachaslau.kukhto.lastfmclient.View.SearchActivity.SearchActivityIVIew;
-import by.viachaslau.kukhto.lastfmclient.View.UserActivity.Adapters.AlbumSearchAdapter;
-import by.viachaslau.kukhto.lastfmclient.View.UserActivity.Adapters.ArtistSearchAdapter;
-import by.viachaslau.kukhto.lastfmclient.View.UserActivity.Adapters.TrackSearchAdapter;
+import by.viachaslau.kukhto.lastfmclient.View.SearchActivity.Adapters.AlbumSearchAdapter;
+import by.viachaslau.kukhto.lastfmclient.View.SearchActivity.Adapters.ArtistSearchAdapter;
+import by.viachaslau.kukhto.lastfmclient.View.SearchActivity.Adapters.TrackSearchAdapter;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -30,6 +29,8 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
 
     private SearchActivityIVIew iView;
 
+    private Context context;
+
     private EditText edtSearch;
     private RadioButton radioButtonArtist;
     private RadioButton radioButtonAlbum;
@@ -37,7 +38,8 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
 
     private Subscription subscription = Subscribers.empty();
 
-    public SearchActivityPresenter(SearchActivityIVIew iView, EditText edtSearch, RadioButton radioButtonArtist, RadioButton radioButtonAlbum, RadioButton radioButtonTrack) {
+    public SearchActivityPresenter(Context context, SearchActivityIVIew iView, EditText edtSearch, RadioButton radioButtonArtist, RadioButton radioButtonAlbum, RadioButton radioButtonTrack) {
+        this.context = context;
         this.iView = iView;
         this.edtSearch = edtSearch;
         this.radioButtonArtist = radioButtonArtist;
@@ -76,7 +78,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
             @Override
             public void onNext(List<Artist> artists) {
                 if (artists.size() != 0) {
-                    ArtistSearchAdapter adapter = new ArtistSearchAdapter(artists);
+                    ArtistSearchAdapter adapter = new ArtistSearchAdapter(context, artists);
                     iView.showList(adapter);
                 } else {
                     iView.showNotFoundFragment();
@@ -105,7 +107,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
             @Override
             public void onNext(List<Album> albums) {
                 if (albums.size() != 0) {
-                    AlbumSearchAdapter adapter = new AlbumSearchAdapter(albums);
+                    AlbumSearchAdapter adapter = new AlbumSearchAdapter(albums, context);
                     iView.showList(adapter);
                 } else {
                     iView.showNotFoundFragment();
@@ -134,7 +136,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
             @Override
             public void onNext(List<Track> tracks) {
                 if (tracks.size() != 0) {
-                    TrackSearchAdapter adapter = new TrackSearchAdapter(tracks);
+                    TrackSearchAdapter adapter = new TrackSearchAdapter(context, tracks);
                     iView.showList(adapter);
                 } else {
                     iView.showNotFoundFragment();

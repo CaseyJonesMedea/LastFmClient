@@ -66,7 +66,7 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
         if (addToBackStack) {
             fragmentTransaction.addToBackStack(fragment.getTag());
         }
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     @Override

@@ -80,7 +80,7 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
         if (addToBackStack) {
             fragmentTransaction.addToBackStack(fragment.getTag());
         }
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
 

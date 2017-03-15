@@ -105,7 +105,7 @@ public class ArtistActivity extends AppCompatActivity implements View.OnClickLis
         if (addToBackStack) {
             fragmentTransaction.addToBackStack(fragment.getTag());
         }
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     @Override
