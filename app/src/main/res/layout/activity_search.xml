@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/black"
+              android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/lll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:foregroundGravity="center"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/btn_cancel"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/search"
+                android:gravity="center"
+                android:src="@drawable/cancel"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/btn_search"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:src="@drawable/search_white"/>
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/search_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/lll"
+            android:background="#00000000"
+            android:imeOptions="actionDone"
+            android:lines="1"
+            android:maxLines="1"
+            android:paddingRight="30dp"
+            android:textColor="@color/white"/>
+
+
+    </RelativeLayout>
+
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_btn_artist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:checked="true"
+            android:text="@string/artist"
+            android:textColor="@color/white"/>
+
+        <RadioButton
+            android:id="@+id/radio_btn_album"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="@string/album"
+            android:textColor="@color/white"/>
+
+        <RadioButton
+            android:id="@+id/radio_btn_track"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="@string/track"
+            android:textColor="@color/white"/>
+    </RadioGroup>
+
+
+    <FrameLayout
+        android:id="@+id/container_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/search_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <include
+            android:visibility="invisible"
+            android:id="@+id/fragment_load"
+            layout="@layout/fragment_load">
+        </include>
+
+        <include
+            android:visibility="invisible"
+            android:id="@+id/fragment_not_information"
+            layout="@layout/fragment_not_information">
+        </include>
+
+        <include
+            android:visibility="invisible"
+            android:id="@+id/fragment_error"
+            layout="@layout/fragment_user_error">
+        </include>
+
+
+    </FrameLayout>
+
+
+</LinearLayout>

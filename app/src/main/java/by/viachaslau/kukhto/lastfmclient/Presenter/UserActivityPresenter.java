@@ -16,6 +16,7 @@ import by.viachaslau.kukhto.lastfmclient.Model.modelApp.HomeFragmentInformation;
 import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.User;
 import by.viachaslau.kukhto.lastfmclient.Others.SingletonPreference;
 import by.viachaslau.kukhto.lastfmclient.Others.SingletonSession;
+import by.viachaslau.kukhto.lastfmclient.View.SearchActivity.SearchActivity;
 import by.viachaslau.kukhto.lastfmclient.View.UserActivity.Fragments.ChartFragmentUser;
 import by.viachaslau.kukhto.lastfmclient.View.UserActivity.Fragments.FriendsFragmentUser;
 import by.viachaslau.kukhto.lastfmclient.View.UserActivity.Fragments.HomeFragmentUser;
@@ -255,6 +256,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
 
     @Override
     public void onBtnSearchClick() {
-        iView.showSearchPanel();
+        Intent intent = new Intent(context, SearchActivity.class);
+        context.startActivity(intent);
     }
 }

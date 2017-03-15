@@ -1,110 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                        android:id="@+id/search_panel"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_user">
 
+    </include>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:app="http://schemas.android.com/apk/res-auto"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/user_header"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@color/black"
+        android:orientation="horizontal">
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar_user">
-
-        </include>
-
-        <LinearLayout
-            android:id="@+id/user_header"
-            android:layout_width="match_parent"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_logo_user"
+            android:layout_width="130dp"
             android:layout_height="130dp"
-            android:background="@color/black"
-            android:orientation="horizontal">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_logo_user"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:paddingLeft="20dp"
-                android:src="@drawable/user_logo"/>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
-                    android:id="@+id/text_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|bottom"
-                    android:textSize="20dp"
-                    android:textColor="@color/white"
-                    app:fonts="font1"/>
-
-                <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
-                    android:id="@+id/text_scrobbles"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="15dp"
-                    app:fonts="font1"/>
-            </LinearLayout>
-        </LinearLayout>
+            android:paddingLeft="20dp"
+            android:src="@drawable/user_logo"/>
 
 
         <LinearLayout
-            android:background="@color/black"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <FrameLayout
+            <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+                android:id="@+id/text_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:gravity="center|bottom"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:fonts="font1"/>
 
-                <FrameLayout
-                    android:id="@+id/container_user_activity"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-
-                <include
-                    android:id="@+id/progress_load"
-                    layout="@layout/fragment_load"
-                    android:visibility="invisible">
-
-                </include>
-            </FrameLayout>
-
-            <include
-                android:id="@+id/bottom_tab"
-                layout="@layout/tab_layout_user"
+            <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+                android:id="@+id/text_scrobbles"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="12"></include>
-
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                app:fonts="font1"/>
         </LinearLayout>
     </LinearLayout>
 
-    <fragment
-        android:id="@+id/list_pane"
-        android:name="by.viachaslau.kukhto.lastfmclient.View.UserActivity.Fragments.SearchFragmentUser"
-        android:layout_width="320dp"
-        android:layout_gravity="end"
-        android:clickable="true"
-        android:layout_height="match_parent">
-    </fragment>
 
-</android.support.v4.widget.DrawerLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <FrameLayout
+                android:id="@+id/container_user_activity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <include
+                android:id="@+id/progress_load"
+                layout="@layout/fragment_load"
+                android:visibility="invisible">
+
+            </include>
+        </FrameLayout>
+
+        <include
+            android:id="@+id/bottom_tab"
+            layout="@layout/tab_layout_user"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="12"></include>
+
+    </LinearLayout>
+</LinearLayout>
+
 
 

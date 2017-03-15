@@ -21,8 +21,5 @@ public interface UserActivityIView {
 
     void initUserFull(User user);
 
-    void showSearchPanel();
-
-    void hideSearchPanel();
 
 }

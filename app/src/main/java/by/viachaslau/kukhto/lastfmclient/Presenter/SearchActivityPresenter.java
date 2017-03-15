@@ -10,10 +10,11 @@ import by.viachaslau.kukhto.lastfmclient.Model.ModelImpl;
 import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.Album;
 import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.Track;
+import by.viachaslau.kukhto.lastfmclient.View.SearchActivity.SearchActivity;
+import by.viachaslau.kukhto.lastfmclient.View.SearchActivity.SearchActivityIVIew;
 import by.viachaslau.kukhto.lastfmclient.View.UserActivity.Adapters.AlbumSearchAdapter;
 import by.viachaslau.kukhto.lastfmclient.View.UserActivity.Adapters.ArtistSearchAdapter;
 import by.viachaslau.kukhto.lastfmclient.View.UserActivity.Adapters.TrackSearchAdapter;
-import by.viachaslau.kukhto.lastfmclient.View.UserActivity.Fragments.SearchFragmentIView;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -23,11 +24,11 @@ import rx.observers.Subscribers;
  * Created by kuhto on 24.02.2017.
  */
 
-public class SearchFragmentPresenter implements SearchFragmentIPresenter {
+public class SearchActivityPresenter implements SearchActivityIPresenter {
 
-    public static final String TAG = SearchFragmentPresenter.class.getSimpleName();
+    public static final String TAG = SearchActivityPresenter.class.getSimpleName();
 
-    private SearchFragmentIView iView;
+    private SearchActivityIVIew iView;
 
     private EditText edtSearch;
     private RadioButton radioButtonArtist;
@@ -36,7 +37,7 @@ public class SearchFragmentPresenter implements SearchFragmentIPresenter {
 
     private Subscription subscription = Subscribers.empty();
 
-    public SearchFragmentPresenter(SearchFragmentIView iView, EditText edtSearch, RadioButton radioButtonArtist, RadioButton radioButtonAlbum, RadioButton radioButtonTrack) {
+    public SearchActivityPresenter(SearchActivityIVIew iView, EditText edtSearch, RadioButton radioButtonArtist, RadioButton radioButtonAlbum, RadioButton radioButtonTrack) {
         this.iView = iView;
         this.edtSearch = edtSearch;
         this.radioButtonArtist = radioButtonArtist;
@@ -56,6 +57,7 @@ public class SearchFragmentPresenter implements SearchFragmentIPresenter {
     }
 
     private void initArtistsList() {
+        iView.showLoadFragment();
         if (subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
@@ -68,18 +70,23 @@ public class SearchFragmentPresenter implements SearchFragmentIPresenter {
 
             @Override
             public void onError(Throwable e) {
-
+                iView.showErrorFragment();
             }
 
             @Override
             public void onNext(List<Artist> artists) {
-                ArtistSearchAdapter adapter = new ArtistSearchAdapter(artists);
-                iView.showList(adapter);
+                if (artists.size() != 0) {
+                    ArtistSearchAdapter adapter = new ArtistSearchAdapter(artists);
+                    iView.showList(adapter);
+                } else {
+                    iView.showNotFoundFragment();
+                }
             }
         });
     }
 
     private void initAlbumsList() {
+        iView.showLoadFragment();
         if (subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
@@ -92,18 +99,23 @@ public class SearchFragmentPresenter implements SearchFragmentIPresenter {
 
             @Override
             public void onError(Throwable e) {
-
+                iView.showErrorFragment();
             }
 
             @Override
             public void onNext(List<Album> albums) {
-                AlbumSearchAdapter adapter = new AlbumSearchAdapter(albums);
-                iView.showList(adapter);
+                if (albums.size() != 0) {
+                    AlbumSearchAdapter adapter = new AlbumSearchAdapter(albums);
+                    iView.showList(adapter);
+                } else {
+                    iView.showNotFoundFragment();
+                }
             }
         });
     }
 
     private void initTracksList() {
+        iView.showLoadFragment();
         if (subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
@@ -116,16 +128,18 @@ public class SearchFragmentPresenter implements SearchFragmentIPresenter {
 
             @Override
             public void onError(Throwable e) {
-                Log.d(TAG, e.toString());
+                iView.showErrorFragment();
             }
 
             @Override
             public void onNext(List<Track> tracks) {
-                TrackSearchAdapter adapter = new TrackSearchAdapter(tracks);
-                iView.showList(adapter);
+                if (tracks.size() != 0) {
+                    TrackSearchAdapter adapter = new TrackSearchAdapter(tracks);
+                    iView.showList(adapter);
+                } else {
+                    iView.showNotFoundFragment();
+                }
             }
         });
     }
-
-
 }

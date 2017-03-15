@@ -54,7 +54,7 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
     private ErrorFragmentUser errorFragmentUser;
     private UserActivityPresenter presenter;
     private ImageLoader imageLoader;
-    private DrawerLayout searchPanel;
+
 
 
     @Override
@@ -77,6 +77,8 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
         btnUpdate.setOnClickListener(this);
         btnSearch = (ImageView)toolbar.findViewById(R.id.btn_search);
         btnSearch.setOnClickListener(this);
+        btnExitAccount = (ImageView)toolbar.findViewById(R.id.btn_exit_account);
+        btnExitAccount.setOnClickListener(this);
         btnHome = (LinearLayout)findViewById(R.id.ll_home);
         btnHome.setOnClickListener(this);
         btnFriends = (LinearLayout) findViewById(R.id.ll_friends);
@@ -85,7 +87,6 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
         btnUserChart.setOnClickListener(this);
         loadFragment = (LinearLayout) findViewById(R.id.progress_load);
         container = (FrameLayout) findViewById(R.id.container_user_activity);
-        searchPanel = (DrawerLayout)findViewById(R.id.search_panel);
     }
 
 
@@ -129,16 +130,6 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
         scrobbles.setText(getBaseContext().getString(R.string.scrobbles) + " " + String.valueOf(user.getPlaycount()));
         imageLoader.displayImage(user.getImageURL(ImageSize.LARGE), imgUserLogo);
         name.setText(user.getName());
-    }
-
-    @Override
-    public void showSearchPanel() {
-        searchPanel.openDrawer(Gravity.RIGHT);
-    }
-
-    @Override
-    public void hideSearchPanel() {
-        searchPanel.closeDrawers();
     }
 
 

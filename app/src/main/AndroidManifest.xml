@@ -25,6 +25,7 @@
         <activity android:name=".View.ListActivity.ListActivity"></activity>
         <activity android:name=".View.WorldChardActivity.WorldChartActivity"></activity>
         <activity android:name=".View.TrackActivity.TrackActivity"></activity>
+        <activity android:name=".View.SearchActivity.SearchActivity"></activity>
 
     </application>
 
