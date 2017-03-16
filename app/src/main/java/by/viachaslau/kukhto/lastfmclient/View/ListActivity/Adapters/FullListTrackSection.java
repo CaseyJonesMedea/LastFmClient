@@ -1,9 +1,11 @@
 package by.viachaslau.kukhto.lastfmclient.View.ListActivity.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +16,7 @@ import java.util.List;
 import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.R;
+import by.viachaslau.kukhto.lastfmclient.View.TrackActivity.TrackActivity;
 import io.github.luizgrp.sectionedrecyclerviewadapter.Section;
 
 /**
@@ -69,6 +72,14 @@ public class FullListTrackSection extends Section{
         imageLoader.displayImage(trackList.get(position).getImageURL(ImageSize.LARGE), itemHolder.imgAlbums);
         itemHolder.artistName.setText(trackList.get(position).getArtist());
         itemHolder.songTitle.setText(trackList.get(position).getName());
+        itemHolder.cell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, TrackActivity.class);
+                intent.putExtra(TrackActivity.TRACK_URL, trackList.get(position).getUrl());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -120,9 +131,11 @@ public class FullListTrackSection extends Section{
         private final ImageView imgAlbums;
         private final TextView artistName;
         private final TextView songTitle;
+        private final LinearLayout cell;
 
         public ItemViewHolder(View view) {
             super(view);
+            cell = (LinearLayout)view.findViewById(R.id.section_track);
             imgAlbums = (ImageView) view.findViewById(R.id.albums_photo);
             artistName = (TextView) view.findViewById(R.id.artist_name);
             songTitle = (TextView) view.findViewById(R.id.song_title);

@@ -155,6 +155,7 @@ public class HomeFragmentUser extends Fragment {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(), TrackActivity.class);
+                    intent.putExtra(TrackActivity.TRACK_URL, resentTracks.get(position).getUrl());
                     startActivity(intent);
                 }
             });
@@ -514,6 +515,7 @@ public class HomeFragmentUser extends Fragment {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(), TrackActivity.class);
+                    intent.putExtra(TrackActivity.TRACK_URL, topTracks.get(position).getUrl());
                     startActivity(intent);
                 }
             });
@@ -634,6 +636,7 @@ public class HomeFragmentUser extends Fragment {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(), TrackActivity.class);
+                    intent.putExtra(TrackActivity.TRACK_URL, lovedTracks.get(position).getUrl());
                     startActivity(intent);
                 }
             });

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,17 +66,17 @@ public class FullListAlbumSection extends Section {
     public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ItemViewHolder itemHolder = (ItemViewHolder) holder;
         imageLoader.displayImage(albumList.get(position).getImageURL(ImageSize.LARGE), itemHolder.imgAlbum);
-        itemHolder.imgAlbum.setOnClickListener(new View.OnClickListener() {
+        itemHolder.albumsName.setText(albumList.get(position).getName());
+        itemHolder.artistName.setText(albumList.get(position).getArtist());
+        itemHolder.cell.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent intent = new Intent(context, AlbumActivity.class);
                 intent.putExtra(AlbumActivity.ALBUM_NAME, albumList.get(position).getName());
                 intent.putExtra(AlbumActivity.ARTIST_NAME, albumList.get(position).getArtist());
                 context.startActivity(intent);
             }
         });
-        itemHolder.albumsName.setText(albumList.get(position).getName());
-        itemHolder.artistName.setText(albumList.get(position).getArtist());
     }
 
     @Override
@@ -127,9 +128,11 @@ public class FullListAlbumSection extends Section {
         private final ImageView imgAlbum;
         private final TextView albumsName;
         private final TextView artistName;
+        private final LinearLayout cell;
 
         public ItemViewHolder(View view) {
             super(view);
+            cell = (LinearLayout)view.findViewById(R.id.section_album);
             imgAlbum = (ImageView) view.findViewById(R.id.albums_photo_main);
             albumsName = (TextView) view.findViewById(R.id.album_name);
             artistName = (TextView) view.findViewById(R.id.artist_band);

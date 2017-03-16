@@ -36,4 +36,6 @@
     <string name="track">Track</string>
     <string name="l">l</string>
     <string name="tfm">t.fm</string>
+    <string name="player_error">Error initializing YouTube player: %s</string>
+    <string name="error_not_video">Sorry, this track no video on YouTube!</string>
 </resources>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,7 +69,8 @@ public class FullListArtistSection extends Section {
     public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ItemViewHolder itemHolder = (ItemViewHolder) holder;
         imageLoader.displayImage(artistList.get(position).getImageURL(ImageSize.LARGE), itemHolder.imgArtist);
-        itemHolder.imgArtist.setOnClickListener(new View.OnClickListener() {
+        itemHolder.artistName.setText(artistList.get(position).getName());
+        itemHolder.cell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ArtistActivity.class);
@@ -76,7 +78,6 @@ public class FullListArtistSection extends Section {
                 context.startActivity(intent);
             }
         });
-        itemHolder.artistName.setText(artistList.get(position).getName());
     }
 
     @Override
@@ -127,9 +128,11 @@ public class FullListArtistSection extends Section {
     class ItemViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imgArtist;
         private final TextView artistName;
+        private final LinearLayout cell;
 
         public ItemViewHolder(View view) {
             super(view);
+            cell = (LinearLayout)view.findViewById(R.id.section_artist);
             imgArtist = (ImageView) view.findViewById(R.id.artist_photo);
             artistName = (TextView) view.findViewById(R.id.artist_band);
         }

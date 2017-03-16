@@ -4,6 +4,10 @@ package by.viachaslau.kukhto.lastfmclient.Model;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 import by.viachaslau.kukhto.lastfmclient.Model.modelApp.ChartFragmentInformation;
@@ -35,6 +41,7 @@ import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.PaginatedResult;
 import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.Session;
 import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.User;
+import by.viachaslau.kukhto.lastfmclient.Model.umass.util.StringUtilities;
 import by.viachaslau.kukhto.lastfmclient.Others.Data;
 import by.viachaslau.kukhto.lastfmclient.Others.SingletonPreference;
 import rx.Observable;
@@ -365,6 +372,42 @@ public class ModelImpl implements Model {
             return tracks;
         }).subscribeOn(Schedulers.newThread());
         return observable;
+    }
+
+    @Override
+    public Observable getYouTubeUrl(String urlTrack) {
+        Observable<String> observable = Observable.fromCallable(() -> {
+            Document doc;
+            String url = "";
+            String code = null;
+            try {
+                doc = Jsoup.connect(urlTrack).get();
+                Elements links = doc.select("a.image-overlay-playlink-link");
+                for (Element element : links) {
+                    String baseUrl = element.attr("href");
+                    if (baseUrl.contains("https://www.youtube.com")) {
+                        url = baseUrl;
+                    }
+                }
+
+               code = extractVideoId(url);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return code;
+        }).subscribeOn(Schedulers.newThread());
+        return observable;
+    }
+
+    private String extractVideoId(String ytUrl) {
+        String vId = null;
+        Pattern pattern = Pattern.compile(".*(?:youtu.be\\/|v\\/|u\\/\\w\\/|embed\\/|watch\\?v=)([^#\\&\\?]*).*");
+        Matcher matcher = pattern.matcher(ytUrl);
+        if (matcher.matches()) {
+            vId = matcher.group(1);
+        }
+        return vId;
     }
 
 

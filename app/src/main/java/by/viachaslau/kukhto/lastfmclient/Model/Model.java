@@ -55,4 +55,6 @@ public interface Model {
 
     Observable getChartTopTracks();
 
+    Observable getYouTubeUrl(String urlTrack);
+
 }

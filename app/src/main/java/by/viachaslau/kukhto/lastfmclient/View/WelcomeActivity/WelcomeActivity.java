@@ -23,8 +23,9 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeActivit
     private Button btnLogIn;
     private Button btnRegistration;
     private WelcomePresenter presenter;
-    private AlertDialog loadScreen;
+
     private SwipeRefreshLayout swipe;
+    private View fragmentLoad;
 
 
     @Override
@@ -33,15 +34,15 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeActivit
         setContentView(R.layout.activity_welcome);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         initViews();
-        createScreenLoad();
         presenter = new WelcomePresenter(this, this);
     }
 
     private void initViews() {
         btnLogIn = (Button) findViewById(R.id.btn_log_in);
         btnRegistration = (Button) findViewById(R.id.btn_registration);
-        swipe = (SwipeRefreshLayout)findViewById(R.id.swipe_refresh_layout);
+        swipe = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         swipe.setOnRefreshListener(this);
+        fragmentLoad = findViewById(R.id.load);
         btnLogIn.setOnClickListener(this);
         btnRegistration.setOnClickListener(this);
     }
@@ -53,12 +54,12 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeActivit
 
     @Override
     public void showScreenLoad() {
-        loadScreen.show();
+        fragmentLoad.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideScreenLoad() {
-        loadScreen.hide();
+        fragmentLoad.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -99,13 +100,6 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeActivit
     @Override
     public void onRefresh() {
 
-    }
-
-    private void createScreenLoad(){
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.LoadScreen);
-        View view = this.getLayoutInflater().inflate(R.layout.view_dialog_screen_load, null);
-        alertDialog.setView(view);
-        loadScreen = alertDialog.create();
     }
 
 }

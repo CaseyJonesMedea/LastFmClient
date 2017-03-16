@@ -24,8 +24,11 @@
         <activity android:name=".View.AlbumActivity.AlbumActivity"></activity>
         <activity android:name=".View.ListActivity.ListActivity"></activity>
         <activity android:name=".View.WorldChardActivity.WorldChartActivity"></activity>
-        <activity android:name=".View.TrackActivity.TrackActivity"></activity>
+        <activity android:name=".View.TrackActivity.TrackActivity"
+                  android:theme="@style/Theme.AppCompat.Translucent">
+        </activity>
         <activity android:name=".View.SearchActivity.SearchActivity"></activity>
+        <activity android:name=".View.YouTubeActivity.YouTubeActivity"></activity>
 
     </application>
 
