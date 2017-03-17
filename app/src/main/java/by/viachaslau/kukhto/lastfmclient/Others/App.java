@@ -12,8 +12,8 @@ import com.nostra13.universalimageloader.utils.L;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 
-import by.viachaslau.kukhto.lastfmclient.Model.ModelImpl;
-import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.Caller;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Caller;
 import by.viachaslau.kukhto.lastfmclient.R;
 
 /**

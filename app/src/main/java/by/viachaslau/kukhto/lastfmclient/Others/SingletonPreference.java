@@ -2,11 +2,8 @@ package by.viachaslau.kukhto.lastfmclient.Others;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.Preference;
-import android.widget.EditText;
 
-import by.viachaslau.kukhto.lastfmclient.Model.modelApp.UserInformation;
-import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.User;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.UserInformation;
 
 import static android.content.Context.MODE_PRIVATE;
 

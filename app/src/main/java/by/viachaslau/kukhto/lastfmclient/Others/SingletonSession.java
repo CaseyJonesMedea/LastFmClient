@@ -1,8 +1,6 @@
 package by.viachaslau.kukhto.lastfmclient.Others;
 
-import android.content.Context;
-
-import by.viachaslau.kukhto.lastfmclient.Model.umass.lastfm.Session;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Session;
 
 
 /**
