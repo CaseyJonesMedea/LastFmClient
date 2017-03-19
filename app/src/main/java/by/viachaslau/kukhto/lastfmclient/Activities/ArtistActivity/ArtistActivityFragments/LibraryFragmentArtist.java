@@ -141,7 +141,7 @@ public class LibraryFragmentArtist extends Fragment {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(), TrackActivity.class);
-                    intent.putExtra(TrackActivity.TRACK_URL, artistTracks.get(position).getUrl());
+                    intent.putExtra(TrackActivity.TRACK_URL, artistTracks.get(position));
                     startActivity(intent);
                 }
             });

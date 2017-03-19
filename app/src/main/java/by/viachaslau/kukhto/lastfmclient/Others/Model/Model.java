@@ -2,6 +2,7 @@ package by.viachaslau.kukhto.lastfmclient.Others.Model;
 
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.UserInformation;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import rx.Observable;
 
 /**
@@ -44,6 +45,8 @@ public interface Model {
 
     Observable getLovedTracks(String name);
 
+    Observable getLovedTracksJson(String name);
+
     Observable getSimilarArtists(String name);
 
     Observable getArtistTopAlbums(String name);
@@ -55,5 +58,9 @@ public interface Model {
     Observable getChartTopTracks();
 
     Observable getYouTubeUrl(String urlTrack);
+
+    Observable getResultLoveTrack(Track track);
+
+    Observable getResultUnLoveTrack(Track track);
 
 }

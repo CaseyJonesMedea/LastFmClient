@@ -13,7 +13,7 @@ import by.viachaslau.kukhto.lastfmclient.R;
 
 public class TrackActivity extends AppCompatActivity implements TrackActivityIView {
 
-    public static final String TRACK_URL = "trackUrs";
+    public static final String TRACK_URL = "track";
 
 
     @Override

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
+import by.viachaslau.kukhto.lastfmclient.Others.YouTube;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.Activities.YouTubeActivity.YouTubeActivity;
 import rx.Subscriber;
@@ -23,13 +25,16 @@ public class TrackActivityPresenter {
 
     private String url;
 
+    private Track track;
+
     private Subscription subscription = Subscribers.empty();
     private TrackActivityIView iView;
 
     public TrackActivityPresenter(Context context, TrackActivityIView iView, Intent intent) {
         this.iView = iView;
         this.context = context;
-        url = intent.getStringExtra(TrackActivity.TRACK_URL);
+        track = (Track) intent.getSerializableExtra(TrackActivity.TRACK_URL);
+        url = track.getUrl();
         loadPage(url);
     }
 
@@ -53,6 +58,7 @@ public class TrackActivityPresenter {
             public void onNext(String codeYouTube) {
                 Intent intent = new Intent(context, YouTubeActivity.class);
                 intent.putExtra(YouTubeActivity.YOUTUBE_CODE, codeYouTube);
+                intent.putExtra(YouTubeActivity.YOUTUBE_TRACK, track);
                 context.startActivity(intent);
             }
         });

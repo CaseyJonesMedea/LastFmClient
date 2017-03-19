@@ -39,6 +39,7 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
     private Toolbar toolbar;
 
     private ImageView btnUpdate;
+    private ImageView btnShare;
 
     private FrameLayout container;
 
@@ -69,6 +70,8 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
         toolbar = (Toolbar)findViewById(R.id.toolbar_album);
         btnUpdate = (ImageView)toolbar.findViewById(R.id.btn_update);
         btnUpdate.setOnClickListener(this);
+        btnShare = (ImageView)findViewById(R.id.btn_share);
+        btnShare.setOnClickListener(this);
         loadFragment = (LinearLayout) findViewById(R.id.progress_load);
     }
 
@@ -118,6 +121,13 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
 
     @Override
     public void onClick(View view) {
-        presenter.onBtnUpdateClick();
+        switch (view.getId()){
+            case R.id.btn_update:
+                presenter.onBtnUpdateClick();
+                break;
+            case R.id.btn_share:
+                presenter.onBtnShareClick();
+                break;
+        }
     }
 }

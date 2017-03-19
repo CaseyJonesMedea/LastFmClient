@@ -92,21 +92,21 @@ public class FullFragmentList extends Fragment {
             adapter = new SectionedRecyclerViewAdapter();
             String listType = getArguments().getString(LIST_TYPE);
             if (listType.equals(ARTIST_TYPE)) {
-                FullListArtistSection section = new FullListArtistSection(getContext(), R.layout.section_header, R.layout.section_footer, R.layout.section_artists, R.layout.section_load_empty, R.layout.section_fail_empty);
+                FullListArtistSection section = new FullListArtistSection(getContext(), R.layout.section_header, R.layout.section_artists, R.layout.section_load_empty, R.layout.section_fail_empty);
                 String title = getArguments().getString(TITLE);
                 List<Artist> list = (List<Artist>) getArguments().getSerializable(LIST);
                 section.setArtistList(list);
                 section.setTitle(title);
                 adapter.addSection(section);
             } else if (listType.equals(ALBUM_TYPE)) {
-                FullListAlbumSection section = new FullListAlbumSection(getContext(), R.layout.section_header, R.layout.section_footer, R.layout.section_albums, R.layout.section_load_empty, R.layout.section_fail_empty);
+                FullListAlbumSection section = new FullListAlbumSection(getContext(), R.layout.section_header,  R.layout.section_albums, R.layout.section_load_empty, R.layout.section_fail_empty);
                 String title = getArguments().getString(TITLE);
                 List<Album> list = (List<Album>) getArguments().getSerializable(LIST);
                 section.setAlbumList(list);
                 section.setTitle(title);
                 adapter.addSection(section);
             } else if (listType.equals(TRACK_TYPE)) {
-                FullListTrackSection section = new FullListTrackSection(getContext(), R.layout.section_header, R.layout.section_footer, R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
+                FullListTrackSection section = new FullListTrackSection(getContext(), R.layout.section_header,  R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
                 String title = getArguments().getString(TITLE);
                 List<Track> list = (List<Track>) getArguments().getSerializable(LIST);
                 section.setTrackList(list);

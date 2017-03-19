@@ -33,8 +33,8 @@ public class FullListTrackSection extends Section{
     private String title;
 
 
-    public FullListTrackSection(Context context, int headerResourceId, int footerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
-        super(headerResourceId, footerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+    public FullListTrackSection(Context context, int headerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
+        super(headerResourceId, itemResourceId, loadingResourceId, failedResourceId);
         imageLoader = ImageLoader.getInstance();
         this.context = context;
     }
@@ -76,7 +76,7 @@ public class FullListTrackSection extends Section{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, TrackActivity.class);
-                intent.putExtra(TrackActivity.TRACK_URL, trackList.get(position).getUrl());
+                intent.putExtra(TrackActivity.TRACK_URL, trackList.get(position));
                 context.startActivity(intent);
             }
         });
@@ -93,21 +93,6 @@ public class FullListTrackSection extends Section{
         headerHolder.tvTitle.setText(title);
     }
 
-    @Override
-    public RecyclerView.ViewHolder getFooterViewHolder(View view) {
-        return new FooterViewHolder(view);
-    }
-
-    @Override
-    public void onBindFooterViewHolder(RecyclerView.ViewHolder holder) {
-        FooterViewHolder footerHolder = (FooterViewHolder) holder;
-        footerHolder.rootView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "Clicked on footer!", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvTitle;
@@ -118,14 +103,6 @@ public class FullListTrackSection extends Section{
         }
     }
 
-    class FooterViewHolder extends RecyclerView.ViewHolder {
-        private final View rootView;
-
-        public FooterViewHolder(View view) {
-            super(view);
-            rootView = view;
-        }
-    }
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imgAlbums;

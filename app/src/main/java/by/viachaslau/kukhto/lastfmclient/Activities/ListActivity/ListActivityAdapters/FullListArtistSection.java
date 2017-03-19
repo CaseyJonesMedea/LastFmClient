@@ -35,8 +35,8 @@ public class FullListArtistSection extends Section {
     private String title;
 
 
-    public FullListArtistSection(Context context ,int headerResourceId, int footerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
-        super(headerResourceId, footerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+    public FullListArtistSection(Context context ,int headerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
+        super(headerResourceId, itemResourceId, loadingResourceId, failedResourceId);
         imageLoader = ImageLoader.getInstance();
         this.context = context;
     }
@@ -91,21 +91,6 @@ public class FullListArtistSection extends Section {
         headerHolder.tvTitle.setText(title);
     }
 
-    @Override
-    public RecyclerView.ViewHolder getFooterViewHolder(View view) {
-        return new FooterViewHolder(view);
-    }
-
-    @Override
-    public void onBindFooterViewHolder(RecyclerView.ViewHolder holder) {
-        FooterViewHolder footerHolder = (FooterViewHolder) holder;
-        footerHolder.rootView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "Clicked on footer!", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvTitle;
@@ -113,15 +98,6 @@ public class FullListArtistSection extends Section {
         public HeaderViewHolder(View itemView) {
             super(itemView);
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
-        }
-    }
-
-    class FooterViewHolder extends RecyclerView.ViewHolder {
-        private final View rootView;
-
-        public FooterViewHolder(View view) {
-            super(view);
-            rootView = view;
         }
     }
 

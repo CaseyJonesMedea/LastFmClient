@@ -35,11 +35,13 @@ import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Authenticator
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Chart;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.PaginatedResult;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Result;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Session;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.User;
 import by.viachaslau.kukhto.lastfmclient.Others.Data;
 import by.viachaslau.kukhto.lastfmclient.Others.SingletonPreference;
+import by.viachaslau.kukhto.lastfmclient.Others.SingletonSession;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -151,7 +153,7 @@ public class ModelImpl implements Model {
     @Override
     public Observable getRecentTracks(String name) {
         Observable<List<Track>> observable = Observable.fromCallable(() -> {
-            PaginatedResult<Track> result = User.getRecentTracks(name, Data.API_KEY);
+            PaginatedResult<Track> result = User.getRecentTracks(name, 1, 100, Data.API_KEY);
             Collection<Track> collection = result.getPageResults();
             List<Track> tracks = new ArrayList<>(collection);
             return tracks;
@@ -198,6 +200,57 @@ public class ModelImpl implements Model {
             return tracks;
         }).subscribeOn(Schedulers.newThread());
         return observable;
+    }
+
+    @Override
+    public Observable getLovedTracksJson(String name) {
+        Observable<List<Track>> observable = Observable.fromCallable(() -> {
+            List<Track> searchTracks = findLovedTracks(name);
+            return searchTracks;
+        }).subscribeOn(Schedulers.newThread());
+        return observable;
+    }
+
+    private List<Track> findLovedTracks(String name) {
+        List<Track> trackList = new ArrayList<>();
+        try {
+            URL url = new URL(Data.BASE_URL + "?method=user.getlovedtracks&user=" + name + "&api_key=" + Data.API_KEY + "&format=json");
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            urlConnection.connect();
+            InputStream inputStream = urlConnection.getInputStream();
+            StringBuffer buffer = new StringBuffer();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                buffer.append(line);
+            }
+            String resultJson = buffer.toString();
+            JSONObject dataJsonObj = new JSONObject(resultJson);
+            JSONObject result = dataJsonObj.getJSONObject("lovedtracks");
+            JSONArray lovedTracks = result.getJSONArray("track");
+
+            for (int i = 0; i < lovedTracks.length(); i++) {
+                JSONObject track = lovedTracks.getJSONObject(i);
+                String nameTrack = track.getString("name");
+                String artist = track.getString("mbid");
+                String urlTrack = track.getString("url");
+                JSONArray image = track.getJSONArray("image");
+                Map<ImageSize, String> map = new HashMap<>();
+                for (int j = 0; j < image.length(); j++) {
+                    JSONObject imageUrlObject = image.getJSONObject(j);
+                    String imageUrl = imageUrlObject.getString("#text");
+                    String imageSize = imageUrlObject.getString("size");
+                    map.put(ConvertStringToImageSize(imageSize), imageUrl);
+                }
+                Track trackfinal = new Track(nameTrack, urlTrack, artist);
+                trackfinal.setImageUrls(map);
+                trackList.add(trackfinal);
+            }
+        } catch (IOException | JSONException e) {
+            return new ArrayList<>();
+        }
+        return trackList;
     }
 
     @Override
@@ -259,8 +312,6 @@ public class ModelImpl implements Model {
             JSONObject result = dataJsonObj.getJSONObject("results");
             JSONObject trackMatchers = result.getJSONObject("trackmatches");
             JSONArray searchTracks = trackMatchers.getJSONArray("track");
-
-
             for (int i = 0; i < searchTracks.length(); i++) {
                 JSONObject track = searchTracks.getJSONObject(i);
                 String nameTrack = track.getString("name");
@@ -386,12 +437,30 @@ public class ModelImpl implements Model {
                     }
                 }
 
-               code = extractVideoId(url);
+                code = extractVideoId(url);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
             return code;
+        }).subscribeOn(Schedulers.newThread());
+        return observable;
+    }
+
+    @Override
+    public Observable getResultLoveTrack(Track track) {
+        Observable<Result> observable = Observable.fromCallable(() -> {
+            Result result = Track.love(track.getArtist(), track.getName(), SingletonSession.getInstance().getSession());
+            return result;
+        }).subscribeOn(Schedulers.newThread());
+        return observable;
+    }
+
+    @Override
+    public Observable getResultUnLoveTrack(Track track) {
+        Observable<Result> observable = Observable.fromCallable(() -> {
+            Result result = Track.unlove(track.getArtist(), track.getName(), SingletonSession.getInstance().getSession());
+            return result;
         }).subscribeOn(Schedulers.newThread());
         return observable;
     }

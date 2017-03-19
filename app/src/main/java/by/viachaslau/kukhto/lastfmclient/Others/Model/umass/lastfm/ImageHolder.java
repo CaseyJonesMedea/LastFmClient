@@ -27,6 +27,7 @@
 package by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm;
 
 
+import java.io.Serializable;
 import java.util.*;
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.xml.DomElement;
@@ -36,7 +37,7 @@ import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.xml.DomElement;
  *
  * @author Janni Kovacs
  */
-public abstract class ImageHolder {
+public abstract class ImageHolder implements Serializable{
 
 
 	protected Map<ImageSize, String> imageUrls = new HashMap<ImageSize, String>();

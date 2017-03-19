@@ -97,19 +97,17 @@ public class UserActivityPresenter implements UserActivityIPresenter {
         subscription = ModelImpl.getModel().getHomeFragmentInformation(user.getName()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<HomeFragmentInformation>() {
             @Override
             public void onCompleted() {
-
+                iView.hideLoadProgressBar();
             }
 
             @Override
             public void onError(Throwable e) {
-                iView.hideLoadProgressBar();
                 iView.showErrorFragment();
                 SingletonSession.clearSession();
             }
 
             @Override
             public void onNext(HomeFragmentInformation homeFragmentInformation) {
-                iView.hideLoadProgressBar();
                 HomeFragmentUser homeFragmentUser = HomeFragmentUser.newInstance(homeFragmentInformation, user.getName());
                 fragments.put(HomeFragmentUser.TAG, homeFragmentUser);
                 iView.showFragment(homeFragmentUser, false, HomeFragmentUser.TAG);
@@ -127,19 +125,17 @@ public class UserActivityPresenter implements UserActivityIPresenter {
         subscription = ModelImpl.getModel().getChartFragmentInformation(user.getName()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<ChartFragmentInformation>() {
             @Override
             public void onCompleted() {
-
+                iView.hideLoadProgressBar();
             }
 
             @Override
             public void onError(Throwable e) {
-                iView.hideLoadProgressBar();
                 iView.showErrorFragment();
                 SingletonSession.clearSession();
             }
 
             @Override
             public void onNext(ChartFragmentInformation chartFragmentInformation) {
-                iView.hideLoadProgressBar();
                 ChartFragmentUser chartFragmentUser = ChartFragmentUser.newInstance(chartFragmentInformation);
                 fragments.put(ChartFragmentUser.TAG, chartFragmentUser);
                 iView.showFragment(chartFragmentUser, false, ChartFragmentUser.TAG);
@@ -157,19 +153,17 @@ public class UserActivityPresenter implements UserActivityIPresenter {
         subscription = ModelImpl.getModel().getFriendsFragmentInformation(user.getName()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<FriendsFragmentInformation>() {
             @Override
             public void onCompleted() {
-
+                iView.hideLoadProgressBar();
             }
 
             @Override
             public void onError(Throwable e) {
-                iView.hideLoadProgressBar();
                 iView.showErrorFragment();
                 SingletonSession.clearSession();
             }
 
             @Override
             public void onNext(FriendsFragmentInformation friendsFragmentInformation) {
-                iView.hideLoadProgressBar();
                 FriendsFragmentUser friendsFragmentUser = FriendsFragmentUser.newInstance(friendsFragmentInformation);
                 fragments.put(FriendsFragmentUser.TAG, friendsFragmentUser);
                 iView.showFragment(friendsFragmentUser, false, FriendsFragmentUser.TAG);

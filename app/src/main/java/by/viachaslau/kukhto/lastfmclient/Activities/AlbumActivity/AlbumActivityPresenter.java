@@ -48,19 +48,17 @@ public class AlbumActivityPresenter implements AlbumActivityIPresenter {
         subscription = ModelImpl.getModel().getAlbumInfo(artistName, albumName).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<Album>() {
             @Override
             public void onCompleted() {
-
+                iView.hideLoadProgressBar();
             }
 
             @Override
             public void onError(Throwable e) {
                 iView.showErrorFragment();
-                iView.hideLoadProgressBar();
             }
 
             @Override
             public void onNext(Album album) {
                 initAlbum(album);
-                iView.hideLoadProgressBar();
                 iView.initAlbumFull(album);
                 initFullAlbumFragment(album);
             }
@@ -81,5 +79,15 @@ public class AlbumActivityPresenter implements AlbumActivityIPresenter {
     @Override
     public void onBtnUpdateClick() {
         loadAlbum(artistName, albumName);
+    }
+
+    @Override
+    public void onBtnShareClick() {
+        Intent share = new Intent(android.content.Intent.ACTION_SEND);
+        share.setType("text/plain");
+        share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+        share.putExtra(Intent.EXTRA_SUBJECT, "Title Of The Post");
+        share.putExtra(Intent.EXTRA_TEXT, album.getUrl());
+        context.startActivity(Intent.createChooser(share, "Share link!"));
     }
 }

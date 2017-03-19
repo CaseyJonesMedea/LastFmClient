@@ -41,6 +41,7 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
 
     private void initializeArtistInformation(Intent intent) {
         String artistName = intent.getStringExtra(ArtistActivity.ARTIST);
+
         loadArtist(artistName);
     }
 
@@ -53,19 +54,17 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
         subscription = ModelImpl.getModel().getArtistInfo(artistName).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<Artist>() {
             @Override
             public void onCompleted() {
-
+                iView.hideLoadProgressBar();
             }
 
             @Override
             public void onError(Throwable e) {
                 iView.showErrorFragment();
-                iView.hideLoadProgressBar();
             }
 
             @Override
             public void onNext(Artist artist) {
                 initArtist(artist);
-                iView.hideLoadProgressBar();
                 iView.initArtistFull(artist);
                 initInfoFragment();
             }
@@ -85,18 +84,16 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
         subscription = ModelImpl.getModel().getArtistInfo(artist.getName()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<Artist>() {
             @Override
             public void onCompleted() {
-
+                iView.hideLoadProgressBar();
             }
 
             @Override
             public void onError(Throwable e) {
-                iView.hideLoadProgressBar();
                 iView.showErrorFragment();
             }
 
             @Override
             public void onNext(Artist artist) {
-                iView.hideLoadProgressBar();
                 InfoFragmentArtist infoFragmentArtist = InfoFragmentArtist.newInstance(artist);
                 fragments.put(InfoFragmentArtist.TAG, infoFragmentArtist);
                 iView.showFragment(infoFragmentArtist, false, InfoFragmentArtist.TAG);
@@ -176,5 +173,15 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
         } else if (fragmentInActivity.equals(InfoFragmentArtist.TAG)) {
             initInfoFragment();
         }
+    }
+
+    @Override
+    public void onBtnShareClick() {
+        Intent share = new Intent(android.content.Intent.ACTION_SEND);
+        share.setType("text/plain");
+        share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+        share.putExtra(Intent.EXTRA_SUBJECT, "Title Of The Post");
+        share.putExtra(Intent.EXTRA_TEXT, artist.getUrl());
+        context.startActivity(Intent.createChooser(share, "Share link!"));
     }
 }

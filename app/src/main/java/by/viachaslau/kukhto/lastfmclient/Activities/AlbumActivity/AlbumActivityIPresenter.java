@@ -7,4 +7,6 @@ package by.viachaslau.kukhto.lastfmclient.Activities.AlbumActivity;
 public interface AlbumActivityIPresenter {
 
     void onBtnUpdateClick();
+
+    void onBtnShareClick();
 }
