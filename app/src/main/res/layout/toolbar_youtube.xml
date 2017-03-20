@@ -45,6 +45,13 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:src="@drawable/unlike"
+                android:id="@+id/float_btn"
+                android:layout_marginRight="20dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+
+            <ImageView
                 android:layout_marginRight="20dp"
                 android:id="@+id/btn_share"
                 android:src="@drawable/share"

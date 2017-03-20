@@ -1,36 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <include
+        layout="@layout/toolbar_youtube">
+    </include>
+
+
+    <FrameLayout
+        android:id="@+id/youtube_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <include
-            layout="@layout/toolbar_youtube">
-        </include>
+        android:layout_height="match_parent"/>
 
 
-        <com.google.android.youtube.player.YouTubePlayerView
-            android:id="@+id/youtube_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </com.google.android.youtube.player.YouTubePlayerView>
-
-    </LinearLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/float_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:layout_marginRight="16dp"
-        android:layout_gravity="bottom|right"
-        android:src="@drawable/unlike"/>
-
-
-
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>
