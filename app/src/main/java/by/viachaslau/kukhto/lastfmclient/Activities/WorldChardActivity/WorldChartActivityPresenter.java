@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.Activities.WorldChardActivity.WorldChartActivityFragments.WorldChartArtistsFragment;
@@ -139,5 +140,14 @@ public class WorldChartActivityPresenter implements WorldChartActivityIPresenter
         } else {
             initialozeTracksChart();
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        context = null;
+        iView = null;
+        fragmentInActivity = null;
+        fragments = null;
+        RxUtils.unsubscribe(subscription);
     }
 }

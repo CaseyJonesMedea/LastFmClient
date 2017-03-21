@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.LibraryFragmentInformation;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.Activities.ArtistActivity.ArtistActivityFragments.InfoFragmentArtist;
@@ -183,5 +184,14 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
         share.putExtra(Intent.EXTRA_SUBJECT, "Title Of The Post");
         share.putExtra(Intent.EXTRA_TEXT, artist.getUrl());
         context.startActivity(Intent.createChooser(share, "Share link!"));
+    }
+
+    @Override
+    public void onDestroy() {
+        context = null;
+        iView = null;
+        fragmentInActivity = null;
+        fragments = null;
+        RxUtils.unsubscribe(subscription);
     }
 }

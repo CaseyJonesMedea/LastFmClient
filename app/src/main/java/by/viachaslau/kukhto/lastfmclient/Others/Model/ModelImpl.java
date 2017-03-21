@@ -16,10 +16,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Callable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,6 +42,8 @@ import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Session;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.User;
 import by.viachaslau.kukhto.lastfmclient.Others.Data;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.scrobble.ScrobbleData;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.scrobble.ScrobbleResult;
 import by.viachaslau.kukhto.lastfmclient.Others.SingletonPreference;
 import by.viachaslau.kukhto.lastfmclient.Others.SingletonSession;
 import rx.Observable;
@@ -461,6 +465,22 @@ public class ModelImpl implements Model {
         Observable<Result> observable = Observable.fromCallable(() -> {
             Result result = Track.unlove(track.getArtist(), track.getName(), SingletonSession.getInstance().getSession());
             return result;
+        }).subscribeOn(Schedulers.newThread());
+        return observable;
+    }
+
+    @Override
+    public Observable getResultTrackScrobble(Track track) {
+        Observable<ScrobbleResult> observable = Observable.fromCallable(new Callable<ScrobbleResult>() {
+            @Override
+            public ScrobbleResult call() throws Exception {
+                Calendar date = Calendar.getInstance();
+                long milisec = date.getTimeInMillis();
+                int sec = (int) (milisec / 1000);
+                ScrobbleData data = new ScrobbleData(track.getArtist(), track.getName(), sec);
+                ScrobbleResult result = Track.scrobble(data, SingletonSession.getInstance().getSession());
+                return result;
+            }
         }).subscribeOn(Schedulers.newThread());
         return observable;
     }

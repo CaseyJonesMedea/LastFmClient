@@ -11,4 +11,6 @@ public interface WorldChartActivityIPresenter {
     void onBtnChartArtistClick();
 
     void onBtnChartTracksClick();
+
+    void onDestroy();
 }

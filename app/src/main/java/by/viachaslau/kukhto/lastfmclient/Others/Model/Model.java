@@ -63,4 +63,6 @@ public interface Model {
 
     Observable getResultUnLoveTrack(Track track);
 
+    Observable getResultTrackScrobble(Track track);
+
 }

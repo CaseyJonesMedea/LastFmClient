@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
 import by.viachaslau.kukhto.lastfmclient.Activities.AlbumActivity.AlbumActivityFragments.FullFragmentAlbum;
 import rx.Subscriber;
@@ -89,5 +90,13 @@ public class AlbumActivityPresenter implements AlbumActivityIPresenter {
         share.putExtra(Intent.EXTRA_SUBJECT, "Title Of The Post");
         share.putExtra(Intent.EXTRA_TEXT, album.getUrl());
         context.startActivity(Intent.createChooser(share, "Share link!"));
+    }
+
+    @Override
+    public void onDestroy() {
+        iView = null;
+        context = null;
+        album = null;
+        RxUtils.unsubscribe(subscription);
     }
 }

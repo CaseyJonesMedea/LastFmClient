@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
@@ -312,5 +313,14 @@ public class ListActivityPresenter implements ListActivityIPresenter {
                 initArtistTopTracks(name);
                 break;
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        context = null;
+        iView = null;
+        intent = null;
+        fullFragmentList = null;
+        RxUtils.unsubscribe(subscription);
     }
 }

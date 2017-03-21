@@ -132,7 +132,6 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
         fragmentError.setVisibility(View.INVISIBLE);
         fragmentNotInformation.setVisibility(View.INVISIBLE);
         fragmentLoad.setVisibility(View.VISIBLE);
-        listSearch.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -140,7 +139,6 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
         fragmentError.setVisibility(View.INVISIBLE);
         fragmentNotInformation.setVisibility(View.INVISIBLE);
         fragmentLoad.setVisibility(View.INVISIBLE);
-        listSearch.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -153,5 +151,11 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
                 edtSearch.setText("");
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
     }
 }

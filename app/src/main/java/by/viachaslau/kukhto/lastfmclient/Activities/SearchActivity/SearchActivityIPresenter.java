@@ -8,4 +8,6 @@ public interface SearchActivityIPresenter {
 
     void onBtnSearchClick();
 
+    void onDestroy();
+
 }

@@ -15,17 +15,25 @@ public class TrackActivity extends AppCompatActivity implements TrackActivityIVi
 
     public static final String TRACK_URL = "track";
 
+    private TrackActivityPresenter presenter;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track);
         Intent intent = getIntent();
-        new TrackActivityPresenter(this, this, intent);
+        presenter = new TrackActivityPresenter(this, this, intent);
     }
 
     @Override
     public void closeActivity() {
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
     }
 }

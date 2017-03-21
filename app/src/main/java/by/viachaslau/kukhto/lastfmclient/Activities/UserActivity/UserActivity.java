@@ -46,7 +46,7 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
     private LinearLayout btnFriends;
     private LinearLayout btnUserChart;
     private LinearLayout btnHome;
-    private FrameLayout container;
+
 
     private LinearLayout loadFragment;
     private ErrorFragmentUser errorFragmentUser;
@@ -84,7 +84,6 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
         btnUserChart = (LinearLayout) findViewById(R.id.ll_chart_user);
         btnUserChart.setOnClickListener(this);
         loadFragment = (LinearLayout) findViewById(R.id.progress_load);
-        container = (FrameLayout) findViewById(R.id.container_user_activity);
     }
 
 
@@ -100,7 +99,6 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
 
     @Override
     public void showLoadProgressBar() {
-        container.setVisibility(View.INVISIBLE);
         loadFragment.setVisibility(View.VISIBLE);
     }
 
@@ -111,7 +109,6 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
 
     @Override
     public void hideLoadProgressBar() {
-        container.setVisibility(View.VISIBLE);
         loadFragment.setVisibility(View.INVISIBLE);
     }
 
@@ -158,5 +155,11 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
                 presenter.onBtnUserChartClick();
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
     }
 }

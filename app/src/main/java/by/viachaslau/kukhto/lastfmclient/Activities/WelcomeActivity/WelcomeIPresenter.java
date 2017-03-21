@@ -9,4 +9,6 @@ public interface WelcomeIPresenter {
     void onBtnLogInClick();
 
     void onBtnRegistrationClick();
+
+    void onDestroy();
 }

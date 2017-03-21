@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.Others.YouTube;
 import by.viachaslau.kukhto.lastfmclient.R;
@@ -18,7 +19,7 @@ import rx.observers.Subscribers;
  * Created by kuhto on 15.03.2017.
  */
 
-public class TrackActivityPresenter {
+public class TrackActivityPresenter implements TrackActivityIPresenter{
 
     private Context context;
 
@@ -62,5 +63,14 @@ public class TrackActivityPresenter {
                 context.startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        iView = null;
+        context = null;
+        track = null;
+        url = null;
+        RxUtils.unsubscribe(subscription);
     }
 }

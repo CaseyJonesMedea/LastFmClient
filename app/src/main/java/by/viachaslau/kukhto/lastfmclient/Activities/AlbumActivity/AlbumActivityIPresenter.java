@@ -9,4 +9,6 @@ public interface AlbumActivityIPresenter {
     void onBtnUpdateClick();
 
     void onBtnShareClick();
+
+    void onDestroy();
 }

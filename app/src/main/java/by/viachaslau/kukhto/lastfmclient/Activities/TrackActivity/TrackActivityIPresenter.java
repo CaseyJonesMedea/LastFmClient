@@ -5,4 +5,6 @@ package by.viachaslau.kukhto.lastfmclient.Activities.TrackActivity;
  */
 
 public interface TrackActivityIPresenter {
+
+    void onDestroy();
 }

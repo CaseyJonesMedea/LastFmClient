@@ -18,4 +18,6 @@ public interface UserActivityIPresenter {
 
     void onBtnSearchClick();
 
+    void onDestroy();
+
 }

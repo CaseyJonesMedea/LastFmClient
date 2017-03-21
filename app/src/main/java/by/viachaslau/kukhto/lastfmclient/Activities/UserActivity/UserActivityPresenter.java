@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.ChartFragmentInformation;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.FriendsFragmentInformation;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.HomeFragmentInformation;
@@ -250,5 +251,14 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     public void onBtnSearchClick() {
         Intent intent = new Intent(context, SearchActivity.class);
         context.startActivity(intent);
+    }
+
+    @Override
+    public void onDestroy() {
+        context = null;
+        iView = null;
+        fragmentInActivity = null;
+        fragments = null;
+        RxUtils.unsubscribe(subscription);
     }
 }

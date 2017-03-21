@@ -13,4 +13,6 @@ public interface ArtistActivityIPresenter {
     void onBtnUpdateClick();
 
     void onBtnShareClick();
+
+    void onDestroy();
 }

@@ -8,4 +8,6 @@ public interface ListActivityIPresenter {
 
     void onBtnUpdateClick();
 
+    void onDestroy();
+
 }

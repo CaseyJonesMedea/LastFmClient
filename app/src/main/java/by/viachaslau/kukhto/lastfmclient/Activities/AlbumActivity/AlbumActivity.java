@@ -41,8 +41,6 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
     private ImageView btnUpdate;
     private ImageView btnShare;
 
-    private FrameLayout container;
-
     private LinearLayout loadFragment;
     private ErrorFragmentUser errorFragmentUser;
     private AlbumActivityPresenter presenter;
@@ -66,7 +64,6 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
         nameArtist = (TextView)findViewById(R.id.text_name_artist);
         nameAlbum = (TextView)findViewById(R.id.text_name_album);
         scrobbles = (TextView)findViewById(R.id.text_scrobbles);
-        container = (FrameLayout)findViewById(R.id.container_album_activity);
         toolbar = (Toolbar)findViewById(R.id.toolbar_album);
         btnUpdate = (ImageView)toolbar.findViewById(R.id.btn_update);
         btnUpdate.setOnClickListener(this);
@@ -88,13 +85,11 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
 
     @Override
     public void showLoadProgressBar() {
-        container.setVisibility(View.INVISIBLE);
         loadFragment.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoadProgressBar() {
-        container.setVisibility(View.VISIBLE);
         loadFragment.setVisibility(View.INVISIBLE);
     }
 
@@ -129,5 +124,11 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
                 presenter.onBtnShareClick();
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
     }
 }

@@ -10,4 +10,8 @@ public interface YouTubeActivityIPresenter {
 
     void onBtnLoveClick();
 
+    void scrobbleTrack();
+
+    void onDestroy();
+
 }

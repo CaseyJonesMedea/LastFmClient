@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.UserInformation;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Session;
 import by.viachaslau.kukhto.lastfmclient.Others.SingletonPreference;
@@ -37,7 +38,6 @@ public class WelcomePresenter implements WelcomeIPresenter {
     public WelcomePresenter(Context context, WelcomeActivityIView iView) {
         this.context = context;
         this.iView = iView;
-
         initActivity();
     }
 
@@ -107,6 +107,7 @@ public class WelcomePresenter implements WelcomeIPresenter {
         context.startActivity(openlinkIntent);
     }
 
+
     private void createLogInAlertDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context, R.style.MyAlertDialogStyle);
         View view = ((Activity) context).getLayoutInflater().inflate(R.layout.view_dialog_log_in, null);
@@ -135,5 +136,12 @@ public class WelcomePresenter implements WelcomeIPresenter {
         });
         AlertDialog dialog = alertDialog.create();
         iView.showLoginDialog(dialog);
+    }
+
+    @Override
+    public void onDestroy() {
+        context = null;
+        iView = null;
+        RxUtils.unsubscribe(subscription);
     }
 }

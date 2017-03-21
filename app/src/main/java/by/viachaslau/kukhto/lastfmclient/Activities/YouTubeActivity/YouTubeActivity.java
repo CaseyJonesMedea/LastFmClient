@@ -34,15 +34,20 @@ public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.
     public static final String YOUTUBE_TRACK = "youtubeTrack";
 
     private static final int RECOVERY_REQUEST = 1;
-    private YouTubePlayerSupportFragment youTubePlayerSupportFragment;
+    private YouTubePlayerSupportFragment youTubeFragment;
 
     private YouTubeActivityPresenter presenter;
 
     private ImageView btnShare;
 
+    private YouTubePlayer player;
+
     private ImageView btnLove;
 
+    private boolean fullScreen;
+
     private String youTubeCode = "";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,10 +58,10 @@ public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.
         youTubeCode = intent.getStringExtra(YOUTUBE_CODE);
         initViews();
         presenter = new YouTubeActivityPresenter(this, this, intent);
-        youTubePlayerSupportFragment = YouTubePlayerSupportFragment.newInstance();
-        youTubePlayerSupportFragment.initialize(YouTube.key, this);
+        youTubeFragment = YouTubePlayerSupportFragment.newInstance();
+        youTubeFragment.initialize(YouTube.key, this);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.youtube_container, youTubePlayerSupportFragment, youTubePlayerSupportFragment.getTag());
+        fragmentTransaction.replace(R.id.youtube_container, youTubeFragment, youTubeFragment.getTag());
         fragmentTransaction.commitAllowingStateLoss();
     }
 
@@ -70,11 +75,19 @@ public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
         if (!wasRestored) {
-            youTubePlayer.setPlaybackEventListener(this);
-            youTubePlayer.setPlayerStateChangeListener(this);
-            youTubePlayer.cueVideo(youTubeCode);
+            player = youTubePlayer;
+            player.setPlaybackEventListener(this);
+            player.setPlayerStateChangeListener(this);
+            player.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
+                @Override
+                public void onFullscreen(boolean _isFullScreen) {
+                    fullScreen = _isFullScreen;
+                }
+            });
+            player.cueVideo(youTubeCode);
         }
     }
+
 
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult errorReason) {
@@ -96,11 +109,21 @@ public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.
 
     @Override
     protected void onDestroy() {
+        presenter.onDestroy();
         super.onDestroy();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (fullScreen) {
+            player.setFullscreen(false);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     protected YouTubePlayerSupportFragment getYouTubePlayerSupportFragment() {
-        return youTubePlayerSupportFragment;
+        return youTubeFragment;
     }
 
 
@@ -169,6 +192,7 @@ public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.
     @Override
     public void onVideoStarted() {
         Log.d(TAG, "onVideoStarted");
+        presenter.scrobbleTrack();
     }
 
     @Override
@@ -180,4 +204,5 @@ public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.
     public void onError(YouTubePlayer.ErrorReason errorReason) {
         Log.d(TAG, "" + errorReason);
     }
+
 }

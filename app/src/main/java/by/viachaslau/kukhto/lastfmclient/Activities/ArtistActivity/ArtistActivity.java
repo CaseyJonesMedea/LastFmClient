@@ -39,7 +39,7 @@ public class ArtistActivity extends AppCompatActivity implements View.OnClickLis
     private LinearLayout btnArtistInfo;
     private LinearLayout btnArtistLibrary;
     private LinearLayout loadFragment;
-    private FrameLayout container;
+
 
     private TextView scrobbles;
     private TextView artistName;
@@ -72,7 +72,6 @@ public class ArtistActivity extends AppCompatActivity implements View.OnClickLis
         btnShare = (ImageView)toolbar.findViewById(R.id.btn_share);
         btnShare.setOnClickListener(this);
         loadFragment = (LinearLayout) findViewById(R.id.progress_load);
-        container = (FrameLayout) findViewById(R.id.container_artist_activity);
         btnArtistLibrary = (LinearLayout) findViewById(R.id.ll_library_artist);
         btnArtistLibrary.setOnClickListener(this);
         btnArtistInfo = (LinearLayout) findViewById(R.id.ll_info_artist);
@@ -81,13 +80,11 @@ public class ArtistActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void showLoadProgressBar() {
-        container.setVisibility(View.INVISIBLE);
         loadFragment.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoadProgressBar() {
-        container.setVisibility(View.VISIBLE);
         loadFragment.setVisibility(View.INVISIBLE);
     }
 
@@ -133,5 +130,11 @@ public class ArtistActivity extends AppCompatActivity implements View.OnClickLis
                 presenter.onBtnShareClick();
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
     }
 }

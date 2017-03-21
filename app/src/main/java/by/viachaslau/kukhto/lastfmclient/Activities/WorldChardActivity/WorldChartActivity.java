@@ -23,11 +23,7 @@ import by.viachaslau.kukhto.lastfmclient.Activities.UserActivity.UserActivityFra
 public class WorldChartActivity extends AppCompatActivity implements WorldChartActivityIView, View.OnClickListener {
 
 
-    private Toolbar toolbar;
-
     private ImageView btnUpdate;
-
-    private FrameLayout container;
 
     private LinearLayout loadFragment;
     private ErrorFragmentUser errorFragmentUser;
@@ -47,8 +43,6 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
     }
 
     private void initViews() {
-        container = (FrameLayout) findViewById(R.id.container_chart_activity);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_world_chart);
         btnUpdate = (ImageView)findViewById(R.id.btn_update);
         btnUpdate.setOnClickListener(this);
         loadFragment = (LinearLayout) findViewById(R.id.progress_load);
@@ -71,13 +65,11 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
 
     @Override
     public void showLoadProgressBar() {
-        container.setVisibility(View.INVISIBLE);
         loadFragment.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoadProgressBar() {
-        container.setVisibility(View.VISIBLE);
         loadFragment.setVisibility(View.INVISIBLE);
     }
 
@@ -107,5 +99,11 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
                 presenter.onBtnUpdateClick();
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
     }
 }

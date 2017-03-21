@@ -7,12 +7,15 @@ import java.util.List;
 
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Result;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.scrobble.ScrobbleResult;
 import by.viachaslau.kukhto.lastfmclient.Others.SingletonSession;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.observers.Subscribers;
 
 /**
@@ -28,6 +31,8 @@ public class YouTubeActivityPresenter implements YouTubeActivityIPresenter {
     private Context context;
 
     private boolean trackIsLove;
+
+    private boolean trackIsScrobble = false;
 
     private Track track;
 
@@ -153,5 +158,30 @@ public class YouTubeActivityPresenter implements YouTubeActivityIPresenter {
                 }
             }
         });
+    }
+
+    @Override
+    public void scrobbleTrack() {
+        if (!trackIsScrobble) {
+            if (subscription.isUnsubscribed()) {
+                subscription.unsubscribe();
+            }
+            subscription = ModelImpl.getModel().getResultTrackScrobble(track).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<ScrobbleResult>() {
+                @Override
+                public void call(ScrobbleResult scrobbleResult) {
+                    if (scrobbleResult.getStatus() == Result.Status.OK) {
+                        trackIsScrobble = true;
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        context = null;
+        iView = null;
+        track = null;
+        RxUtils.unsubscribe(subscription);
     }
 }

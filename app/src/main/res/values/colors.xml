@@ -15,8 +15,9 @@
     <color name="red">#FF0000</color>
     <color name="white">#FFF</color>
     <color name="black">#000</color>
+    <color name="black_trans">#99000000</color>
     <color name="light_black">#4c4c4c</color>
-    #4c4c4c
+
     <color name="gunmetal">#2C3539</color>
     <color name="transparent">#00ffffff</color>
 

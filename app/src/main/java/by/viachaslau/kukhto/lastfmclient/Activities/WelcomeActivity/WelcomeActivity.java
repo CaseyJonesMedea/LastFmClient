@@ -101,4 +101,9 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeActivit
 
     }
 
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
+    }
 }

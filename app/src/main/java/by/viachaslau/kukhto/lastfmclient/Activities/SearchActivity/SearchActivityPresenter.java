@@ -7,6 +7,7 @@ import android.widget.RadioButton;
 import java.util.List;
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
@@ -56,6 +57,8 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
             initTracksList();
         }
     }
+
+
 
     private void initArtistsList() {
         iView.showLoadFragment();
@@ -142,5 +145,16 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
                 }
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        context = null;
+        iView = null;
+        edtSearch = null;
+        radioButtonArtist = null;
+        radioButtonAlbum = null;
+        radioButtonTrack = null;
+        RxUtils.unsubscribe(subscription);
     }
 }

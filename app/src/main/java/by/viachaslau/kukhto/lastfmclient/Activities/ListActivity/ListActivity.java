@@ -35,10 +35,8 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
     private ErrorFragmentUser errorFragmentUser;
     private LinearLayout loadFragment;
 
-    private Toolbar toolbar;
-
     private ImageView btnUpdate;
-    private FrameLayout container;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,11 +48,9 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
     }
 
     private void initViews() {
-        toolbar = (Toolbar)findViewById(R.id.toolbar_list);
         btnUpdate = (ImageView)findViewById(R.id.btn_update);
         btnUpdate.setOnClickListener(this);
         loadFragment = (LinearLayout) findViewById(R.id.progress_load);
-        container = (FrameLayout)findViewById(R.id.container_list_activity);
     }
 
     private void replaceFragment(Fragment fragment, boolean addToBackStack, String tag) {
@@ -69,13 +65,11 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
 
     @Override
     public void showLoadProgressBar() {
-        container.setVisibility(View.INVISIBLE);
         loadFragment.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoadProgressBar() {
-        container.setVisibility(View.VISIBLE);
         loadFragment.setVisibility(View.INVISIBLE);
     }
 
@@ -99,5 +93,11 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
                 presenter.onBtnUpdateClick();
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
     }
 }
