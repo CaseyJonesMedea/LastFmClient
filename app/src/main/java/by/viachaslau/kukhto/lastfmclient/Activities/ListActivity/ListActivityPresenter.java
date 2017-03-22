@@ -26,9 +26,7 @@ public class ListActivityPresenter implements ListActivityIPresenter {
 
     private Subscription subscription = Subscribers.empty();
 
-    private Context context;
     private ListActivityIView iView;
-    private Intent intent;
 
     private FullFragmentList fullFragmentList;
 
@@ -36,10 +34,8 @@ public class ListActivityPresenter implements ListActivityIPresenter {
     private String name;
 
 
-    public ListActivityPresenter(Context context, ListActivityIView iView, Intent intent) {
-        this.context = context;
+    public ListActivityPresenter(ListActivityIView iView, Intent intent) {
         this.iView = iView;
-        this.intent = intent;
         fullFragmentList = new FullFragmentList();
         initList(intent);
     }
@@ -317,9 +313,7 @@ public class ListActivityPresenter implements ListActivityIPresenter {
 
     @Override
     public void onDestroy() {
-        context = null;
         iView = null;
-        intent = null;
         fullFragmentList = null;
         RxUtils.unsubscribe(subscription);
     }

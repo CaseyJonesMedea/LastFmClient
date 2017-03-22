@@ -1,5 +1,6 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.SearchActivity;
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -48,7 +49,7 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
         setContentView(R.layout.activity_search);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         initViews();
-        presenter = new SearchActivityPresenter(this, this, edtSearch, radioButtonArtist, radioButtonAlbum, radioButtonTrack);
+        presenter = new SearchActivityPresenter(this, edtSearch, radioButtonArtist, radioButtonAlbum, radioButtonTrack);
     }
 
 
@@ -139,6 +140,11 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
         fragmentError.setVisibility(View.INVISIBLE);
         fragmentNotInformation.setVisibility(View.INVISIBLE);
         fragmentLoad.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
     @Override

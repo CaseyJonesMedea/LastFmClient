@@ -30,13 +30,11 @@ import rx.observers.Subscribers;
 
 public class WelcomePresenter implements WelcomeIPresenter {
 
-    private Context context;
     private WelcomeActivityIView iView;
     private Subscription subscription = Subscribers.empty();
 
 
-    public WelcomePresenter(Context context, WelcomeActivityIView iView) {
-        this.context = context;
+    public WelcomePresenter(WelcomeActivityIView iView) {
         this.iView = iView;
         initActivity();
     }
@@ -89,10 +87,10 @@ public class WelcomePresenter implements WelcomeIPresenter {
     }
 
     private void goToUserActivity(String userName) {
-        Intent intent = new Intent(context, UserActivity.class);
+        Intent intent = new Intent(iView.getContext(), UserActivity.class);
         intent.putExtra(UserActivity.USER_NAME, userName);
-        context.startActivity(intent);
-        ((WelcomeActivity) context).finish();
+        iView.getContext().startActivity(intent);
+        ((WelcomeActivity) iView.getContext()).finish();
     }
 
     @Override
@@ -102,15 +100,15 @@ public class WelcomePresenter implements WelcomeIPresenter {
 
     @Override
     public void onBtnRegistrationClick() {
-        Uri address = Uri.parse(context.getString(R.string.uri_registration));
+        Uri address = Uri.parse(iView.getContext().getString(R.string.uri_registration));
         Intent openlinkIntent = new Intent(Intent.ACTION_VIEW, address);
-        context.startActivity(openlinkIntent);
+        iView.getContext().startActivity(openlinkIntent);
     }
 
 
     private void createLogInAlertDialog() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context, R.style.MyAlertDialogStyle);
-        View view = ((Activity) context).getLayoutInflater().inflate(R.layout.view_dialog_log_in, null);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(iView.getContext(), R.style.MyAlertDialogStyle);
+        View view = ((Activity) iView.getContext()).getLayoutInflater().inflate(R.layout.view_dialog_log_in, null);
         EditText nameUserEnter = (EditText) view.findViewById(R.id.name_user_enter);
         EditText passwordUserEnter = (EditText) view.findViewById(R.id.password_user_enter);
         alertDialog.setView(view);
@@ -140,7 +138,6 @@ public class WelcomePresenter implements WelcomeIPresenter {
 
     @Override
     public void onDestroy() {
-        context = null;
         iView = null;
         RxUtils.unsubscribe(subscription);
     }

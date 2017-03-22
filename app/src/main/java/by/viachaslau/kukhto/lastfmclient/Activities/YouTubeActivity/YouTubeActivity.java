@@ -1,23 +1,23 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.YouTubeActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+
+import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.Others.YouTube;
 import by.viachaslau.kukhto.lastfmclient.R;
 
@@ -25,7 +25,7 @@ import by.viachaslau.kukhto.lastfmclient.R;
  * Created by kuhto on 15.03.2017.
  */
 
-public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.OnInitializedListener,
+public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener,
         YouTubePlayer.PlaybackEventListener, YouTubeActivityIView, View.OnClickListener, YouTubePlayer.PlayerStateChangeListener {
 
     public static final String TAG = YouTubeActivity.class.getSimpleName();
@@ -33,14 +33,20 @@ public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.
     public static final String YOUTUBE_CODE = "codeForYouTube";
     public static final String YOUTUBE_TRACK = "youtubeTrack";
 
+    public static final String TIMEPAUSE = "time";
+    public static final String TRACK_IS_SCROBBLE = "scrobble";
+
     private static final int RECOVERY_REQUEST = 1;
-    private YouTubePlayerSupportFragment youTubeFragment;
 
     private YouTubeActivityPresenter presenter;
+
+    private YouTubePlayerView youTubeView;
 
     private ImageView btnShare;
 
     private YouTubePlayer player;
+
+    private boolean trackIsScrobble;
 
     private ImageView btnLove;
 
@@ -48,24 +54,37 @@ public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.
 
     private String youTubeCode = "";
 
+    private Track track;
+
+    private int time;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_youtube);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        Intent intent = getIntent();
-        youTubeCode = intent.getStringExtra(YOUTUBE_CODE);
+        if (savedInstanceState != null) {
+            trackIsScrobble = savedInstanceState.getBoolean(TRACK_IS_SCROBBLE);
+            youTubeCode = savedInstanceState.getString(YOUTUBE_CODE);
+            track = (Track) savedInstanceState.getSerializable(YOUTUBE_TRACK);
+            time = savedInstanceState.getInt(TIMEPAUSE);
+        } else {
+            Intent intent = getIntent();
+            youTubeCode = intent.getStringExtra(YOUTUBE_CODE);
+            track = (Track) intent.getSerializableExtra(YOUTUBE_TRACK);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            time = 0;
+            trackIsScrobble = false;
+        }
+        presenter = new YouTubeActivityPresenter(this, youTubeCode, track);
         initViews();
-        presenter = new YouTubeActivityPresenter(this, this, intent);
-        youTubeFragment = YouTubePlayerSupportFragment.newInstance();
-        youTubeFragment.initialize(YouTube.key, this);
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.youtube_container, youTubeFragment, youTubeFragment.getTag());
-        fragmentTransaction.commitAllowingStateLoss();
+        youTubeView.initialize(YouTube.key, this);
+        youTubeView.destroyDrawingCache();
     }
 
+
     private void initViews() {
+        youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
         btnShare = (ImageView) findViewById(R.id.btn_share);
         btnShare.setOnClickListener(this);
         btnLove = (ImageView) findViewById(R.id.float_btn);
@@ -74,18 +93,26 @@ public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
-        if (!wasRestored) {
-            player = youTubePlayer;
-            player.setPlaybackEventListener(this);
-            player.setPlayerStateChangeListener(this);
-            player.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
-                @Override
-                public void onFullscreen(boolean _isFullScreen) {
-                    fullScreen = _isFullScreen;
-                }
-            });
-            player.cueVideo(youTubeCode);
-        }
+        player = youTubePlayer;
+        player.setPlaybackEventListener(this);
+        player.setPlayerStateChangeListener(this);
+        player.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
+            @Override
+            public void onFullscreen(boolean _isFullScreen) {
+                fullScreen = _isFullScreen;
+            }
+        });
+        player.loadVideo(youTubeCode, time);
+        player.play();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean(TRACK_IS_SCROBBLE, trackIsScrobble);
+        outState.putSerializable(YOUTUBE_TRACK, track);
+        outState.putString(YOUTUBE_CODE, youTubeCode);
+        outState.putInt(TIMEPAUSE, player.getCurrentTimeMillis());
+        super.onSaveInstanceState(outState);
     }
 
 
@@ -102,9 +129,13 @@ public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == RECOVERY_REQUEST) {
-            // Retry initialization if user performed a recovery action
-            getYouTubePlayerSupportFragment().initialize(YouTube.key, this);
+            getYouTubeView().initialize(YouTube.key, this);
         }
+    }
+
+
+    private YouTubePlayerView getYouTubeView() {
+        return youTubeView;
     }
 
     @Override
@@ -122,10 +153,6 @@ public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.
         }
     }
 
-    protected YouTubePlayerSupportFragment getYouTubePlayerSupportFragment() {
-        return youTubeFragment;
-    }
-
 
     @Override
     public void showUnlove() {
@@ -135,6 +162,11 @@ public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.
     @Override
     public void showLove() {
         btnLove.setImageResource(R.drawable.like);
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
     @Override
@@ -192,7 +224,11 @@ public class YouTubeActivity extends AppCompatActivity implements YouTubePlayer.
     @Override
     public void onVideoStarted() {
         Log.d(TAG, "onVideoStarted");
-        presenter.scrobbleTrack();
+        if (!trackIsScrobble) {
+            presenter.scrobbleTrack();
+            trackIsScrobble = true;
+        }
+
     }
 
     @Override

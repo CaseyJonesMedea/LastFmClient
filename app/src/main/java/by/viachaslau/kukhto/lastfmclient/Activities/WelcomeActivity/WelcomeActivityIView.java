@@ -1,5 +1,6 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.WelcomeActivity;
 
+import android.content.Context;
 import android.support.v7.app.AlertDialog;
 
 /**
@@ -21,5 +22,7 @@ public interface WelcomeActivityIView {
     void showButtons();
 
     void hideButtons();
+
+    Context getContext();
 
 }

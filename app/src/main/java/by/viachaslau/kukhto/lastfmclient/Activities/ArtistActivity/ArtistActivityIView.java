@@ -1,5 +1,6 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.ArtistActivity;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
@@ -19,4 +20,6 @@ public interface ArtistActivityIView {
     void showFragment(Fragment fragment, boolean addToBackStack, String tag);
 
     void initArtistFull(Artist artist);
+
+    Context getContext();
 }

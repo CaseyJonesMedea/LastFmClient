@@ -18,7 +18,6 @@ import rx.observers.Subscribers;
 
 public class AlbumActivityPresenter implements AlbumActivityIPresenter {
 
-    private Context context;
     private AlbumActivityIView iView;
     private Subscription subscription = Subscribers.empty();
     private Album album;
@@ -27,8 +26,7 @@ public class AlbumActivityPresenter implements AlbumActivityIPresenter {
     private String albumName;
 
 
-    public AlbumActivityPresenter(Context context, AlbumActivityIView iView, Intent intent) {
-        this.context = context;
+    public AlbumActivityPresenter(AlbumActivityIView iView, Intent intent) {
         this.iView = iView;
         initializeAlbumInformation(intent);
     }
@@ -89,13 +87,12 @@ public class AlbumActivityPresenter implements AlbumActivityIPresenter {
         share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         share.putExtra(Intent.EXTRA_SUBJECT, "Title Of The Post");
         share.putExtra(Intent.EXTRA_TEXT, album.getUrl());
-        context.startActivity(Intent.createChooser(share, "Share link!"));
+        iView.getContext().startActivity(Intent.createChooser(share, "Share link!"));
     }
 
     @Override
     public void onDestroy() {
         iView = null;
-        context = null;
         album = null;
         RxUtils.unsubscribe(subscription);
     }

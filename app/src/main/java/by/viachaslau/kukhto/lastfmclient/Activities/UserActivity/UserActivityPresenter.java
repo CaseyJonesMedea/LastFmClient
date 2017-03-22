@@ -33,7 +33,6 @@ import rx.observers.Subscribers;
 
 public class UserActivityPresenter implements UserActivityIPresenter {
 
-    private Context context;
     private UserActivityIView iView;
     private Subscription subscription = Subscribers.empty();
 
@@ -43,8 +42,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     private String fragmentInActivity;
 
 
-    public UserActivityPresenter(Context context, UserActivityIView iView, Intent intent) {
-        this.context = context;
+    public UserActivityPresenter(UserActivityIView iView, Intent intent) {
         this.iView = iView;
         initializeUserInformation(intent);
     }
@@ -176,9 +174,9 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     @Override
     public void onBtnExitClick() {
         SingletonPreference.getInstance().clearUserInformation();
-        Intent intent = new Intent(context, WelcomeActivity.class);
-        context.startActivity(intent);
-        ((AppCompatActivity) context).finish();
+        Intent intent = new Intent(iView.getContext(), WelcomeActivity.class);
+        iView.getContext().startActivity(intent);
+        ((AppCompatActivity) iView.getContext()).finish();
     }
 
     @Override
@@ -249,13 +247,12 @@ public class UserActivityPresenter implements UserActivityIPresenter {
 
     @Override
     public void onBtnSearchClick() {
-        Intent intent = new Intent(context, SearchActivity.class);
-        context.startActivity(intent);
+        Intent intent = new Intent(iView.getContext(), SearchActivity.class);
+        iView.getContext().startActivity(intent);
     }
 
     @Override
     public void onDestroy() {
-        context = null;
         iView = null;
         fragmentInActivity = null;
         fragments = null;

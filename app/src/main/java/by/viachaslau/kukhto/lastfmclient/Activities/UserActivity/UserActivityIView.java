@@ -1,6 +1,7 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.UserActivity;
 
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.User;
@@ -20,6 +21,8 @@ public interface UserActivityIView {
     void showFragment(Fragment fragment, boolean addToBackStack, String tag);
 
     void initUserFull(User user);
+
+    Context getContext();
 
 
 }

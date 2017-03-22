@@ -26,7 +26,6 @@ import rx.observers.Subscribers;
 public class WorldChartActivityPresenter implements WorldChartActivityIPresenter {
 
 
-    private Context context;
     private WorldChartActivityIView iView;
     private Subscription subscription = Subscribers.empty();
 
@@ -34,8 +33,7 @@ public class WorldChartActivityPresenter implements WorldChartActivityIPresenter
     private String fragmentInActivity;
 
 
-    public WorldChartActivityPresenter(Context context, WorldChartActivityIView iView) {
-        this.context = context;
+    public WorldChartActivityPresenter(WorldChartActivityIView iView) {
         this.iView = iView;
         initializeArtistChart();
     }
@@ -144,7 +142,6 @@ public class WorldChartActivityPresenter implements WorldChartActivityIPresenter
 
     @Override
     public void onDestroy() {
-        context = null;
         iView = null;
         fragmentInActivity = null;
         fragments = null;

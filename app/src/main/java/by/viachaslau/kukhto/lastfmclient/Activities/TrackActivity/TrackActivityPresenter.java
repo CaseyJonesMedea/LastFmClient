@@ -7,7 +7,6 @@ import android.widget.Toast;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
-import by.viachaslau.kukhto.lastfmclient.Others.YouTube;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.Activities.YouTubeActivity.YouTubeActivity;
 import rx.Subscriber;
@@ -21,9 +20,6 @@ import rx.observers.Subscribers;
 
 public class TrackActivityPresenter implements TrackActivityIPresenter{
 
-    private Context context;
-
-
     private String url;
 
     private Track track;
@@ -31,10 +27,9 @@ public class TrackActivityPresenter implements TrackActivityIPresenter{
     private Subscription subscription = Subscribers.empty();
     private TrackActivityIView iView;
 
-    public TrackActivityPresenter(Context context, TrackActivityIView iView, Intent intent) {
+    public TrackActivityPresenter(TrackActivityIView iView, Intent intent) {
         this.iView = iView;
-        this.context = context;
-        track = (Track) intent.getSerializableExtra(TrackActivity.TRACK_URL);
+        track = (Track) intent.getSerializableExtra(TrackActivity.TRACK);
         url = track.getUrl();
         loadPage(url);
     }
@@ -52,15 +47,15 @@ public class TrackActivityPresenter implements TrackActivityIPresenter{
 
             @Override
             public void onError(Throwable e) {
-                Toast.makeText(context, context.getString(R.string.error_not_video), Toast.LENGTH_LONG).show();
+                Toast.makeText( iView.getContext(), iView.getContext().getString(R.string.error_not_video), Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onNext(String codeYouTube) {
-                Intent intent = new Intent(context, YouTubeActivity.class);
+                Intent intent = new Intent(iView.getContext(), YouTubeActivity.class);
                 intent.putExtra(YouTubeActivity.YOUTUBE_CODE, codeYouTube);
                 intent.putExtra(YouTubeActivity.YOUTUBE_TRACK, track);
-                context.startActivity(intent);
+                iView.getContext().startActivity(intent);
             }
         });
     }
@@ -68,7 +63,6 @@ public class TrackActivityPresenter implements TrackActivityIPresenter{
     @Override
     public void onDestroy() {
         iView = null;
-        context = null;
         track = null;
         url = null;
         RxUtils.unsubscribe(subscription);

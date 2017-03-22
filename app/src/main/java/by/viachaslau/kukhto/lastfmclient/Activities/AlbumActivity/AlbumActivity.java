@@ -1,5 +1,7 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.AlbumActivity;
 
+
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -10,7 +12,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -56,7 +57,7 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
         initViews();
         imageLoader = ImageLoader.getInstance();
         Intent intent = getIntent();
-        presenter = new AlbumActivityPresenter(this, this, intent);
+        presenter = new AlbumActivityPresenter(this, intent);
     }
 
     private void initViews(){
@@ -112,6 +113,11 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
         imageLoader.displayImage(album.getImageURL(ImageSize.LARGE), imgAlbumLogo);
         nameArtist.setText(album.getArtist());
         nameAlbum.setText(album.getName());
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
     @Override

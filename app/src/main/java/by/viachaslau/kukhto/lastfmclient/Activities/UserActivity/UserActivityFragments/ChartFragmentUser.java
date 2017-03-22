@@ -115,7 +115,7 @@ public class ChartFragmentUser extends Fragment {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(), TrackActivity.class);
-                    intent.putExtra(TrackActivity.TRACK_URL, chartTracks.get(position));
+                    intent.putExtra(TrackActivity.TRACK, chartTracks.get(position));
                     startActivity(intent);
                 }
             });

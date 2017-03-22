@@ -28,27 +28,22 @@ public class YouTubeActivityPresenter implements YouTubeActivityIPresenter {
 
     private String urlYouTube;
 
-    private Context context;
-
     private boolean trackIsLove;
 
-    private boolean trackIsScrobble = false;
-
     private Track track;
+
 
     private Subscription subscription = Subscribers.empty();
 
 
-    public YouTubeActivityPresenter(Context context, YouTubeActivityIView iView, Intent intent) {
-        this.context = context;
+    public YouTubeActivityPresenter(YouTubeActivityIView iView, String code, Track track) {
         this.iView = iView;
-        initialize(intent);
+        this.track = track;
+        initialize(code);
     }
 
-    private void initialize(Intent intent) {
-        String code = intent.getStringExtra(YouTubeActivity.YOUTUBE_CODE);
+    private void initialize(String code) {
         urlYouTube = "https://www.youtube.com/watch?v=" + code;
-        track = (Track) intent.getSerializableExtra(YouTubeActivity.YOUTUBE_TRACK);
 
         if (subscription.isUnsubscribed()) {
             subscription.unsubscribe();
@@ -96,7 +91,7 @@ public class YouTubeActivityPresenter implements YouTubeActivityIPresenter {
         share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         share.putExtra(Intent.EXTRA_SUBJECT, "Title Of The Post");
         share.putExtra(Intent.EXTRA_TEXT, urlYouTube);
-        context.startActivity(Intent.createChooser(share, "Share link!"));
+        iView.getContext().startActivity(Intent.createChooser(share, "Share link!"));
     }
 
     @Override
@@ -162,24 +157,20 @@ public class YouTubeActivityPresenter implements YouTubeActivityIPresenter {
 
     @Override
     public void scrobbleTrack() {
-        if (!trackIsScrobble) {
-            if (subscription.isUnsubscribed()) {
-                subscription.unsubscribe();
-            }
-            subscription = ModelImpl.getModel().getResultTrackScrobble(track).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<ScrobbleResult>() {
-                @Override
-                public void call(ScrobbleResult scrobbleResult) {
-                    if (scrobbleResult.getStatus() == Result.Status.OK) {
-                        trackIsScrobble = true;
-                    }
-                }
-            });
+        if (subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
         }
+        subscription = ModelImpl.getModel().getResultTrackScrobble(track).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<ScrobbleResult>() {
+            @Override
+            public void call(ScrobbleResult scrobbleResult) {
+                if (scrobbleResult.getStatus() == Result.Status.OK) {
+                }
+            }
+        });
     }
 
     @Override
     public void onDestroy() {
-        context = null;
         iView = null;
         track = null;
         RxUtils.unsubscribe(subscription);

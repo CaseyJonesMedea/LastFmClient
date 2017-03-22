@@ -1,5 +1,6 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.AlbumActivity;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
@@ -19,5 +20,7 @@ public interface AlbumActivityIView {
     void showFragment(Fragment fragment, boolean addToBackStack, String tag);
 
     void initAlbumFull(Album album);
+
+    Context getContext();
 
 }

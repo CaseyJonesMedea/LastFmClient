@@ -1,5 +1,7 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.TrackActivity;
 
+import android.content.Context;
+
 /**
  * Created by kuhto on 15.03.2017.
  */
@@ -7,4 +9,6 @@ package by.viachaslau.kukhto.lastfmclient.Activities.TrackActivity;
 public interface TrackActivityIView {
 
     void closeActivity();
+
+    Context getContext();
 }

@@ -1,5 +1,6 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.ArtistActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -59,7 +60,7 @@ public class ArtistActivity extends AppCompatActivity implements View.OnClickLis
         imageLoader = ImageLoader.getInstance();
         Intent intent = getIntent();
         initViews();
-        presenter = new ArtistActivityPresenter(this, this, intent);
+        presenter = new ArtistActivityPresenter(this, intent);
     }
 
     private void initViews() {
@@ -112,6 +113,11 @@ public class ArtistActivity extends AppCompatActivity implements View.OnClickLis
         scrobbles.setText(getBaseContext().getString(R.string.scrobbles) + " " + String.valueOf(artist.getPlaycount()));
         imageLoader.displayImage(artist.getImageURL(ImageSize.LARGE), logoArtist);
         artistName.setText(artist.getName());
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
     @Override

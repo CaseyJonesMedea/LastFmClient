@@ -1,5 +1,6 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.ListActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,9 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -44,7 +43,7 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
         setContentView(R.layout.activity_list);
         initViews();
         Intent intent = getIntent();
-        presenter = new ListActivityPresenter(this, this, intent);
+        presenter = new ListActivityPresenter(this, intent);
     }
 
     private void initViews() {
@@ -84,6 +83,11 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
     @Override
     public void showFragment(Fragment fragment, boolean addToBackStack, String tag) {
         replaceFragment(fragment, addToBackStack, tag);
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.SearchActivity;
 
+import android.content.Context;
+
 import by.viachaslau.kukhto.lastfmclient.Activities.SearchActivity.SearchActivityAdapters.SearchAdapter;
 
 /**
@@ -17,4 +19,6 @@ public interface SearchActivityIVIew {
     void showLoadFragment();
 
     void hideLoadFragment();
+
+    Context getContext();
 }

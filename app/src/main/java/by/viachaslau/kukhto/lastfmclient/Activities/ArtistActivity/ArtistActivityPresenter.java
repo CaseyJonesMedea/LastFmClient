@@ -24,7 +24,6 @@ import rx.observers.Subscribers;
 
 public class ArtistActivityPresenter implements ArtistActivityIPresenter {
 
-    private Context context;
     private ArtistActivityIView iView;
     private Subscription subscription = Subscribers.empty();
     private Artist artist;
@@ -33,8 +32,7 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
     private String fragmentInActivity;
 
 
-    public ArtistActivityPresenter(Context context, ArtistActivityIView iView, Intent intent) {
-        this.context = context;
+    public ArtistActivityPresenter(ArtistActivityIView iView, Intent intent) {
         this.iView = iView;
         initializeArtistInformation(intent);
     }
@@ -183,12 +181,11 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
         share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         share.putExtra(Intent.EXTRA_SUBJECT, "Title Of The Post");
         share.putExtra(Intent.EXTRA_TEXT, artist.getUrl());
-        context.startActivity(Intent.createChooser(share, "Share link!"));
+        iView.getContext().startActivity(Intent.createChooser(share, "Share link!"));
     }
 
     @Override
     public void onDestroy() {
-        context = null;
         iView = null;
         fragmentInActivity = null;
         fragments = null;

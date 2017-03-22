@@ -1,5 +1,6 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.TrackActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,7 +14,7 @@ import by.viachaslau.kukhto.lastfmclient.R;
 
 public class TrackActivity extends AppCompatActivity implements TrackActivityIView {
 
-    public static final String TRACK_URL = "track";
+    public static final String TRACK = "track";
 
     private TrackActivityPresenter presenter;
 
@@ -23,12 +24,17 @@ public class TrackActivity extends AppCompatActivity implements TrackActivityIVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track);
         Intent intent = getIntent();
-        presenter = new TrackActivityPresenter(this, this, intent);
+        presenter = new TrackActivityPresenter(this, intent);
     }
 
     @Override
     public void closeActivity() {
         finish();
+    }
+
+    @Override
+    public Context getContext(){
+        return this;
     }
 
     @Override

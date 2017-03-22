@@ -116,7 +116,7 @@ public class FullFragmentAlbum extends Fragment {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(), TrackActivity.class);
-                    intent.putExtra(TrackActivity.TRACK_URL, albumsTracks.get(position));
+                    intent.putExtra(TrackActivity.TRACK, albumsTracks.get(position));
                     startActivity(intent);
                 }
             });

@@ -1,5 +1,6 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.UserActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -63,7 +64,7 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
         initViews();
         imageLoader = ImageLoader.getInstance();
         Intent intent = getIntent();
-        presenter = new UserActivityPresenter(this, this, intent);
+        presenter = new UserActivityPresenter(this, intent);
     }
 
     private void initViews() {
@@ -130,6 +131,11 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
         scrobbles.setText(getBaseContext().getString(R.string.scrobbles) + " " + String.valueOf(user.getPlaycount()));
         imageLoader.displayImage(user.getImageURL(ImageSize.LARGE), imgUserLogo);
         name.setText(user.getName());
+    }
+
+    @Override
+    public Context getContext(){
+        return this;
     }
 
 

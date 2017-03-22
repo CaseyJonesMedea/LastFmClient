@@ -52,7 +52,7 @@ public class TrackSearchAdapter extends SearchAdapter {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, TrackActivity.class);
-                intent.putExtra(TrackActivity.TRACK_URL, tracks.get(position));
+                intent.putExtra(TrackActivity.TRACK, tracks.get(position));
                 context.startActivity(intent);
             }
         });

@@ -1,6 +1,7 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.ListActivity;
 
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 
 
@@ -17,5 +18,7 @@ public interface ListActivityIView {
     void showErrorFragment();
 
     void showFragment(Fragment fragment, boolean addToBackStack, String tag);
+
+    Context getContext();
 
 }

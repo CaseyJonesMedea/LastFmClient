@@ -1,5 +1,6 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.WorldChardActivity;
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -39,7 +40,7 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
         setContentView(R.layout.activity_world_chart);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         initViews();
-        presenter = new WorldChartActivityPresenter(this, this);
+        presenter = new WorldChartActivityPresenter(this);
     }
 
     private void initViews() {
@@ -84,6 +85,11 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
     @Override
     public void showFragment(Fragment fragment, boolean addToBackStack, String tag) {
         replaceFragment(fragment, addToBackStack, tag);
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
     @Override

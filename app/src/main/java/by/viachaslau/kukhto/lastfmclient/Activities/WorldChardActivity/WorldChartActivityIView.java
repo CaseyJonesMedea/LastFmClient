@@ -1,5 +1,6 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.WorldChardActivity;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 
 /**
@@ -15,5 +16,7 @@ public interface WorldChartActivityIView {
     void showErrorFragment();
 
     void showFragment(Fragment fragment, boolean addToBackStack, String tag);
+
+    Context getContext();
 
 }

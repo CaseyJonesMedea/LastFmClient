@@ -29,8 +29,6 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
 
     private SearchActivityIVIew iView;
 
-    private Context context;
-
     private EditText edtSearch;
     private RadioButton radioButtonArtist;
     private RadioButton radioButtonAlbum;
@@ -38,8 +36,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
 
     private Subscription subscription = Subscribers.empty();
 
-    public SearchActivityPresenter(Context context, SearchActivityIVIew iView, EditText edtSearch, RadioButton radioButtonArtist, RadioButton radioButtonAlbum, RadioButton radioButtonTrack) {
-        this.context = context;
+    public SearchActivityPresenter(SearchActivityIVIew iView, EditText edtSearch, RadioButton radioButtonArtist, RadioButton radioButtonAlbum, RadioButton radioButtonTrack) {
         this.iView = iView;
         this.edtSearch = edtSearch;
         this.radioButtonArtist = radioButtonArtist;
@@ -80,7 +77,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
             @Override
             public void onNext(List<Artist> artists) {
                 if (artists.size() != 0) {
-                    ArtistSearchAdapter adapter = new ArtistSearchAdapter(context, artists);
+                    ArtistSearchAdapter adapter = new ArtistSearchAdapter(iView.getContext(), artists);
                     iView.showList(adapter);
                 } else {
                     iView.showNotFoundFragment();
@@ -109,7 +106,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
             @Override
             public void onNext(List<Album> albums) {
                 if (albums.size() != 0) {
-                    AlbumSearchAdapter adapter = new AlbumSearchAdapter(albums, context);
+                    AlbumSearchAdapter adapter = new AlbumSearchAdapter(albums, iView.getContext());
                     iView.showList(adapter);
                 } else {
                     iView.showNotFoundFragment();
@@ -138,7 +135,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
             @Override
             public void onNext(List<Track> tracks) {
                 if (tracks.size() != 0) {
-                    TrackSearchAdapter adapter = new TrackSearchAdapter(context, tracks);
+                    TrackSearchAdapter adapter = new TrackSearchAdapter(iView.getContext(), tracks);
                     iView.showList(adapter);
                 } else {
                     iView.showNotFoundFragment();
@@ -149,7 +146,6 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
 
     @Override
     public void onDestroy() {
-        context = null;
         iView = null;
         edtSearch = null;
         radioButtonArtist = null;

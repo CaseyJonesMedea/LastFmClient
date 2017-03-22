@@ -1,6 +1,7 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.WelcomeActivity;
 
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -33,7 +34,7 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeActivit
         setContentView(R.layout.activity_welcome);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         initViews();
-        presenter = new WelcomePresenter(this, this);
+        presenter = new WelcomePresenter(this);
     }
 
     private void initViews() {
@@ -81,6 +82,11 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeActivit
     public void hideButtons() {
         btnLogIn.setVisibility(View.INVISIBLE);
         btnRegistration.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
 

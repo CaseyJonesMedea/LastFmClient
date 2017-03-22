@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -76,7 +75,7 @@ public class FullListTrackSection extends Section{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, TrackActivity.class);
-                intent.putExtra(TrackActivity.TRACK_URL, trackList.get(position));
+                intent.putExtra(TrackActivity.TRACK, trackList.get(position));
                 context.startActivity(intent);
             }
         });
