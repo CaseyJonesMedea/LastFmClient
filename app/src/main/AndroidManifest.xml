@@ -30,6 +30,11 @@
         <activity android:name=".Activities.SearchActivity.SearchActivity"></activity>
         <activity android:name=".Activities.YouTubeActivity.YouTubeActivity"></activity>
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="732a3161ec7f6671d5eb82af3af6834b984374b2"
+            />
+
     </application>
 
 </manifest>

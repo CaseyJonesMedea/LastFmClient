@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.R;
 
 /**
@@ -20,6 +21,7 @@ public class ErrorFragmentUser extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        AppLog.log(TAG, "onCreateView");
         View view = inflater.inflate(R.layout.fragment_user_error, container, false);
         return view;
     }

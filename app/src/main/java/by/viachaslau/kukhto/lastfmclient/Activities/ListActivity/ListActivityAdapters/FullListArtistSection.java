@@ -14,6 +14,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.List;
 
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.R;
@@ -26,6 +29,8 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.Section;
 
 public class FullListArtistSection extends Section {
 
+    public static final String TAG = FullListArtistSection.class.getSimpleName();
+
 
     private List<Artist> artistList;
     private ImageLoader imageLoader;
@@ -35,25 +40,24 @@ public class FullListArtistSection extends Section {
     private String title;
 
 
-    public FullListArtistSection(Context context ,int headerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
+    public FullListArtistSection(Context context, int headerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
         super(headerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+        AppLog.log(TAG, "createFullListArtistSection");
         imageLoader = ImageLoader.getInstance();
         this.context = context;
     }
 
 
     public void setArtistList(List<Artist> artistList) {
+        AppLog.log(TAG, "setArtistList");
         this.artistList = artistList;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
+        AppLog.log(TAG, "setTitle");
         this.title = title;
     }
 
-    public void addAlbums(List<Artist> artists){
-        artistList.addAll(artists);
-        //Pagination
-    }
 
     @Override
     public int getContentItemsTotal() {
@@ -73,6 +77,7 @@ public class FullListArtistSection extends Section {
         itemHolder.cell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AppLog.log(TAG, "onItemClick");
                 Intent intent = new Intent(context, ArtistActivity.class);
                 intent.putExtra(ArtistActivity.ARTIST, artistList.get(position).getName());
                 context.startActivity(intent);
@@ -93,24 +98,26 @@ public class FullListArtistSection extends Section {
 
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
-        private final TextView tvTitle;
+        @BindView(R.id.tvTitle)
+        TextView tvTitle;
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
-            tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            ButterKnife.bind(this, itemView);
         }
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView imgArtist;
-        private final TextView artistName;
-        private final LinearLayout cell;
+        @BindView(R.id.artist_photo)
+        ImageView imgArtist;
+        @BindView(R.id.artist_band)
+        TextView artistName;
+        @BindView(R.id.section_artist)
+        LinearLayout cell;
 
         public ItemViewHolder(View view) {
             super(view);
-            cell = (LinearLayout)view.findViewById(R.id.section_artist);
-            imgArtist = (ImageView) view.findViewById(R.id.artist_photo);
-            artistName = (TextView) view.findViewById(R.id.artist_band);
+            ButterKnife.bind(this, view);
         }
     }
 }

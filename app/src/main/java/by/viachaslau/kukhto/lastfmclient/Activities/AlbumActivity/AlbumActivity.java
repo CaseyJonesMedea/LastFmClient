@@ -2,7 +2,6 @@ package by.viachaslau.kukhto.lastfmclient.Activities.AlbumActivity;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,6 +16,9 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.R;
@@ -29,20 +30,29 @@ import by.viachaslau.kukhto.lastfmclient.Activities.UserActivity.UserActivityFra
 
 public class AlbumActivity extends AppCompatActivity implements AlbumActivityIView, View.OnClickListener {
 
+    public static final String TAG = AlbumActivity.class.getSimpleName();
+
     public static final String ALBUM_NAME = "albumName";
     public static final String ARTIST_NAME = "artistName";
 
-    private TextView nameArtist;
-    private TextView nameAlbum;
-    private TextView scrobbles;
-    private ImageView imgAlbumLogo;
+    @BindView(R.id.text_name_artist)
+    TextView nameArtist;
+    @BindView(R.id.text_name_album)
+    TextView nameAlbum;
+    @BindView(R.id.text_scrobbles)
+    TextView scrobbles;
+    @BindView(R.id.img_logo_album)
+    ImageView imgAlbumLogo;
 
-    private Toolbar toolbar;
+    @BindView(R.id.btn_update)
+    ImageView btnUpdate;
+    @BindView(R.id.btn_share)
+    ImageView btnShare;
 
-    private ImageView btnUpdate;
-    private ImageView btnShare;
+    @BindView(R.id.progress_load)
+    LinearLayout loadFragment;
 
-    private LinearLayout loadFragment;
+
     private ErrorFragmentUser errorFragmentUser;
     private AlbumActivityPresenter presenter;
     private ImageLoader imageLoader;
@@ -52,28 +62,22 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppLog.log(TAG, "onCreate");
         setContentView(R.layout.activity_album);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        initViews();
+        ButterKnife.bind(this);
+        initInitialization();
         imageLoader = ImageLoader.getInstance();
-        Intent intent = getIntent();
-        presenter = new AlbumActivityPresenter(this, intent);
+        presenter = new AlbumActivityPresenter(this, getIntent());
     }
 
-    private void initViews(){
-        imgAlbumLogo = (ImageView)findViewById(R.id.img_logo_album);
-        nameArtist = (TextView)findViewById(R.id.text_name_artist);
-        nameAlbum = (TextView)findViewById(R.id.text_name_album);
-        scrobbles = (TextView)findViewById(R.id.text_scrobbles);
-        toolbar = (Toolbar)findViewById(R.id.toolbar_album);
-        btnUpdate = (ImageView)toolbar.findViewById(R.id.btn_update);
+    private void initInitialization(){
         btnUpdate.setOnClickListener(this);
-        btnShare = (ImageView)findViewById(R.id.btn_share);
         btnShare.setOnClickListener(this);
-        loadFragment = (LinearLayout) findViewById(R.id.progress_load);
     }
 
     private void replaceFragment(Fragment fragment, boolean addToBackStack, String tag) {
+        AppLog.log(TAG, "replaceFragment");
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container_album_activity, fragment, tag);
@@ -86,16 +90,19 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
 
     @Override
     public void showLoadProgressBar() {
+        AppLog.log(TAG, "showLoadProgressBar");
         loadFragment.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoadProgressBar() {
+        AppLog.log(TAG, "hideLoadProgressBar");
         loadFragment.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void showErrorFragment() {
+        AppLog.log(TAG, "showErrorFragment");
         if (errorFragmentUser == null) {
             errorFragmentUser = new ErrorFragmentUser();
         }
@@ -104,11 +111,13 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
 
     @Override
     public void showFragment(Fragment fragment, boolean addToBackStack, String tag) {
+        AppLog.log(TAG, "showFragment");
         replaceFragment(fragment, addToBackStack, tag);
     }
 
     @Override
     public void initAlbumFull(Album album) {
+        AppLog.log(TAG, "initAlbumFull");
         scrobbles.setText(getBaseContext().getString(R.string.scrobbles) + " " + String.valueOf(album.getPlaycount()));
         imageLoader.displayImage(album.getImageURL(ImageSize.LARGE), imgAlbumLogo);
         nameArtist.setText(album.getArtist());
@@ -122,6 +131,7 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
 
     @Override
     public void onClick(View view) {
+        AppLog.log(TAG, "onClick");
         switch (view.getId()){
             case R.id.btn_update:
                 presenter.onBtnUpdateClick();
@@ -134,6 +144,7 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
 
     @Override
     protected void onDestroy() {
+        AppLog.log(TAG, "onDestroy");
         presenter.onDestroy();
         super.onDestroy();
     }

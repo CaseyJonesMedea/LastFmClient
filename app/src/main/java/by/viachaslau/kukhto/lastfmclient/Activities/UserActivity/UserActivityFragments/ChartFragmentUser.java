@@ -18,6 +18,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.ChartFragmentInformation;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
@@ -37,18 +40,21 @@ public class ChartFragmentUser extends Fragment {
 
     public static final String TAG = ChartFragmentUser.class.getSimpleName();
 
-    private RecyclerView recyclerView;
+
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+
     SectionedRecyclerViewAdapter sectionAdapter;
-    private View view;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppLog.log(TAG, "onCreate");
         setRetainInstance(true);
     }
 
-
     public static ChartFragmentUser newInstance(ChartFragmentInformation chartFragmentInformation) {
+        AppLog.log(TAG, "newInstance");
         ChartFragmentUser fragmentUser = new ChartFragmentUser();
         Bundle bundle = new Bundle();
         bundle.putSerializable(CHART_FRAGMENT_INFORMATION, chartFragmentInformation);
@@ -60,38 +66,37 @@ public class ChartFragmentUser extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (view == null) {
-            view = inflater.inflate(R.layout.fragment_user_chart, container, false);
-            initViews(view);
-            ChartFragmentInformation chartFragmentInformation = (ChartFragmentInformation) getArguments().getSerializable(CHART_FRAGMENT_INFORMATION);
-            sectionAdapter = new SectionedRecyclerViewAdapter();
-            ChartTracksSection chartTracksSection = new ChartTracksSection(R.layout.section_header, R.layout.section_button_world_chat, R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
-            chartTracksSection.setChartTracks(chartFragmentInformation.getChartTracks());
-            sectionAdapter.addSection(chartTracksSection);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            recyclerView.setAdapter(sectionAdapter);
-        }
+        AppLog.log(TAG, "onCreateView");
+        View view = inflater.inflate(R.layout.fragment_user_chart, container, false);
+        ButterKnife.bind(this, view);
+        ChartFragmentInformation chartFragmentInformation = (ChartFragmentInformation) getArguments().getSerializable(CHART_FRAGMENT_INFORMATION);
+        sectionAdapter = new SectionedRecyclerViewAdapter();
+        ChartTracksSection chartTracksSection = new ChartTracksSection(R.layout.section_header, R.layout.section_button_world_chat, R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
+        chartTracksSection.setChartTracks(chartFragmentInformation.getChartTracks());
+        sectionAdapter.addSection(chartTracksSection);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(sectionAdapter);
         return view;
-    }
-
-    private void initViews(View view) {
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
     }
 
 
     class ChartTracksSection extends Section {
+
+        public final String TAG = ChartTracksSection.class.getSimpleName();
 
         List<Track> chartTracks;
         private ImageLoader imageLoader;
         private final static String TITLE = "Chart Tracks";
 
         public void setChartTracks(List<Track> chartTracks) {
+            AppLog.log(TAG, "setChartTracks");
             this.chartTracks = chartTracks;
         }
 
 
         public ChartTracksSection(int headerResourceId, int footerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
             super(headerResourceId, footerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+            AppLog.log(TAG, "createChartTracksSection");
             imageLoader = ImageLoader.getInstance();
         }
 
@@ -114,6 +119,7 @@ public class ChartFragmentUser extends Fragment {
             itemHolder.cell.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    AppLog.log(TAG, "onClickItem");
                     Intent intent = new Intent(getContext(), TrackActivity.class);
                     intent.putExtra(TrackActivity.TRACK, chartTracks.get(position));
                     startActivity(intent);
@@ -143,6 +149,7 @@ public class ChartFragmentUser extends Fragment {
             footerHolder.rootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    AppLog.log(TAG, "onClickFooter");
                     Intent intent = new Intent(getContext(), WorldChartActivity.class);
                     startActivity(intent);
                 }
@@ -152,16 +159,17 @@ public class ChartFragmentUser extends Fragment {
     }
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
-        private final TextView tvTitle;
+        @BindView(R.id.tvTitle)
+        TextView tvTitle;
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
-            tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            ButterKnife.bind(this, itemView);
         }
     }
 
     class FooterViewHolder extends RecyclerView.ViewHolder {
-        private final View rootView;
+        View rootView;
 
         public FooterViewHolder(View view) {
             super(view);
@@ -171,17 +179,18 @@ public class ChartFragmentUser extends Fragment {
 
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView imgAlbums;
-        private final TextView artistName;
-        private final TextView songTitle;
-        private final LinearLayout cell;
+        @BindView(R.id.albums_photo)
+        ImageView imgAlbums;
+        @BindView(R.id.artist_name)
+        TextView artistName;
+        @BindView(R.id.song_title)
+        TextView songTitle;
+        @BindView(R.id.section_track)
+        LinearLayout cell;
 
         public ItemViewHolder(View view) {
             super(view);
-            cell = (LinearLayout) view.findViewById(R.id.section_track);
-            imgAlbums = (ImageView) view.findViewById(R.id.albums_photo);
-            artistName = (TextView) view.findViewById(R.id.artist_name);
-            songTitle = (TextView) view.findViewById(R.id.song_title);
+            ButterKnife.bind(this, view);
         }
     }
 

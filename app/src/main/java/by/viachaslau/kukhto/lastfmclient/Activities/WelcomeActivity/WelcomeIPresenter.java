@@ -11,4 +11,6 @@ public interface WelcomeIPresenter {
     void onBtnRegistrationClick();
 
     void onDestroy();
+
+    void onRefresh();
 }

@@ -18,6 +18,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.Others.Data;
@@ -36,18 +39,21 @@ public class WorldChartArtistsFragment extends Fragment {
 
     private static final String CHART_ARTISTS = "ChartArtist";
 
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
 
-    private RecyclerView recyclerView;
     SectionedRecyclerViewAdapter sectionAdapter;
-    private View view;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppLog.log(TAG, "onCreate");
         setRetainInstance(true);
     }
 
     public static WorldChartArtistsFragment newInstance(ArrayList<Artist> list) {
+        AppLog.log(TAG, "newInstance");
         WorldChartArtistsFragment fragment = new WorldChartArtistsFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable(CHART_ARTISTS, list);
@@ -58,27 +64,26 @@ public class WorldChartArtistsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (view == null) {
-            view = inflater.inflate(R.layout.fragment_world_chart_artists, container, false);
-            initViews(view);
-            List<Artist> list = (List<Artist>) getArguments().getSerializable(CHART_ARTISTS);
-            ChartArtistsSection section = new ChartArtistsSection(R.layout.section_header, R.layout.section_artists, R.layout.section_load_empty, R.layout.section_fail_empty);
-            section.setChartArtists(list);
-            sectionAdapter = new SectionedRecyclerViewAdapter();
-            sectionAdapter.addSection(section);
-            LinearLayoutManager layotManager = new LinearLayoutManager(getContext());
-            recyclerView.setLayoutManager(layotManager);
-            recyclerView.setAdapter(sectionAdapter);
-        }
+        AppLog.log(TAG, "onCreateView");
+        View view = inflater.inflate(R.layout.fragment_world_chart_artists, container, false);
+        ButterKnife.bind(this, view);
+        List<Artist> list = (List<Artist>) getArguments().getSerializable(CHART_ARTISTS);
+        ChartArtistsSection section = new ChartArtistsSection(R.layout.section_header, R.layout.section_artists, R.layout.section_load_empty, R.layout.section_fail_empty);
+        section.setChartArtists(list);
+        sectionAdapter = new SectionedRecyclerViewAdapter();
+        sectionAdapter.addSection(section);
+        LinearLayoutManager layotManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layotManager);
+        recyclerView.setAdapter(sectionAdapter);
         return view;
     }
 
-    private void initViews(View view) {
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-    }
+
 
 
     class ChartArtistsSection extends Section {
+
+        public final String TAG = ChartArtistsSection.class.getSimpleName();
 
         private ImageLoader imageLoader;
         private List<Artist> chartArtists;
@@ -86,11 +91,13 @@ public class WorldChartArtistsFragment extends Fragment {
 
         public ChartArtistsSection(int headerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
             super(headerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+            AppLog.log(TAG, "createChartArtistsSection");
             imageLoader = ImageLoader.getInstance();
         }
 
 
         public void setChartArtists(List<Artist> chartArtists) {
+            AppLog.log(TAG, "setChartArtists");
             this.chartArtists = chartArtists;
         }
 
@@ -112,6 +119,7 @@ public class WorldChartArtistsFragment extends Fragment {
             itemHolder.cell.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    AppLog.log(TAG, "onClickItem");
                     Intent intent = new Intent(getContext(), ArtistActivity.class);
                     intent.putExtra(ArtistActivity.ARTIST, chartArtists.get(position).getName());
                     getActivity().startActivity(intent);
@@ -133,25 +141,27 @@ public class WorldChartArtistsFragment extends Fragment {
 
 
         class HeaderViewHolder extends RecyclerView.ViewHolder {
-            private final TextView tvTitle;
+            @BindView(R.id.tvTitle)
+            TextView tvTitle;
 
             public HeaderViewHolder(View itemView) {
                 super(itemView);
-                tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+                ButterKnife.bind(this, itemView);
             }
         }
 
 
         class ItemViewHolder extends RecyclerView.ViewHolder {
-            private final ImageView imgArtist;
-            private final TextView artistName;
-            private final LinearLayout cell;
+            @BindView(R.id.artist_photo)
+            ImageView imgArtist;
+            @BindView(R.id.artist_band)
+            TextView artistName;
+            @BindView(R.id.section_artist)
+            LinearLayout cell;
 
             public ItemViewHolder(View view) {
                 super(view);
-                cell = (LinearLayout)view.findViewById(R.id.section_artist);
-                imgArtist = (ImageView) view.findViewById(R.id.artist_photo);
-                artistName = (TextView) view.findViewById(R.id.artist_band);
+                ButterKnife.bind(this, view);
             }
         }
     }

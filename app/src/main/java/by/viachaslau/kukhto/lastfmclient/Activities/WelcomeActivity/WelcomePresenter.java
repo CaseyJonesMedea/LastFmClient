@@ -141,4 +141,9 @@ public class WelcomePresenter implements WelcomeIPresenter {
         iView = null;
         RxUtils.unsubscribe(subscription);
     }
+
+    @Override
+    public void onRefresh() {
+        initActivity();
+    }
 }

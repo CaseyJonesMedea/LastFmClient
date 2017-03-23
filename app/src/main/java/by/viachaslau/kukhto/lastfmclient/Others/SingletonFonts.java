@@ -3,11 +3,14 @@ package by.viachaslau.kukhto.lastfmclient.Others;
 import android.content.Context;
 import android.graphics.Typeface;
 
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
+
 /**
  * Created by kuhto on 29.12.2016.
  */
 
 public class SingletonFonts {
+
     private static Typeface font1;
     private static Typeface font2;
     private static Typeface font3;

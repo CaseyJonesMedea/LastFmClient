@@ -7,12 +7,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.R;
@@ -25,6 +27,8 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.Section;
 
 public class FullListAlbumSection extends Section {
 
+    public static final String TAG = FullListAlbumSection.class.getSimpleName();
+
     private List<Album> albumList;
     private ImageLoader imageLoader;
 
@@ -35,21 +39,19 @@ public class FullListAlbumSection extends Section {
 
     public FullListAlbumSection(Context context, int headerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
         super(headerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+        AppLog.log(TAG, "CreateFullListAlbumSection");
         imageLoader = ImageLoader.getInstance();
         this.context = context;
     }
 
     public void setAlbumList(List<Album> albumList) {
+        AppLog.log(TAG, "setAlbumList");
         this.albumList = albumList;
     }
 
     public void setTitle(String title){
+        AppLog.log(TAG, "setTitle");
         this.title = title;
-    }
-
-    public void addAlbums(List<Album> albums){
-        albumList.addAll(albums);
-        //Pagination
     }
 
     @Override
@@ -71,6 +73,7 @@ public class FullListAlbumSection extends Section {
         itemHolder.cell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AppLog.log(TAG, "onItemClick");
                 Intent intent = new Intent(context, AlbumActivity.class);
                 intent.putExtra(AlbumActivity.ALBUM_NAME, albumList.get(position).getName());
                 intent.putExtra(AlbumActivity.ARTIST_NAME, albumList.get(position).getArtist());
@@ -92,27 +95,29 @@ public class FullListAlbumSection extends Section {
 
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
-        private final TextView tvTitle;
+        @BindView(R.id.tvTitle)
+        TextView tvTitle;
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
-            tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            ButterKnife.bind(this, itemView);
         }
     }
 
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView imgAlbum;
-        private final TextView albumsName;
-        private final TextView artistName;
-        private final LinearLayout cell;
+        @BindView(R.id.albums_photo_main)
+        ImageView imgAlbum;
+        @BindView(R.id.album_name)
+        TextView albumsName;
+        @BindView(R.id.artist_band)
+        TextView artistName;
+        @BindView(R.id.section_album)
+        LinearLayout cell;
 
         public ItemViewHolder(View view) {
             super(view);
-            cell = (LinearLayout)view.findViewById(R.id.section_album);
-            imgAlbum = (ImageView) view.findViewById(R.id.albums_photo_main);
-            albumsName = (TextView) view.findViewById(R.id.album_name);
-            artistName = (TextView) view.findViewById(R.id.artist_band);
+            ButterKnife.bind(this, view);
         }
     }
 }

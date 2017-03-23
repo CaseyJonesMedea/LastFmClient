@@ -16,6 +16,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.FriendsFragmentInformation;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.User;
@@ -35,18 +38,21 @@ public class FriendsFragmentUser extends Fragment {
 
     public static final String TAG = FriendsFragmentUser.class.getSimpleName();
 
-    private RecyclerView recyclerView;
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
     SectionedRecyclerViewAdapter sectionAdapter;
-    private View view;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppLog.log(TAG, "onCreate");
         setRetainInstance(true);
     }
 
 
     public static FriendsFragmentUser newInstance(FriendsFragmentInformation chartFragmentInformation) {
+        AppLog.log(TAG, "newInstance");
         FriendsFragmentUser fragmentUser = new FriendsFragmentUser();
         Bundle bundle = new Bundle();
         bundle.putSerializable(FRIENDS_FRAGMENT_INFORMATION, chartFragmentInformation);
@@ -58,38 +64,37 @@ public class FriendsFragmentUser extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (view == null) {
-            view = inflater.inflate(R.layout.fragment_user_friends, container, false);
-            initViews(view);
-            FriendsFragmentInformation friendsFragmentInformation = (FriendsFragmentInformation) getArguments().getSerializable(FRIENDS_FRAGMENT_INFORMATION);
-            sectionAdapter = new SectionedRecyclerViewAdapter();
-            FriendsSection friendsSection = new FriendsSection(R.layout.section_header, R.layout.section_friends, R.layout.section_load_empty, R.layout.section_fail_empty);
-            friendsSection.setFriends(friendsFragmentInformation.getFriends());
-            sectionAdapter.addSection(friendsSection);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            recyclerView.setAdapter(sectionAdapter);
-        }
+        AppLog.log(TAG, "onCreateView");
+        View view = inflater.inflate(R.layout.fragment_user_friends, container, false);
+        ButterKnife.bind(this, view);
+        FriendsFragmentInformation friendsFragmentInformation = (FriendsFragmentInformation) getArguments().getSerializable(FRIENDS_FRAGMENT_INFORMATION);
+        sectionAdapter = new SectionedRecyclerViewAdapter();
+        FriendsSection friendsSection = new FriendsSection(R.layout.section_header, R.layout.section_friends, R.layout.section_load_empty, R.layout.section_fail_empty);
+        friendsSection.setFriends(friendsFragmentInformation.getFriends());
+        sectionAdapter.addSection(friendsSection);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(sectionAdapter);
         return view;
-    }
-
-    private void initViews(View view) {
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
     }
 
 
     class FriendsSection extends Section {
+
+        public final String TAG = FriendsSection.class.getSimpleName();
 
         List<User> friends;
         private ImageLoader imageLoader;
         private final static String TITLE = "Friends";
 
         public void setFriends(List<User> friends) {
+            AppLog.log(TAG, "setFriends");
             this.friends = friends;
         }
 
 
         public FriendsSection(int headerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
             super(headerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+            AppLog.log(TAG, "createFriendsSection");
             imageLoader = ImageLoader.getInstance();
         }
 
@@ -112,6 +117,7 @@ public class FriendsFragmentUser extends Fragment {
             itemHolder.cell.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    AppLog.log(TAG, "onItemClick");
                     Intent intent = new Intent(getContext(), UserActivity.class);
                     intent.putExtra(UserActivity.USER_NAME, friends.get(position).getName());
                     startActivity(intent);
@@ -133,28 +139,30 @@ public class FriendsFragmentUser extends Fragment {
     }
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
-        private final TextView tvTitle;
+        @BindView(R.id.tvTitle)
+        TextView tvTitle;
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
-            tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            ButterKnife.bind(this, itemView);
         }
     }
 
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
-        private final CircleImageView imgFriend;
-        private final TextView nameFriend;
-        private final TextView scrobblesFriend;
-        private final LinearLayout cell;
+        @BindView(R.id.image_friend)
+        CircleImageView imgFriend;
+        @BindView(R.id.name_friend)
+        TextView nameFriend;
+        @BindView(R.id.scrobbles_friend)
+        TextView scrobblesFriend;
+        @BindView(R.id.section_friend)
+        LinearLayout cell;
 
 
         public ItemViewHolder(View view) {
             super(view);
-            cell = (LinearLayout) view.findViewById(R.id.section_friend);
-            imgFriend = (CircleImageView) view.findViewById(R.id.image_friend);
-            nameFriend = (TextView) view.findViewById(R.id.name_friend);
-            scrobblesFriend = (TextView) view.findViewById(R.id.scrobbles_friend);
+            ButterKnife.bind(this, view);
         }
     }
 

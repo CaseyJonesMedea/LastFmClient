@@ -13,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.Activities.UserActivity.UserActivityFragments.ErrorFragmentUser;
 
@@ -20,7 +23,7 @@ import by.viachaslau.kukhto.lastfmclient.Activities.UserActivity.UserActivityFra
  * Created by VKukh on 04.03.2017.
  */
 
-public class ListActivity extends AppCompatActivity implements ListActivityIView, View.OnClickListener{
+public class ListActivity extends AppCompatActivity implements ListActivityIView, View.OnClickListener {
 
     public static final String TAG = ListActivity.class.getSimpleName();
 
@@ -32,27 +35,31 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
     private ListActivityPresenter presenter;
 
     private ErrorFragmentUser errorFragmentUser;
-    private LinearLayout loadFragment;
 
-    private ImageView btnUpdate;
+    @BindView(R.id.progress_load)
+    LinearLayout loadFragment;
+
+    @BindView(R.id.btn_update)
+    ImageView btnUpdate;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppLog.log(TAG, "onCreate");
         setContentView(R.layout.activity_list);
-        initViews();
-        Intent intent = getIntent();
-        presenter = new ListActivityPresenter(this, intent);
+        ButterKnife.bind(this);
+        initInitialize();
+        presenter = new ListActivityPresenter(this, getIntent());
     }
 
-    private void initViews() {
-        btnUpdate = (ImageView)findViewById(R.id.btn_update);
+    private void initInitialize() {
+        AppLog.log(TAG, "initInitialize");
         btnUpdate.setOnClickListener(this);
-        loadFragment = (LinearLayout) findViewById(R.id.progress_load);
     }
 
     private void replaceFragment(Fragment fragment, boolean addToBackStack, String tag) {
+        AppLog.log(TAG, "replaceFragment");
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container_list_activity, fragment, tag);
@@ -64,16 +71,19 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
 
     @Override
     public void showLoadProgressBar() {
+        AppLog.log(TAG, "showLoadProgressBar");
         loadFragment.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoadProgressBar() {
+        AppLog.log(TAG, "hideLoadProgressBar");
         loadFragment.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void showErrorFragment() {
+        AppLog.log(TAG, "showErrorFragment");
         if (errorFragmentUser == null) {
             errorFragmentUser = new ErrorFragmentUser();
         }
@@ -82,6 +92,7 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
 
     @Override
     public void showFragment(Fragment fragment, boolean addToBackStack, String tag) {
+        AppLog.log(TAG, "showFragment");
         replaceFragment(fragment, addToBackStack, tag);
     }
 
@@ -92,7 +103,8 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        AppLog.log(TAG, "onClick");
+        switch (view.getId()) {
             case R.id.btn_update:
                 presenter.onBtnUpdateClick();
                 break;
@@ -101,6 +113,7 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
 
     @Override
     protected void onDestroy() {
+        AppLog.log(TAG, "onDestroy");
         presenter.onDestroy();
         super.onDestroy();
     }

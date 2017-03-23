@@ -14,6 +14,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.Activities.UserActivity.UserActivityFragments.ErrorFragmentUser;
 
@@ -23,37 +26,43 @@ import by.viachaslau.kukhto.lastfmclient.Activities.UserActivity.UserActivityFra
 
 public class WorldChartActivity extends AppCompatActivity implements WorldChartActivityIView, View.OnClickListener {
 
+    public static final String TAG = WorldChartActivity.class.getSimpleName();
 
-    private ImageView btnUpdate;
+    @BindView(R.id.btn_update)
+    ImageView btnUpdate;
+    @BindView(R.id.progress_load)
+    LinearLayout loadFragment;
 
-    private LinearLayout loadFragment;
     private ErrorFragmentUser errorFragmentUser;
 
-    private LinearLayout btnChartArtists;
-    private LinearLayout btnChartTracks;
+    @BindView(R.id.ll_chart_artists)
+    LinearLayout btnChartArtists;
+    @BindView(R.id.ll_chart_tracks)
+    LinearLayout btnChartTracks;
+
     private WorldChartActivityPresenter presenter;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppLog.log(TAG, "onCreate");
         setContentView(R.layout.activity_world_chart);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        initViews();
+        ButterKnife.bind(this);
+        initialize();
         presenter = new WorldChartActivityPresenter(this);
     }
 
-    private void initViews() {
-        btnUpdate = (ImageView)findViewById(R.id.btn_update);
+    private void initialize() {
+        AppLog.log(TAG, "initialize");
         btnUpdate.setOnClickListener(this);
-        loadFragment = (LinearLayout) findViewById(R.id.progress_load);
-        btnChartArtists = (LinearLayout) findViewById(R.id.ll_chart_artists);
-        btnChartTracks = (LinearLayout) findViewById(R.id.ll_chart_tracks);
         btnChartArtists.setOnClickListener(this);
         btnChartTracks.setOnClickListener(this);
     }
 
     private void replaceFragment(Fragment fragment, boolean addToBackStack, String tag) {
+        AppLog.log(TAG, "replaceFragment");
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container_chart_activity, fragment, tag);
@@ -66,16 +75,19 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
 
     @Override
     public void showLoadProgressBar() {
+        AppLog.log(TAG, "showLoadProgressBar");
         loadFragment.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoadProgressBar() {
+        AppLog.log(TAG, "hideLoadProgressBar");
         loadFragment.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void showErrorFragment() {
+        AppLog.log(TAG, "showErrorFragment");
         if (errorFragmentUser == null) {
             errorFragmentUser = new ErrorFragmentUser();
         }
@@ -84,6 +96,7 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
 
     @Override
     public void showFragment(Fragment fragment, boolean addToBackStack, String tag) {
+        AppLog.log(TAG, "showFragment");
         replaceFragment(fragment, addToBackStack, tag);
     }
 
@@ -94,6 +107,7 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
 
     @Override
     public void onClick(View view) {
+        AppLog.log(TAG, "onClick");
         switch (view.getId()) {
             case R.id.ll_chart_artists:
                 presenter.onBtnChartArtistClick();
@@ -109,6 +123,7 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
 
     @Override
     protected void onDestroy() {
+        AppLog.log(TAG, "onDestroy");
         presenter.onDestroy();
         super.onDestroy();
     }

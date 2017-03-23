@@ -14,6 +14,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.R;
@@ -25,11 +28,14 @@ import by.viachaslau.kukhto.lastfmclient.Activities.TrackActivity.TrackActivity;
 
 public class TrackSearchAdapter extends SearchAdapter {
 
+    public static final String TAG = TrackSearchAdapter.class.getSimpleName();
+
     private List<Track> tracks;
     private ImageLoader imageLoader;
     private Context context;
 
     public TrackSearchAdapter(Context context, List<Track> tracks) {
+        AppLog.log(TAG, "createTrackSearchAdapter");
         this.tracks = tracks;
         this.context = context;
         imageLoader = ImageLoader.getInstance();
@@ -51,6 +57,7 @@ public class TrackSearchAdapter extends SearchAdapter {
         itemHolder.cell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AppLog.log(TAG, "onClick");
                 Intent intent = new Intent(context, TrackActivity.class);
                 intent.putExtra(TrackActivity.TRACK, tracks.get(position));
                 context.startActivity(intent);
@@ -65,17 +72,18 @@ public class TrackSearchAdapter extends SearchAdapter {
 
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView imgAlbum;
-        private final TextView artistName;
-        private final TextView songTitle;
-        private final LinearLayout cell;
+        @BindView(R.id.albums_photo)
+        ImageView imgAlbum;
+        @BindView(R.id.artist_name)
+        TextView artistName;
+        @BindView(R.id.song_title)
+        TextView songTitle;
+        @BindView(R.id.section_track)
+        LinearLayout cell;
 
         public ItemViewHolder(View view) {
             super(view);
-            cell = (LinearLayout) view.findViewById(R.id.section_track);
-            imgAlbum = (ImageView) view.findViewById(R.id.albums_photo);
-            artistName = (TextView) view.findViewById(R.id.artist_name);
-            songTitle = (TextView) view.findViewById(R.id.song_title);
+            ButterKnife.bind(this, view);
         }
     }
 }

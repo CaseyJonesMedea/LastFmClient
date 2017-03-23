@@ -18,6 +18,10 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.App;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.HomeFragmentInformation;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
@@ -43,20 +47,24 @@ public class HomeFragmentUser extends Fragment {
 
     public static final String TAG = HomeFragmentUser.class.getSimpleName();
 
-    private RecyclerView recyclerView;
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+
     SectionedRecyclerViewAdapter sectionAdapter;
-    private View view;
+
 
     private String nameUser;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppLog.log(TAG, "onCreate");
         setRetainInstance(true);
     }
 
 
     public static HomeFragmentUser newInstance(HomeFragmentInformation homeFragmentInformation, String name) {
+        AppLog.log(TAG, "newInstance");
         HomeFragmentUser fragmentUser = new HomeFragmentUser();
         Bundle bundle = new Bundle();
         bundle.putSerializable(HOME_FRAGMENT_INFORMATION, homeFragmentInformation);
@@ -69,43 +77,41 @@ public class HomeFragmentUser extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (view == null) {
-            view = inflater.inflate(R.layout.fragment_user_home, container, false);
-            initViews(view);
-            HomeFragmentInformation homeFragmentInformation = (HomeFragmentInformation) getArguments().getSerializable(HOME_FRAGMENT_INFORMATION);
-            nameUser = getArguments().getString(HOME_FRAGMENT_NAME_USER);
-            sectionAdapter = new SectionedRecyclerViewAdapter();
-            RecentTracksSection recentTracksSection = new RecentTracksSection(R.layout.section_header, R.layout.section_footer, R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
-            recentTracksSection.setNameUser(nameUser);
-            recentTracksSection.setResentTracks((ArrayList<Track>) homeFragmentInformation.getRecentTracks());
-            TopArtistsSection topArtistsSection = new TopArtistsSection(R.layout.section_header, R.layout.section_footer, R.layout.section_artists, R.layout.section_load_empty, R.layout.section_fail_empty);
-            topArtistsSection.setNameUser(nameUser);
-            topArtistsSection.setTopArtists((ArrayList<Artist>) homeFragmentInformation.getTopArtists());
-            TopAlbumsSection topAlbumsSection = new TopAlbumsSection(R.layout.section_header, R.layout.section_footer, R.layout.section_albums, R.layout.section_load_empty, R.layout.section_fail_empty);
-            topAlbumsSection.setNameUser(nameUser);
-            topAlbumsSection.setTopAlbums((ArrayList<Album>) homeFragmentInformation.getTopAlbums());
-            TopTracksSection topTracksSection = new TopTracksSection(R.layout.section_header, R.layout.section_footer, R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
-            topTracksSection.setNameUser(nameUser);
-            topTracksSection.setTopTracks(homeFragmentInformation.getTopTracks());
-            LovedTracksSection lovedTracksSection = new LovedTracksSection(R.layout.section_header, R.layout.section_footer, R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
-            lovedTracksSection.setNameUser(nameUser);
-            lovedTracksSection.setLovedTracks(homeFragmentInformation.getLovedTracks());
-            sectionAdapter.addSection(recentTracksSection);
-            sectionAdapter.addSection(topArtistsSection);
-            sectionAdapter.addSection(topAlbumsSection);
-            sectionAdapter.addSection(topTracksSection);
-            sectionAdapter.addSection(lovedTracksSection);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            recyclerView.setAdapter(sectionAdapter);
-        }
+        AppLog.log(TAG, "onCreateView");
+        View view = inflater.inflate(R.layout.fragment_user_home, container, false);
+        ButterKnife.bind(this, view);
+        HomeFragmentInformation homeFragmentInformation = (HomeFragmentInformation) getArguments().getSerializable(HOME_FRAGMENT_INFORMATION);
+        nameUser = getArguments().getString(HOME_FRAGMENT_NAME_USER);
+        sectionAdapter = new SectionedRecyclerViewAdapter();
+        RecentTracksSection recentTracksSection = new RecentTracksSection(R.layout.section_header, R.layout.section_footer, R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
+        recentTracksSection.setNameUser(nameUser);
+        recentTracksSection.setResentTracks((ArrayList<Track>) homeFragmentInformation.getRecentTracks());
+        TopArtistsSection topArtistsSection = new TopArtistsSection(R.layout.section_header, R.layout.section_footer, R.layout.section_artists, R.layout.section_load_empty, R.layout.section_fail_empty);
+        topArtistsSection.setNameUser(nameUser);
+        topArtistsSection.setTopArtists((ArrayList<Artist>) homeFragmentInformation.getTopArtists());
+        TopAlbumsSection topAlbumsSection = new TopAlbumsSection(R.layout.section_header, R.layout.section_footer, R.layout.section_albums, R.layout.section_load_empty, R.layout.section_fail_empty);
+        topAlbumsSection.setNameUser(nameUser);
+        topAlbumsSection.setTopAlbums((ArrayList<Album>) homeFragmentInformation.getTopAlbums());
+        TopTracksSection topTracksSection = new TopTracksSection(R.layout.section_header, R.layout.section_footer, R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
+        topTracksSection.setNameUser(nameUser);
+        topTracksSection.setTopTracks(homeFragmentInformation.getTopTracks());
+        LovedTracksSection lovedTracksSection = new LovedTracksSection(R.layout.section_header, R.layout.section_footer, R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
+        lovedTracksSection.setNameUser(nameUser);
+        lovedTracksSection.setLovedTracks(homeFragmentInformation.getLovedTracks());
+        sectionAdapter.addSection(recentTracksSection);
+        sectionAdapter.addSection(topArtistsSection);
+        sectionAdapter.addSection(topAlbumsSection);
+        sectionAdapter.addSection(topTracksSection);
+        sectionAdapter.addSection(lovedTracksSection);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(sectionAdapter);
         return view;
     }
 
-    private void initViews(View view) {
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-    }
 
     class RecentTracksSection extends Section {
+
+        public final String TAG = RecentTracksSection.class.getSimpleName();
 
         private String nameUser;
 
@@ -114,16 +120,19 @@ public class HomeFragmentUser extends Fragment {
         private final static String TITLE = Data.RECENT_TRACKS;
 
         public void setResentTracks(ArrayList<Track> resentTracks) {
+            AppLog.log(TAG, "setResentTracks");
             this.resentTracks = resentTracks;
         }
 
         public void setNameUser(String nameUser) {
+            AppLog.log(TAG, "setNameUser");
             this.nameUser = nameUser;
         }
 
 
         public RecentTracksSection(int headerResourceId, int footerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
             super(headerResourceId, footerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+            AppLog.log(TAG, "createRecentTracksSection");
             imageLoader = ImageLoader.getInstance();
         }
 
@@ -149,6 +158,7 @@ public class HomeFragmentUser extends Fragment {
             itemHolder.cell.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    AppLog.log(TAG, "onItemClick");
                     Intent intent = new Intent(getContext(), TrackActivity.class);
                     intent.putExtra(TrackActivity.TRACK, resentTracks.get(position));
                     startActivity(intent);
@@ -182,6 +192,7 @@ public class HomeFragmentUser extends Fragment {
                 footerHolder.rootView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        AppLog.log(TAG, "onFooterClick");
                         Intent intent = new Intent(getActivity(), ListActivity.class);
                         intent.putExtra(ListActivity.NAME_USER, nameUser);
                         intent.putExtra(ListActivity.TITLE, TITLE);
@@ -194,16 +205,17 @@ public class HomeFragmentUser extends Fragment {
     }
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
-        private final TextView tvTitle;
+        @BindView(R.id.tvTitle)
+        TextView tvTitle;
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
-            tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            ButterKnife.bind(this, itemView);
         }
     }
 
     class FooterViewHolder extends RecyclerView.ViewHolder {
-        private final View rootView;
+        View rootView;
 
         public FooterViewHolder(View view) {
             super(view);
@@ -212,22 +224,25 @@ public class HomeFragmentUser extends Fragment {
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView imgAlbums;
-        private final TextView artistName;
-        private final TextView songTitle;
-        private final LinearLayout cell;
+        @BindView(R.id.albums_photo)
+        ImageView imgAlbums;
+        @BindView(R.id.artist_name)
+        TextView artistName;
+        @BindView(R.id.song_title)
+        TextView songTitle;
+        @BindView(R.id.section_track)
+        LinearLayout cell;
 
         public ItemViewHolder(View view) {
             super(view);
-            cell = (LinearLayout) view.findViewById(R.id.section_track);
-            imgAlbums = (ImageView) view.findViewById(R.id.albums_photo);
-            artistName = (TextView) view.findViewById(R.id.artist_name);
-            songTitle = (TextView) view.findViewById(R.id.song_title);
+            ButterKnife.bind(this, view);
         }
     }
 
 
     class TopArtistsSection extends Section {
+
+        public final String TAG = TopArtistsSection.class.getSimpleName();
 
         private String nameUser;
 
@@ -237,14 +252,17 @@ public class HomeFragmentUser extends Fragment {
 
         public TopArtistsSection(int headerResourceId, int footerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
             super(headerResourceId, footerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+            AppLog.log(TAG, "createTopArtistsSection");
             imageLoader = ImageLoader.getInstance();
         }
 
         private void setNameUser(String nameUser) {
+            AppLog.log(TAG, "setNameUser");
             this.nameUser = nameUser;
         }
 
         public void setTopArtists(ArrayList<Artist> topArtists) {
+            AppLog.log(TAG, "setTopArtists");
             this.topArtists = topArtists;
         }
 
@@ -269,6 +287,7 @@ public class HomeFragmentUser extends Fragment {
             itemHolder.cell.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    AppLog.log(TAG, "onClickItem");
                     Intent intent = new Intent(getContext(), ArtistActivity.class);
                     intent.putExtra(ArtistActivity.ARTIST, topArtists.get(position).getName());
                     getActivity().startActivity(intent);
@@ -303,6 +322,7 @@ public class HomeFragmentUser extends Fragment {
                 footerHolder.rootView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        AppLog.log(TAG, "onClickFooter");
                         Intent intent = new Intent(getActivity(), ListActivity.class);
                         intent.putExtra(ListActivity.NAME_USER, nameUser);
                         intent.putExtra(ListActivity.TITLE, TITLE);
@@ -313,16 +333,17 @@ public class HomeFragmentUser extends Fragment {
         }
 
         class HeaderViewHolder extends RecyclerView.ViewHolder {
-            private final TextView tvTitle;
+            @BindView(R.id.tvTitle)
+            TextView tvTitle;
 
             public HeaderViewHolder(View itemView) {
                 super(itemView);
-                tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+                ButterKnife.bind(this, itemView);
             }
         }
 
         class FooterViewHolder extends RecyclerView.ViewHolder {
-            private final View rootView;
+            View rootView;
 
             public FooterViewHolder(View view) {
                 super(view);
@@ -331,20 +352,23 @@ public class HomeFragmentUser extends Fragment {
         }
 
         class ItemViewHolder extends RecyclerView.ViewHolder {
-            private final ImageView imgArtist;
-            private final TextView artistName;
-            private final LinearLayout cell;
+            @BindView(R.id.artist_photo)
+            ImageView imgArtist;
+            @BindView(R.id.artist_band)
+            TextView artistName;
+            @BindView(R.id.section_artist)
+            LinearLayout cell;
 
             public ItemViewHolder(View view) {
                 super(view);
-                cell = (LinearLayout) view.findViewById(R.id.section_artist);
-                imgArtist = (ImageView) view.findViewById(R.id.artist_photo);
-                artistName = (TextView) view.findViewById(R.id.artist_band);
+                ButterKnife.bind(this, view);
             }
         }
     }
 
     class TopAlbumsSection extends Section {
+
+        public final String TAG = TopAlbumsSection.class.getSimpleName();
 
         private String nameUser;
 
@@ -353,15 +377,18 @@ public class HomeFragmentUser extends Fragment {
         private final static String TOP_ALBUMS = Data.TOP_ALBUMS;
 
         public void setTopAlbums(ArrayList<Album> topAlbums) {
+            AppLog.log(TAG, "setTopAlbums");
             this.topAlbums = topAlbums;
         }
 
         public void setNameUser(String nameUser) {
+            AppLog.log(TAG, "setNameUser");
             this.nameUser = nameUser;
         }
 
         public TopAlbumsSection(int headerResourceId, int footerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
             super(headerResourceId, footerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+            AppLog.log(TAG, "createTopAlbumsSection");
             imageLoader = ImageLoader.getInstance();
         }
 
@@ -386,6 +413,7 @@ public class HomeFragmentUser extends Fragment {
             itemHolder.cell.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    AppLog.log(TAG, "onClickItem");
                     Intent intent = new Intent(getContext(), AlbumActivity.class);
                     intent.putExtra(AlbumActivity.ALBUM_NAME, topAlbums.get(position).getName());
                     intent.putExtra(AlbumActivity.ARTIST_NAME, topAlbums.get(position).getArtist());
@@ -422,6 +450,7 @@ public class HomeFragmentUser extends Fragment {
                 footerHolder.rootView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        AppLog.log(TAG, "onClickFooter");
                         Intent intent = new Intent(getActivity(), ListActivity.class);
                         intent.putExtra(ListActivity.NAME_USER, nameUser);
                         intent.putExtra(ListActivity.TITLE, TOP_ALBUMS);
@@ -432,16 +461,17 @@ public class HomeFragmentUser extends Fragment {
         }
 
         class HeaderViewHolder extends RecyclerView.ViewHolder {
-            private final TextView tvTitle;
+            @BindView(R.id.tvTitle)
+            TextView tvTitle;
 
             public HeaderViewHolder(View itemView) {
                 super(itemView);
-                tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+                ButterKnife.bind(this, itemView);
             }
         }
 
         class FooterViewHolder extends RecyclerView.ViewHolder {
-            private final View rootView;
+            View rootView;
 
             public FooterViewHolder(View view) {
                 super(view);
@@ -450,22 +480,25 @@ public class HomeFragmentUser extends Fragment {
         }
 
         class ItemViewHolder extends RecyclerView.ViewHolder {
-            private final ImageView imgAlbum;
-            private final TextView albumsName;
-            private final TextView artistName;
-            private final LinearLayout cell;
+            @BindView(R.id.albums_photo_main)
+            ImageView imgAlbum;
+            @BindView(R.id.album_name)
+            TextView albumsName;
+            @BindView(R.id.artist_band)
+            TextView artistName;
+            @BindView(R.id.section_album)
+            LinearLayout cell;
 
             public ItemViewHolder(View view) {
                 super(view);
-                cell = (LinearLayout) view.findViewById(R.id.section_album);
-                imgAlbum = (ImageView) view.findViewById(R.id.albums_photo_main);
-                albumsName = (TextView) view.findViewById(R.id.album_name);
-                artistName = (TextView) view.findViewById(R.id.artist_band);
+                ButterKnife.bind(this, view);
             }
         }
     }
 
     class TopTracksSection extends Section {
+
+        public final String TAG = TopTracksSection.class.getSimpleName();
 
         private String nameUser;
 
@@ -474,16 +507,19 @@ public class HomeFragmentUser extends Fragment {
         private final static String TITLE = Data.TOP_TRACKS;
 
         public void setTopTracks(List<Track> topTracks) {
+            AppLog.log(TAG, "setTopTracks");
             this.topTracks = topTracks;
         }
 
         private void setNameUser(String nameUser) {
+            AppLog.log(TAG, "setNameUser");
             this.nameUser = nameUser;
         }
 
 
         public TopTracksSection(int headerResourceId, int footerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
             super(headerResourceId, footerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+            AppLog.log(TAG, "createTopTracksSection");
             imageLoader = ImageLoader.getInstance();
         }
 
@@ -509,6 +545,7 @@ public class HomeFragmentUser extends Fragment {
             itemHolder.cell.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    AppLog.log(TAG, "onClickItem");
                     Intent intent = new Intent(getContext(), TrackActivity.class);
                     intent.putExtra(TrackActivity.TRACK, topTracks.get(position));
                     startActivity(intent);
@@ -542,6 +579,7 @@ public class HomeFragmentUser extends Fragment {
                 footerHolder.rootView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        AppLog.log(TAG, "onClickFooter");
                         Intent intent = new Intent(getActivity(), ListActivity.class);
                         intent.putExtra(ListActivity.NAME_USER, nameUser);
                         intent.putExtra(ListActivity.TITLE, TITLE);
@@ -552,16 +590,17 @@ public class HomeFragmentUser extends Fragment {
         }
 
         class HeaderViewHolder extends RecyclerView.ViewHolder {
-            private final TextView tvTitle;
+            @BindView(R.id.tvTitle)
+            TextView tvTitle;
 
             public HeaderViewHolder(View itemView) {
                 super(itemView);
-                tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+                ButterKnife.bind(this, itemView);
             }
         }
 
         class FooterViewHolder extends RecyclerView.ViewHolder {
-            private final View rootView;
+            View rootView;
 
             public FooterViewHolder(View view) {
                 super(view);
@@ -570,23 +609,26 @@ public class HomeFragmentUser extends Fragment {
         }
 
         class ItemViewHolder extends RecyclerView.ViewHolder {
-            private final ImageView imgAlbums;
-            private final TextView artistName;
-            private final TextView songTitle;
-            private final LinearLayout cell;
+            @BindView(R.id.albums_photo)
+            ImageView imgAlbums;
+            @BindView(R.id.artist_name)
+            TextView artistName;
+            @BindView(R.id.song_title)
+            TextView songTitle;
+            @BindView(R.id.section_track)
+            LinearLayout cell;
 
             public ItemViewHolder(View view) {
                 super(view);
-                cell = (LinearLayout) view.findViewById(R.id.section_track);
-                imgAlbums = (ImageView) view.findViewById(R.id.albums_photo);
-                artistName = (TextView) view.findViewById(R.id.artist_name);
-                songTitle = (TextView) view.findViewById(R.id.song_title);
+                ButterKnife.bind(this, view);
             }
         }
 
     }
 
     class LovedTracksSection extends Section {
+
+        public final String TAG = LovedTracksSection.class.getSimpleName();
 
         private String nameUser;
 
@@ -595,16 +637,19 @@ public class HomeFragmentUser extends Fragment {
         private final static String TITLE = Data.LOVED_TRACKS;
 
         public void setLovedTracks(List<Track> lovedTracks) {
+            AppLog.log(TAG, "setLovedTracks");
             this.lovedTracks = lovedTracks;
         }
 
         public void setNameUser(String nameUser) {
+            AppLog.log(TAG, "setNameUser");
             this.nameUser = nameUser;
         }
 
 
         public LovedTracksSection(int headerResourceId, int footerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
             super(headerResourceId, footerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+            AppLog.log(TAG, "createLovedTracksSection");
             imageLoader = ImageLoader.getInstance();
         }
 
@@ -630,6 +675,7 @@ public class HomeFragmentUser extends Fragment {
             itemHolder.cell.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    AppLog.log(TAG, "onClickItem");
                     Intent intent = new Intent(getContext(), TrackActivity.class);
                     intent.putExtra(TrackActivity.TRACK, lovedTracks.get(position));
                     startActivity(intent);
@@ -663,6 +709,7 @@ public class HomeFragmentUser extends Fragment {
                 footerHolder.rootView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        AppLog.log(TAG, "onClickFooter");
                         Intent intent = new Intent(getActivity(), ListActivity.class);
                         intent.putExtra(ListActivity.NAME_USER, nameUser);
                         intent.putExtra(ListActivity.TITLE, TITLE);
@@ -673,16 +720,17 @@ public class HomeFragmentUser extends Fragment {
         }
 
         class HeaderViewHolder extends RecyclerView.ViewHolder {
-            private final TextView tvTitle;
+            @BindView(R.id.tvTitle)
+            TextView tvTitle;
 
             public HeaderViewHolder(View itemView) {
                 super(itemView);
-                tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+                ButterKnife.bind(this, itemView);
             }
         }
 
         class FooterViewHolder extends RecyclerView.ViewHolder {
-            private final View rootView;
+            View rootView;
 
             public FooterViewHolder(View view) {
                 super(view);
@@ -691,17 +739,18 @@ public class HomeFragmentUser extends Fragment {
         }
 
         class ItemViewHolder extends RecyclerView.ViewHolder {
-            private final ImageView imgAlbums;
-            private final TextView artistName;
-            private final TextView songTitle;
-            private final LinearLayout cell;
+            @BindView(R.id.albums_photo)
+            ImageView imgAlbums;
+            @BindView(R.id.artist_name)
+            TextView artistName;
+            @BindView(R.id.song_title)
+            TextView songTitle;
+            @BindView(R.id.section_track)
+            LinearLayout cell;
 
             public ItemViewHolder(View view) {
                 super(view);
-                cell = (LinearLayout) view.findViewById(R.id.section_track);
-                imgAlbums = (ImageView) view.findViewById(R.id.albums_photo);
-                artistName = (TextView) view.findViewById(R.id.artist_name);
-                songTitle = (TextView) view.findViewById(R.id.song_title);
+                ButterKnife.bind(this, view);
             }
         }
     }

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.HashMap;
 import java.util.Map;
 
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.ChartFragmentInformation;
@@ -33,6 +34,8 @@ import rx.observers.Subscribers;
 
 public class UserActivityPresenter implements UserActivityIPresenter {
 
+    public static final String TAG = UserActivityPresenter.class.getSimpleName();
+
     private UserActivityIView iView;
     private Subscription subscription = Subscribers.empty();
 
@@ -43,17 +46,20 @@ public class UserActivityPresenter implements UserActivityIPresenter {
 
 
     public UserActivityPresenter(UserActivityIView iView, Intent intent) {
+        AppLog.log(TAG, "createUserActivityPresenter");
         this.iView = iView;
         initializeUserInformation(intent);
     }
 
 
     private void initializeUserInformation(Intent intent) {
+        AppLog.log(TAG, "initializeUserInformation");
         String userName = intent.getStringExtra(UserActivity.USER_NAME);
         loadUser(userName);
     }
 
     private void loadUser(String userName) {
+        AppLog.log(TAG, "loadUser");
         iView.showLoadProgressBar();
         if (subscription.isUnsubscribed()) {
             subscription.unsubscribe();
@@ -62,17 +68,19 @@ public class UserActivityPresenter implements UserActivityIPresenter {
         subscription = ModelImpl.getModel().getUserInfo(userName).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<User>() {
             @Override
             public void onCompleted() {
-
+                AppLog.log(TAG, "onCompleted");
             }
 
             @Override
             public void onError(Throwable e) {
+                AppLog.log(TAG, "onError");
                 iView.showErrorFragment();
                 iView.hideLoadProgressBar();
             }
 
             @Override
             public void onNext(User user) {
+                AppLog.log(TAG, "onNext");
                 initUser(user);
                 iView.hideLoadProgressBar();
                 iView.initUserFull(user);
@@ -82,11 +90,13 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     }
 
     private void initUser(User user) {
+        AppLog.log(TAG, "initUser");
         this.user = user;
     }
 
 
     private void initHomeFragment() {
+        AppLog.log(TAG, "initHomeFragment");
         fragmentInActivity = HomeFragmentUser.TAG;
         iView.showLoadProgressBar();
         if (subscription.isUnsubscribed()) {
@@ -96,17 +106,20 @@ public class UserActivityPresenter implements UserActivityIPresenter {
         subscription = ModelImpl.getModel().getHomeFragmentInformation(user.getName()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<HomeFragmentInformation>() {
             @Override
             public void onCompleted() {
+                AppLog.log(TAG, "onCompleted");
                 iView.hideLoadProgressBar();
             }
 
             @Override
             public void onError(Throwable e) {
+                AppLog.log(TAG, "onError");
                 iView.showErrorFragment();
                 SingletonSession.clearSession();
             }
 
             @Override
             public void onNext(HomeFragmentInformation homeFragmentInformation) {
+                AppLog.log(TAG, "onNext");
                 HomeFragmentUser homeFragmentUser = HomeFragmentUser.newInstance(homeFragmentInformation, user.getName());
                 fragments.put(HomeFragmentUser.TAG, homeFragmentUser);
                 iView.showFragment(homeFragmentUser, false, HomeFragmentUser.TAG);
@@ -115,6 +128,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     }
 
     private void initChartFragment() {
+        AppLog.log(TAG, "initChartFragment");
         fragmentInActivity = ChartFragmentUser.TAG;
         iView.showLoadProgressBar();
         if (subscription.isUnsubscribed()) {
@@ -124,17 +138,20 @@ public class UserActivityPresenter implements UserActivityIPresenter {
         subscription = ModelImpl.getModel().getChartFragmentInformation(user.getName()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<ChartFragmentInformation>() {
             @Override
             public void onCompleted() {
+                AppLog.log(TAG, "onCompleted");
                 iView.hideLoadProgressBar();
             }
 
             @Override
             public void onError(Throwable e) {
+                AppLog.log(TAG, "onError");
                 iView.showErrorFragment();
                 SingletonSession.clearSession();
             }
 
             @Override
             public void onNext(ChartFragmentInformation chartFragmentInformation) {
+                AppLog.log(TAG, "onNext");
                 ChartFragmentUser chartFragmentUser = ChartFragmentUser.newInstance(chartFragmentInformation);
                 fragments.put(ChartFragmentUser.TAG, chartFragmentUser);
                 iView.showFragment(chartFragmentUser, false, ChartFragmentUser.TAG);
@@ -143,6 +160,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     }
 
     private void initFriendsFragment() {
+        AppLog.log(TAG, "initFriendsFragment");
         fragmentInActivity = FriendsFragmentUser.TAG;
         iView.showLoadProgressBar();
         if (subscription.isUnsubscribed()) {
@@ -152,17 +170,20 @@ public class UserActivityPresenter implements UserActivityIPresenter {
         subscription = ModelImpl.getModel().getFriendsFragmentInformation(user.getName()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<FriendsFragmentInformation>() {
             @Override
             public void onCompleted() {
+                AppLog.log(TAG, "onCompleted");
                 iView.hideLoadProgressBar();
             }
 
             @Override
             public void onError(Throwable e) {
+                AppLog.log(TAG, "onError");
                 iView.showErrorFragment();
                 SingletonSession.clearSession();
             }
 
             @Override
             public void onNext(FriendsFragmentInformation friendsFragmentInformation) {
+                AppLog.log(TAG, "onNext");
                 FriendsFragmentUser friendsFragmentUser = FriendsFragmentUser.newInstance(friendsFragmentInformation);
                 fragments.put(FriendsFragmentUser.TAG, friendsFragmentUser);
                 iView.showFragment(friendsFragmentUser, false, FriendsFragmentUser.TAG);
@@ -173,6 +194,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
 
     @Override
     public void onBtnExitClick() {
+        AppLog.log(TAG, "onBtnExitClick");
         SingletonPreference.getInstance().clearUserInformation();
         Intent intent = new Intent(iView.getContext(), WelcomeActivity.class);
         iView.getContext().startActivity(intent);
@@ -181,6 +203,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
 
     @Override
     public void onBtnHomeClick() {
+        AppLog.log(TAG, "onBtnHomeClick");
         fragmentInActivity = HomeFragmentUser.TAG;
         HomeFragmentUser fragmentUser = null;
         for (Map.Entry entry : fragments.entrySet()) {
@@ -199,6 +222,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
 
     @Override
     public void onBtnFriendsClick() {
+        AppLog.log(TAG, "onBtnFriendsClick");
         fragmentInActivity = FriendsFragmentUser.TAG;
         FriendsFragmentUser fragmentUser = null;
         for (Map.Entry entry : fragments.entrySet()) {
@@ -217,6 +241,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
 
     @Override
     public void onBtnUserChartClick() {
+        AppLog.log(TAG, "onBtnUserChartClick");
         fragmentInActivity = ChartFragmentUser.TAG;
         ChartFragmentUser fragmentUser = null;
         for (Map.Entry entry : fragments.entrySet()) {
@@ -236,6 +261,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
 
     @Override
     public void onBtnUpdateClick() {
+        AppLog.log(TAG, "onBtnUpdateClick");
         if (fragmentInActivity.equals(HomeFragmentUser.TAG)) {
             initHomeFragment();
         } else if (fragmentInActivity.equals(FriendsFragmentUser.TAG)) {
@@ -247,12 +273,14 @@ public class UserActivityPresenter implements UserActivityIPresenter {
 
     @Override
     public void onBtnSearchClick() {
+        AppLog.log(TAG, "onBtnSearchClick");
         Intent intent = new Intent(iView.getContext(), SearchActivity.class);
         iView.getContext().startActivity(intent);
     }
 
     @Override
     public void onDestroy() {
+        AppLog.log(TAG, "onDestroy");
         iView = null;
         fragmentInActivity = null;
         fragments = null;

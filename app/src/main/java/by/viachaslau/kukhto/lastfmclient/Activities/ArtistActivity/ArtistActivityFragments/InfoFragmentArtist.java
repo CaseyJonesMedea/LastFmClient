@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.R;
 
@@ -25,12 +27,12 @@ public class InfoFragmentArtist extends Fragment {
 
     private static final String INFO_FRAGMENT_INFORMATION = "infoFragmentInformation";
 
-    private View view;
-
-    private TextView wikiInfo;
+    @BindView(R.id.wiki_info)
+    TextView wikiInfo;
 
 
     public static InfoFragmentArtist newInstance(Artist artist) {
+        AppLog.log(TAG, "newInstance");
         InfoFragmentArtist fragmentUser = new InfoFragmentArtist();
         Bundle bundle = new Bundle();
         bundle.putSerializable(INFO_FRAGMENT_INFORMATION, artist);
@@ -42,27 +44,21 @@ public class InfoFragmentArtist extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppLog.log(TAG, "onCreate");
         setRetainInstance(true);
     }
-
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (view == null) {
-            view = inflater.inflate(R.layout.fragment_artist_info, container, false);
-            initViews(view);
-            Artist artist = (Artist) getArguments().getSerializable(INFO_FRAGMENT_INFORMATION);
-            wikiInfo.setText(artist.getWikiText());
-        }
+        View view = inflater.inflate(R.layout.fragment_artist_info, container, false);
+        AppLog.log(TAG, "onCreateView");
+        ButterKnife.bind(this, view);
+        Artist artist = (Artist) getArguments().getSerializable(INFO_FRAGMENT_INFORMATION);
+        wikiInfo.setText(artist.getWikiText());
         return view;
     }
-
-    private void initViews(View view) {
-        wikiInfo = (TextView)view.findViewById(R.id.wiki_info);
-    }
-
 
 
 }

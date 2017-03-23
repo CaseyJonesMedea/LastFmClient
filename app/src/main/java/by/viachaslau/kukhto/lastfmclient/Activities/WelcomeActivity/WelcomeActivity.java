@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.R;
 
 /**
@@ -20,66 +23,77 @@ import by.viachaslau.kukhto.lastfmclient.R;
 
 public class WelcomeActivity extends AppCompatActivity implements WelcomeActivityIView, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
 
-    private Button btnLogIn;
-    private Button btnRegistration;
+    public static final String TAG = WelcomeActivity.class.getSimpleName();
+
+    @BindView(R.id.btn_log_in)
+    Button btnLogIn;
+    @BindView(R.id.btn_registration)
+    Button btnRegistration;
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipe;
+    @BindView(R.id.load)
+    View fragmentLoad;
+
     private WelcomePresenter presenter;
-
-    private SwipeRefreshLayout swipe;
-    private View fragmentLoad;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppLog.log(TAG, "onCreate");
         setContentView(R.layout.activity_welcome);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        initViews();
+        ButterKnife.bind(this);
+        initinitialize();
         presenter = new WelcomePresenter(this);
     }
 
-    private void initViews() {
-        btnLogIn = (Button) findViewById(R.id.btn_log_in);
-        btnRegistration = (Button) findViewById(R.id.btn_registration);
-        swipe = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+    private void initinitialize() {
+        AppLog.log(TAG, "initinitialize");
         swipe.setOnRefreshListener(this);
-        fragmentLoad = findViewById(R.id.load);
         btnLogIn.setOnClickListener(this);
         btnRegistration.setOnClickListener(this);
     }
 
     @Override
     public void showLoginDialog(AlertDialog alertDialog) {
+        AppLog.log(TAG, "showLoginDialog");
         alertDialog.show();
     }
 
     @Override
     public void showScreenLoad() {
+        AppLog.log(TAG, "showScreenLoad");
         fragmentLoad.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideScreenLoad() {
+        AppLog.log(TAG, "hideScreenLoad");
         fragmentLoad.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void showErrorInternetMessage() {
+        AppLog.log(TAG, "showErrorInternetMessage");
         Toast.makeText(this, getString(R.string.internet_error), Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void showIncorrectMessage() {
+        AppLog.log(TAG, "showIncorrectMessage");
         Toast.makeText(this, getString(R.string.incorrect_error), Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void showButtons() {
+        AppLog.log(TAG, "showButtons");
         btnLogIn.setVisibility(View.VISIBLE);
         btnRegistration.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideButtons() {
+        AppLog.log(TAG, "hideButtons");
         btnLogIn.setVisibility(View.INVISIBLE);
         btnRegistration.setVisibility(View.INVISIBLE);
     }
@@ -92,6 +106,7 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeActivit
 
     @Override
     public void onClick(View view) {
+        AppLog.log(TAG, "onClick");
         switch (view.getId()) {
             case R.id.btn_log_in:
                 presenter.onBtnLogInClick();
@@ -104,11 +119,13 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeActivit
 
     @Override
     public void onRefresh() {
-
+        AppLog.log(TAG, "onRefresh");
+        presenter.onRefresh();
     }
 
     @Override
     protected void onDestroy() {
+        AppLog.log(TAG, "onDestroy");
         presenter.onDestroy();
         super.onDestroy();
     }

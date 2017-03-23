@@ -17,6 +17,9 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.Others.YouTube;
 import by.viachaslau.kukhto.lastfmclient.R;
@@ -40,15 +43,16 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
     private YouTubeActivityPresenter presenter;
 
-    private YouTubePlayerView youTubeView;
-
-    private ImageView btnShare;
+    @BindView(R.id.youtube_view)
+    YouTubePlayerView youTubeView;
+    @BindView(R.id.btn_share)
+    ImageView btnShare;
 
     private YouTubePlayer player;
 
     private boolean trackIsScrobble;
-
-    private ImageView btnLove;
+    @BindView(R.id.float_btn)
+    ImageView btnLove;
 
     private boolean fullScreen;
 
@@ -63,6 +67,7 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_youtube);
+        AppLog.log(TAG, "onCreate" + "savedInstanceState= " + savedInstanceState);
         if (savedInstanceState != null) {
             trackIsScrobble = savedInstanceState.getBoolean(TRACK_IS_SCROBBLE);
             youTubeCode = savedInstanceState.getString(YOUTUBE_CODE);
@@ -77,28 +82,29 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
             trackIsScrobble = false;
         }
         presenter = new YouTubeActivityPresenter(this, youTubeCode, track);
-        initViews();
+        ButterKnife.bind(this);
+        initialize();
         youTubeView.initialize(YouTube.key, this);
         youTubeView.destroyDrawingCache();
     }
 
 
-    private void initViews() {
-        youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
-        btnShare = (ImageView) findViewById(R.id.btn_share);
+    private void initialize() {
+        AppLog.log(TAG, "initialize");
         btnShare.setOnClickListener(this);
-        btnLove = (ImageView) findViewById(R.id.float_btn);
         btnLove.setOnClickListener(this);
     }
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
+        AppLog.log(TAG, "onInitializationSuccess");
         player = youTubePlayer;
         player.setPlaybackEventListener(this);
         player.setPlayerStateChangeListener(this);
         player.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
             @Override
             public void onFullscreen(boolean _isFullScreen) {
+                AppLog.log(TAG, "onFullscreen");
                 fullScreen = _isFullScreen;
             }
         });
@@ -108,6 +114,7 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        AppLog.log(TAG, "onSaveInstanceState");
         outState.putBoolean(TRACK_IS_SCROBBLE, trackIsScrobble);
         outState.putSerializable(YOUTUBE_TRACK, track);
         outState.putString(YOUTUBE_CODE, youTubeCode);
@@ -118,6 +125,7 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult errorReason) {
+        AppLog.log(TAG, "onInitializationFailure");
         if (errorReason.isUserRecoverableError()) {
             errorReason.getErrorDialog(this, RECOVERY_REQUEST).show();
         } else {
@@ -128,6 +136,7 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        AppLog.log(TAG, "onActivityResult");
         if (requestCode == RECOVERY_REQUEST) {
             getYouTubeView().initialize(YouTube.key, this);
         }
@@ -135,17 +144,20 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
 
     private YouTubePlayerView getYouTubeView() {
+        AppLog.log(TAG, "getYouTubeView");
         return youTubeView;
     }
 
     @Override
     protected void onDestroy() {
+        AppLog.log(TAG, "onDestroy");
         presenter.onDestroy();
         super.onDestroy();
     }
 
     @Override
     public void onBackPressed() {
+        AppLog.log(TAG, "onBackPressed");
         if (fullScreen) {
             player.setFullscreen(false);
         } else {
@@ -156,11 +168,13 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
     @Override
     public void showUnlove() {
+        AppLog.log(TAG, "showUnlove");
         btnLove.setImageResource(R.drawable.unlike);
     }
 
     @Override
     public void showLove() {
+        AppLog.log(TAG, "showLove");
         btnLove.setImageResource(R.drawable.like);
     }
 
@@ -171,6 +185,7 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
     @Override
     public void onClick(View v) {
+        AppLog.log(TAG, "onClick");
         switch (v.getId()) {
             case R.id.btn_share:
                 presenter.onBtnShareClick();
@@ -183,47 +198,47 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
     @Override
     public void onPlaying() {
-        Log.d(TAG, "onPlaying");
+        AppLog.log(TAG, "onPlaying");
     }
 
     @Override
     public void onPaused() {
-        Log.d(TAG, "onPaused");
+        AppLog.log(TAG, "onPaused");
     }
 
     @Override
     public void onStopped() {
-        Log.d(TAG, "onStopped");
+        AppLog.log(TAG, "onStopped");
     }
 
     @Override
     public void onBuffering(boolean b) {
-        Log.d(TAG, "onBuffering");
+        AppLog.log(TAG, "onBuffering");
     }
 
     @Override
     public void onSeekTo(int i) {
-        Log.d(TAG, "onSeekTo");
+        AppLog.log(TAG, "onSeekTo");
     }
 
     @Override
     public void onLoading() {
-        Log.d(TAG, "onLoading");
+        AppLog.log(TAG, "onLoading");
     }
 
     @Override
     public void onLoaded(String s) {
-        Log.d(TAG, "onLoaded" + s);
+        AppLog.log(TAG, "onLoaded");
     }
 
     @Override
     public void onAdStarted() {
-        Log.d(TAG, "onAdStarted");
+        AppLog.log(TAG, "onAdStarted");
     }
 
     @Override
     public void onVideoStarted() {
-        Log.d(TAG, "onVideoStarted");
+        AppLog.log(TAG, "onVideoStarted");
         if (!trackIsScrobble) {
             presenter.scrobbleTrack();
             trackIsScrobble = true;
@@ -233,12 +248,12 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
     @Override
     public void onVideoEnded() {
-        Log.d(TAG, "onVideoEnded");
+        AppLog.log(TAG, "onVideoEnded");
     }
 
     @Override
     public void onError(YouTubePlayer.ErrorReason errorReason) {
-        Log.d(TAG, "" + errorReason);
+        AppLog.log(TAG, "onError " + errorReason);
     }
 
 }

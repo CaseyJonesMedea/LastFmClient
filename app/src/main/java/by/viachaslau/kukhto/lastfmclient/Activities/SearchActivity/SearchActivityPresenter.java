@@ -6,6 +6,7 @@ import android.widget.RadioButton;
 
 import java.util.List;
 
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
@@ -37,6 +38,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
     private Subscription subscription = Subscribers.empty();
 
     public SearchActivityPresenter(SearchActivityIVIew iView, EditText edtSearch, RadioButton radioButtonArtist, RadioButton radioButtonAlbum, RadioButton radioButtonTrack) {
+        AppLog.log(TAG, "createSearchActivityPresenter");
         this.iView = iView;
         this.edtSearch = edtSearch;
         this.radioButtonArtist = radioButtonArtist;
@@ -46,6 +48,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
 
     @Override
     public void onBtnSearchClick() {
+        AppLog.log(TAG, "onBtnSearchClick");
         if (radioButtonArtist.isChecked()) {
             initArtistsList();
         } else if (radioButtonAlbum.isChecked()) {
@@ -58,6 +61,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
 
 
     private void initArtistsList() {
+        AppLog.log(TAG, "initArtistsList");
         iView.showLoadFragment();
         if (subscription.isUnsubscribed()) {
             subscription.unsubscribe();
@@ -66,16 +70,18 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
         subscription = ModelImpl.getModel().getSearchArtist(edtSearch.getText().toString()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<List<Artist>>() {
             @Override
             public void onCompleted() {
-
+                AppLog.log(TAG, "onCompleted");
             }
 
             @Override
             public void onError(Throwable e) {
+                AppLog.log(TAG, "onError");
                 iView.showErrorFragment();
             }
 
             @Override
             public void onNext(List<Artist> artists) {
+                AppLog.log(TAG, "onNext");
                 if (artists.size() != 0) {
                     ArtistSearchAdapter adapter = new ArtistSearchAdapter(iView.getContext(), artists);
                     iView.showList(adapter);
@@ -87,6 +93,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
     }
 
     private void initAlbumsList() {
+        AppLog.log(TAG, "initAlbumsList");
         iView.showLoadFragment();
         if (subscription.isUnsubscribed()) {
             subscription.unsubscribe();
@@ -95,16 +102,18 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
         subscription = ModelImpl.getModel().getSearchAlbum(edtSearch.getText().toString()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<List<Album>>() {
             @Override
             public void onCompleted() {
-
+                AppLog.log(TAG, "onCompleted");
             }
 
             @Override
             public void onError(Throwable e) {
+                AppLog.log(TAG, "onError");
                 iView.showErrorFragment();
             }
 
             @Override
             public void onNext(List<Album> albums) {
+                AppLog.log(TAG, "onNext");
                 if (albums.size() != 0) {
                     AlbumSearchAdapter adapter = new AlbumSearchAdapter(albums, iView.getContext());
                     iView.showList(adapter);
@@ -116,6 +125,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
     }
 
     private void initTracksList() {
+        AppLog.log(TAG, "initTracksList");
         iView.showLoadFragment();
         if (subscription.isUnsubscribed()) {
             subscription.unsubscribe();
@@ -124,16 +134,18 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
         subscription = ModelImpl.getModel().getSearchTrack(edtSearch.getText().toString()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<List<Track>>() {
             @Override
             public void onCompleted() {
-
+                AppLog.log(TAG, "onCompleted");
             }
 
             @Override
             public void onError(Throwable e) {
+                AppLog.log(TAG, "onError");
                 iView.showErrorFragment();
             }
 
             @Override
             public void onNext(List<Track> tracks) {
+                AppLog.log(TAG, "onNext");
                 if (tracks.size() != 0) {
                     TrackSearchAdapter adapter = new TrackSearchAdapter(iView.getContext(), tracks);
                     iView.showList(adapter);
@@ -146,6 +158,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
 
     @Override
     public void onDestroy() {
+        AppLog.log(TAG, "onDestroy");
         iView = null;
         edtSearch = null;
         radioButtonArtist = null;

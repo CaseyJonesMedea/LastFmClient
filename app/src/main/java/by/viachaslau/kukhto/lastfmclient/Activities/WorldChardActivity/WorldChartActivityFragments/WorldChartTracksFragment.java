@@ -18,6 +18,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.Others.Data;
@@ -36,18 +39,21 @@ public class WorldChartTracksFragment extends Fragment {
 
     private static final String CHART_TRACKS = "ChartTracks";
 
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
 
-    private RecyclerView recyclerView;
     SectionedRecyclerViewAdapter sectionAdapter;
-    private View view;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppLog.log(TAG, "onCreate");
         setRetainInstance(true);
     }
 
     public static WorldChartTracksFragment newInstance(ArrayList<Track> list) {
+        AppLog.log(TAG, "newInstance");
         WorldChartTracksFragment fragment = new WorldChartTracksFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable(CHART_TRACKS, list);
@@ -58,27 +64,24 @@ public class WorldChartTracksFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (view == null) {
-            view = inflater.inflate(R.layout.fragment_world_chart_tracks, container, false);
-            initViews(view);
-            List<Track> list = (List<Track>) getArguments().getSerializable(CHART_TRACKS);
-            ChartTracksSection section = new ChartTracksSection(R.layout.section_header, R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
-            section.setChartTracks(list);
-            sectionAdapter = new SectionedRecyclerViewAdapter();
-            sectionAdapter.addSection(section);
-            LinearLayoutManager layotManager = new LinearLayoutManager(getContext());
-            recyclerView.setLayoutManager(layotManager);
-            recyclerView.setAdapter(sectionAdapter);
-        }
+        AppLog.log(TAG, "onCreateView");
+        View view = inflater.inflate(R.layout.fragment_world_chart_tracks, container, false);
+        ButterKnife.bind(this, view);
+        List<Track> list = (List<Track>) getArguments().getSerializable(CHART_TRACKS);
+        ChartTracksSection section = new ChartTracksSection(R.layout.section_header, R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
+        section.setChartTracks(list);
+        sectionAdapter = new SectionedRecyclerViewAdapter();
+        sectionAdapter.addSection(section);
+        LinearLayoutManager layotManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layotManager);
+        recyclerView.setAdapter(sectionAdapter);
         return view;
-    }
-
-    private void initViews(View view) {
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
     }
 
 
     class ChartTracksSection extends Section {
+
+        public final String TAG = ChartTracksSection.class.getSimpleName();
 
         private ImageLoader imageLoader;
         private List<Track> chartTracks;
@@ -86,10 +89,12 @@ public class WorldChartTracksFragment extends Fragment {
 
         public ChartTracksSection(int headerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
             super(headerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+            AppLog.log(TAG, "createChartTracksSection");
             imageLoader = ImageLoader.getInstance();
         }
 
         public void setChartTracks(List<Track> chartTracks) {
+            AppLog.log(TAG, "setChartTracks");
             this.chartTracks = chartTracks;
         }
 
@@ -112,6 +117,7 @@ public class WorldChartTracksFragment extends Fragment {
             itemHolder.cell.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    AppLog.log(TAG, "onClickItem");
                     Intent intent = new Intent(getContext(), TrackActivity.class);
                     intent.putExtra(TrackActivity.TRACK, chartTracks.get(position));
                     startActivity(intent);
@@ -132,27 +138,29 @@ public class WorldChartTracksFragment extends Fragment {
 
 
         class HeaderViewHolder extends RecyclerView.ViewHolder {
-            private final TextView tvTitle;
+            @BindView(R.id.tvTitle)
+            TextView tvTitle;
 
             public HeaderViewHolder(View itemView) {
                 super(itemView);
-                tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+                ButterKnife.bind(this, itemView);
             }
         }
 
 
         class ItemViewHolder extends RecyclerView.ViewHolder {
-            private final ImageView imgAlbums;
-            private final TextView artistName;
-            private final TextView songTitle;
-            private final LinearLayout cell;
+            @BindView(R.id.albums_photo)
+            ImageView imgAlbums;
+            @BindView(R.id.artist_name)
+            TextView artistName;
+            @BindView(R.id.song_title)
+            TextView songTitle;
+            @BindView(R.id.section_track)
+            LinearLayout cell;
 
             public ItemViewHolder(View view) {
                 super(view);
-                cell = (LinearLayout) view.findViewById(R.id.section_track);
-                imgAlbums = (ImageView) view.findViewById(R.id.albums_photo);
-                artistName = (TextView) view.findViewById(R.id.artist_name);
-                songTitle = (TextView) view.findViewById(R.id.song_title);
+                ButterKnife.bind(this, view);
             }
         }
     }

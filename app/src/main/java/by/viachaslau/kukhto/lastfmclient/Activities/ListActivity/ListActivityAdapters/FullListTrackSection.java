@@ -12,6 +12,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.R;
@@ -22,7 +25,9 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.Section;
  * Created by VKukh on 04.03.2017.
  */
 
-public class FullListTrackSection extends Section{
+public class FullListTrackSection extends Section {
+
+    public static final String TAG = FullListTrackSection.class.getSimpleName();
 
     private List<Track> trackList;
     private ImageLoader imageLoader;
@@ -34,24 +39,20 @@ public class FullListTrackSection extends Section{
 
     public FullListTrackSection(Context context, int headerResourceId, int itemResourceId, int loadingResourceId, int failedResourceId) {
         super(headerResourceId, itemResourceId, loadingResourceId, failedResourceId);
+        AppLog.log(TAG, "createFullListTrackSection");
         imageLoader = ImageLoader.getInstance();
         this.context = context;
     }
 
     public void setTrackList(List<Track> trackList) {
+        AppLog.log(TAG, "setTrackList");
         this.trackList = trackList;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
+        AppLog.log(TAG, "setTitle");
         this.title = title;
     }
-
-
-    public void addTracks(List<Track> tracks){
-        trackList.addAll(tracks);
-        // Pagination
-    }
-
 
 
     @Override
@@ -74,6 +75,7 @@ public class FullListTrackSection extends Section{
         itemHolder.cell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AppLog.log(TAG, "onClickItem");
                 Intent intent = new Intent(context, TrackActivity.class);
                 intent.putExtra(TrackActivity.TRACK, trackList.get(position));
                 context.startActivity(intent);
@@ -94,27 +96,29 @@ public class FullListTrackSection extends Section{
 
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
-        private final TextView tvTitle;
+        @BindView(R.id.tvTitle)
+        TextView tvTitle;
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
-            tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            ButterKnife.bind(this, itemView);
         }
     }
 
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView imgAlbums;
-        private final TextView artistName;
-        private final TextView songTitle;
-        private final LinearLayout cell;
+        @BindView(R.id.albums_photo)
+        ImageView imgAlbums;
+        @BindView(R.id.artist_name)
+        TextView artistName;
+        @BindView(R.id.song_title)
+        TextView songTitle;
+        @BindView(R.id.section_track)
+        LinearLayout cell;
 
         public ItemViewHolder(View view) {
             super(view);
-            cell = (LinearLayout)view.findViewById(R.id.section_track);
-            imgAlbums = (ImageView) view.findViewById(R.id.albums_photo);
-            artistName = (TextView) view.findViewById(R.id.artist_name);
-            songTitle = (TextView) view.findViewById(R.id.song_title);
+            ButterKnife.bind(this, view);
         }
     }
 }

@@ -18,6 +18,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
@@ -36,18 +39,22 @@ public class FullFragmentAlbum extends Fragment {
 
     public static final String TAG = FullFragmentAlbum.class.getSimpleName();
 
-    private RecyclerView recyclerView;
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+
     SectionedRecyclerViewAdapter sectionAdapter;
-    private View view;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppLog.log(TAG, "onCreate");
         setRetainInstance(true);
     }
 
 
     public static FullFragmentAlbum newInstance(Album album) {
+        AppLog.log(TAG, "newInstance");
         FullFragmentAlbum fragmentArtist = new FullFragmentAlbum();
         Bundle bundle = new Bundle();
         bundle.putSerializable(FULL_ALBUM_FRAGMENT_INFORMATION, album);
@@ -59,28 +66,23 @@ public class FullFragmentAlbum extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (view == null) {
-            view = inflater.inflate(R.layout.fragment_album_full, container, false);
-            initViews(view);
-            Album album = (Album) getArguments().getSerializable(FULL_ALBUM_FRAGMENT_INFORMATION);
-            sectionAdapter = new SectionedRecyclerViewAdapter();
-            AlbumsTracksSection albumsTracksSection = new AlbumsTracksSection(R.layout.section_header, R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
-            List<Track> tracks = new ArrayList<>(album.getTracks());
-            albumsTracksSection.setAlbumsTracks(tracks, album.getImageURL(ImageSize.EXTRALARGE));
-            sectionAdapter.addSection(albumsTracksSection);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            recyclerView.setAdapter(sectionAdapter);
-        }
+        View view = inflater.inflate(R.layout.fragment_album_full, container, false);
+        ButterKnife.bind(this, view);
+        Album album = (Album) getArguments().getSerializable(FULL_ALBUM_FRAGMENT_INFORMATION);
+        sectionAdapter = new SectionedRecyclerViewAdapter();
+        AlbumsTracksSection albumsTracksSection = new AlbumsTracksSection(R.layout.section_header, R.layout.section_tracks, R.layout.section_load_empty, R.layout.section_fail_empty);
+        List<Track> tracks = new ArrayList<>(album.getTracks());
+        albumsTracksSection.setAlbumsTracks(tracks, album.getImageURL(ImageSize.EXTRALARGE));
+        sectionAdapter.addSection(albumsTracksSection);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(sectionAdapter);
         return view;
     }
 
-    private void initViews(View view) {
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-    }
 
     class AlbumsTracksSection extends Section {
 
-        List<Track> albumsTracks;
+        private List<Track> albumsTracks;
         private ImageLoader imageLoader;
         private final static String TITLE = "Albums Tracks";
         private String imgUrl;
@@ -115,6 +117,7 @@ public class FullFragmentAlbum extends Fragment {
             itemHolder.cell.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    AppLog.log(TAG, "onClick");
                     Intent intent = new Intent(getContext(), TrackActivity.class);
                     intent.putExtra(TrackActivity.TRACK, albumsTracks.get(position));
                     startActivity(intent);
@@ -132,31 +135,32 @@ public class FullFragmentAlbum extends Fragment {
             HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
             headerHolder.tvTitle.setText(TITLE);
         }
-
     }
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
-        private final TextView tvTitle;
+        @BindView(R.id.tvTitle)
+        TextView tvTitle;
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
-            tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            ButterKnife.bind(this, itemView);
         }
     }
 
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView imgAlbums;
-        private final TextView artistName;
-        private final TextView songTitle;
-        private final LinearLayout cell;
+        @BindView(R.id.albums_photo)
+        ImageView imgAlbums;
+        @BindView(R.id.artist_name)
+        TextView artistName;
+        @BindView(R.id.song_title)
+        TextView songTitle;
+        @BindView(R.id.section_track)
+        LinearLayout cell;
 
         public ItemViewHolder(View view) {
             super(view);
-            cell = (LinearLayout) view.findViewById(R.id.section_track);
-            imgAlbums = (ImageView) view.findViewById(R.id.albums_photo);
-            artistName = (TextView) view.findViewById(R.id.artist_name);
-            songTitle = (TextView) view.findViewById(R.id.song_title);
+            ButterKnife.bind(this, view);
         }
     }
 

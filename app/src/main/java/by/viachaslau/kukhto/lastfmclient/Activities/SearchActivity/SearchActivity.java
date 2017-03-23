@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.Activities.SearchActivity.SearchActivityAdapters.SearchAdapter;
 
@@ -25,20 +28,28 @@ import by.viachaslau.kukhto.lastfmclient.Activities.SearchActivity.SearchActivit
 
 public class SearchActivity extends AppCompatActivity implements SearchActivityIVIew, View.OnClickListener {
 
-    private EditText edtSearch;
-    private RecyclerView listSearch;
-    private ImageView btnSearch;
-    private ImageView btnClose;
+    public static final String TAG = SearchActivity.class.getSimpleName();
 
-    private View fragmentLoad;
-
-    private View fragmentNotInformation;
-
-    private View fragmentError;
-
-    private RadioButton radioButtonArtist;
-    private RadioButton radioButtonAlbum;
-    private RadioButton radioButtonTrack;
+    @BindView(R.id.search_info)
+    EditText edtSearch;
+    @BindView(R.id.search_recycler)
+    RecyclerView listSearch;
+    @BindView(R.id.btn_search)
+    ImageView btnSearch;
+    @BindView(R.id.btn_cancel)
+    ImageView btnClose;
+    @BindView(R.id.fragment_load)
+    View fragmentLoad;
+    @BindView(R.id.fragment_not_information)
+    View fragmentNotInformation;
+    @BindView(R.id.fragment_error)
+    View fragmentError;
+    @BindView(R.id.radio_btn_artist)
+    RadioButton radioButtonArtist;
+    @BindView(R.id.radio_btn_album)
+    RadioButton radioButtonAlbum;
+    @BindView(R.id.radio_btn_track)
+    RadioButton radioButtonTrack;
 
     private SearchActivityPresenter presenter;
 
@@ -46,18 +57,21 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppLog.log(TAG, "onCreate");
         setContentView(R.layout.activity_search);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        initViews();
+        ButterKnife.bind(this);
+        initInitialize();
         presenter = new SearchActivityPresenter(this, edtSearch, radioButtonArtist, radioButtonAlbum, radioButtonTrack);
     }
 
 
-    private void initViews() {
-        edtSearch = (EditText) findViewById(R.id.search_info);
+    private void initInitialize() {
+        AppLog.log(TAG, "onCreate");
         edtSearch.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int keyCode, KeyEvent event) {
+                AppLog.log(TAG, "onKey");
                 if (event.getAction() == KeyEvent.ACTION_DOWN &&
                         (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     presenter.onBtnSearchClick();
@@ -79,6 +93,7 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
 
             @Override
             public void afterTextChanged(Editable editable) {
+                AppLog.log(TAG, "afterTextChanged");
                 if (edtSearch.getText().toString().equals("")) {
                     btnClose.setVisibility(View.INVISIBLE);
                 } else {
@@ -86,25 +101,15 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
                 }
             }
         });
-        fragmentLoad = findViewById(R.id.fragment_load);
-        fragmentNotInformation = findViewById(R.id.fragment_not_information);
-        fragmentError = findViewById(R.id.fragment_error);
-
-        listSearch = (RecyclerView) findViewById(R.id.search_recycler);
-        radioButtonArtist = (RadioButton) findViewById(R.id.radio_btn_artist);
-        radioButtonAlbum = (RadioButton) findViewById(R.id.radio_btn_album);
-        radioButtonTrack = (RadioButton) findViewById(R.id.radio_btn_track);
-        btnSearch = (ImageView) findViewById(R.id.btn_search);
         btnSearch.setOnClickListener(this);
-        btnClose = (ImageView) findViewById(R.id.btn_cancel);
         btnClose.setOnClickListener(this);
-        LinearLayoutManager linearLayout = new LinearLayoutManager(this);
-        listSearch.setLayoutManager(linearLayout);
+        listSearch.setLayoutManager(new LinearLayoutManager(this));
     }
 
 
     @Override
     public void showList(SearchAdapter adapter) {
+        AppLog.log(TAG, "showList");
         fragmentError.setVisibility(View.INVISIBLE);
         fragmentNotInformation.setVisibility(View.INVISIBLE);
         fragmentLoad.setVisibility(View.INVISIBLE);
@@ -114,6 +119,7 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
 
     @Override
     public void showErrorFragment() {
+        AppLog.log(TAG, "showErrorFragment");
         fragmentError.setVisibility(View.VISIBLE);
         fragmentNotInformation.setVisibility(View.INVISIBLE);
         fragmentLoad.setVisibility(View.INVISIBLE);
@@ -122,6 +128,7 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
 
     @Override
     public void showNotFoundFragment() {
+        AppLog.log(TAG, "showNotFoundFragment");
         fragmentError.setVisibility(View.INVISIBLE);
         fragmentNotInformation.setVisibility(View.VISIBLE);
         fragmentLoad.setVisibility(View.INVISIBLE);
@@ -130,6 +137,7 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
 
     @Override
     public void showLoadFragment() {
+        AppLog.log(TAG, "showLoadFragment");
         fragmentError.setVisibility(View.INVISIBLE);
         fragmentNotInformation.setVisibility(View.INVISIBLE);
         fragmentLoad.setVisibility(View.VISIBLE);
@@ -137,6 +145,7 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
 
     @Override
     public void hideLoadFragment() {
+        AppLog.log(TAG, "hideLoadFragment");
         fragmentError.setVisibility(View.INVISIBLE);
         fragmentNotInformation.setVisibility(View.INVISIBLE);
         fragmentLoad.setVisibility(View.INVISIBLE);
@@ -149,6 +158,7 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
 
     @Override
     public void onClick(View view) {
+        AppLog.log(TAG, "onClick");
         switch (view.getId()) {
             case R.id.btn_search:
                 presenter.onBtnSearchClick();
@@ -161,6 +171,7 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
 
     @Override
     protected void onDestroy() {
+        AppLog.log(TAG, "onDestroy");
         presenter.onDestroy();
         super.onDestroy();
     }

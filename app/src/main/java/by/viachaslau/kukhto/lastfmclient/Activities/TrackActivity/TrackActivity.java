@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.R;
 
 /**
@@ -14,6 +15,8 @@ import by.viachaslau.kukhto.lastfmclient.R;
 
 public class TrackActivity extends AppCompatActivity implements TrackActivityIView {
 
+    public static final String TAG = TrackActivity.class.getSimpleName();
+
     public static final String TRACK = "track";
 
     private TrackActivityPresenter presenter;
@@ -21,14 +24,15 @@ public class TrackActivity extends AppCompatActivity implements TrackActivityIVi
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        AppLog.log(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track);
-        Intent intent = getIntent();
-        presenter = new TrackActivityPresenter(this, intent);
+        presenter = new TrackActivityPresenter(this, getIntent());
     }
 
     @Override
     public void closeActivity() {
+        AppLog.log(TAG, "closeActivity");
         finish();
     }
 
@@ -39,6 +43,7 @@ public class TrackActivity extends AppCompatActivity implements TrackActivityIVi
 
     @Override
     protected void onDestroy() {
+        AppLog.log(TAG, "onDestroy");
         presenter.onDestroy();
         super.onDestroy();
     }
