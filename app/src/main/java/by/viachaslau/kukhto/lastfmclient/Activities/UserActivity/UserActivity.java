@@ -12,6 +12,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -61,6 +63,8 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
     private UserActivityPresenter presenter;
     private ImageLoader imageLoader;
 
+    private Animation rotation;
+
 
 
     @Override
@@ -83,6 +87,7 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
         btnHome.setOnClickListener(this);
         btnFriends.setOnClickListener(this);
         btnUserChart.setOnClickListener(this);
+        rotation = AnimationUtils.loadAnimation(this, R.anim.rotation);
     }
 
 
@@ -100,6 +105,7 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
     @Override
     public void showLoadProgressBar() {
         AppLog.log(TAG, "showLoadProgressBar");
+        btnUpdate.startAnimation(rotation);
         loadFragment.setVisibility(View.VISIBLE);
     }
 
@@ -107,6 +113,7 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
     @Override
     public void hideLoadProgressBar() {
         AppLog.log(TAG, "hideLoadProgressBar");
+        rotation.cancel();
         loadFragment.setVisibility(View.INVISIBLE);
     }
 

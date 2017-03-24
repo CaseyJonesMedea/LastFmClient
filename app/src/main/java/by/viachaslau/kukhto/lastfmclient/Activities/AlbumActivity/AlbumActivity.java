@@ -10,6 +10,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -57,6 +59,8 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
     private AlbumActivityPresenter presenter;
     private ImageLoader imageLoader;
 
+    private Animation rotation;
+
 
 
     @Override
@@ -74,6 +78,7 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
     private void initInitialization(){
         btnUpdate.setOnClickListener(this);
         btnShare.setOnClickListener(this);
+        rotation = AnimationUtils.loadAnimation(this, R.anim.rotation);
     }
 
     private void replaceFragment(Fragment fragment, boolean addToBackStack, String tag) {
@@ -91,12 +96,14 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
     @Override
     public void showLoadProgressBar() {
         AppLog.log(TAG, "showLoadProgressBar");
+        btnUpdate.startAnimation(rotation);
         loadFragment.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoadProgressBar() {
         AppLog.log(TAG, "hideLoadProgressBar");
+        rotation.cancel();
         loadFragment.setVisibility(View.INVISIBLE);
     }
 

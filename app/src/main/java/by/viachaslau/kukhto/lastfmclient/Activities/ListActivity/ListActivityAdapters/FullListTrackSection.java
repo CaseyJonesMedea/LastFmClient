@@ -69,7 +69,11 @@ public class FullListTrackSection extends Section {
     @Override
     public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ItemViewHolder itemHolder = (ItemViewHolder) holder;
-        imageLoader.displayImage(trackList.get(position).getImageURL(ImageSize.LARGE), itemHolder.imgAlbums);
+        if (trackList.get(position).getImageURL(ImageSize.LARGE).equals("")) {
+            itemHolder.imgAlbums.setImageResource(R.drawable.no_image);
+        }else{
+            imageLoader.displayImage(trackList.get(position).getImageURL(ImageSize.LARGE), itemHolder.imgAlbums);
+        }
         itemHolder.artistName.setText(trackList.get(position).getArtist());
         itemHolder.songTitle.setText(trackList.get(position).getName());
         itemHolder.cell.setOnClickListener(new View.OnClickListener() {

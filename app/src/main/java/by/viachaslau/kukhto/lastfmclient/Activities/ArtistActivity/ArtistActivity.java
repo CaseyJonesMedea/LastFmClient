@@ -11,6 +11,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -59,6 +61,8 @@ public class ArtistActivity extends AppCompatActivity implements View.OnClickLis
     private ErrorFragmentUser errorFragmentUser;
     private ArtistActivityPresenter presenter;
 
+    private Animation rotation;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,17 +81,20 @@ public class ArtistActivity extends AppCompatActivity implements View.OnClickLis
         btnShare.setOnClickListener(this);
         btnArtistLibrary.setOnClickListener(this);
         btnArtistInfo.setOnClickListener(this);
+        rotation = AnimationUtils.loadAnimation(this, R.anim.rotation);
     }
 
     @Override
     public void showLoadProgressBar() {
         AppLog.log(TAG, "showLoadProgressBar");
+        btnUpdate.startAnimation(rotation);
         loadFragment.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoadProgressBar() {
         AppLog.log(TAG, "hideLoadProgressBar");
+        rotation.cancel();
         loadFragment.setVisibility(View.INVISIBLE);
     }
 

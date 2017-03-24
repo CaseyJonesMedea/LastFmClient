@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -42,6 +44,8 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
     @BindView(R.id.btn_update)
     ImageView btnUpdate;
 
+    private Animation rotation;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,6 +60,7 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
     private void initInitialize() {
         AppLog.log(TAG, "initInitialize");
         btnUpdate.setOnClickListener(this);
+        rotation = AnimationUtils.loadAnimation(this, R.anim.rotation);
     }
 
     private void replaceFragment(Fragment fragment, boolean addToBackStack, String tag) {
@@ -72,12 +77,14 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
     @Override
     public void showLoadProgressBar() {
         AppLog.log(TAG, "showLoadProgressBar");
+        btnUpdate.startAnimation(rotation);
         loadFragment.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoadProgressBar() {
         AppLog.log(TAG, "hideLoadProgressBar");
+        rotation.cancel();
         loadFragment.setVisibility(View.INVISIBLE);
     }
 

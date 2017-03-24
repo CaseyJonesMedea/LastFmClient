@@ -152,7 +152,11 @@ public class HomeFragmentUser extends Fragment {
         @Override
         public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
             final ItemViewHolder itemHolder = (ItemViewHolder) holder;
-            imageLoader.displayImage(resentTracks.get(position).getImageURL(ImageSize.LARGE), itemHolder.imgAlbums);
+            if (resentTracks.get(position).getImageURL(ImageSize.LARGE).equals("")) {
+                itemHolder.imgAlbums.setImageResource(R.drawable.no_image);
+            }else{
+                imageLoader.displayImage(resentTracks.get(position).getImageURL(ImageSize.LARGE), itemHolder.imgAlbums);
+            }
             itemHolder.artistName.setText(resentTracks.get(position).getArtist());
             itemHolder.songTitle.setText(resentTracks.get(position).getName());
             itemHolder.cell.setOnClickListener(new View.OnClickListener() {
