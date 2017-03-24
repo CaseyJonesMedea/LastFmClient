@@ -1,4 +1,7 @@
-#Fri Mar 10 16:30:51 MSK 2017
-base.0=E\:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+#Fri Mar 24 15:55:18 MSK 2017
+base.0=E\:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_9ce0771faec61d5a42b68da074918c985a1ad577
+renamed.1=classes2.dex
 renamed.0=classes.dex
-file.0=E\:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
+file.1=E\:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_61d5bfd16203ed267ff6ae97f03e14ae2ca777b0\\classes.dex
+base.1=E\:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_61d5bfd16203ed267ff6ae97f03e14ae2ca777b0
+file.0=E\:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_9ce0771faec61d5a42b68da074918c985a1ad577\\classes.dex

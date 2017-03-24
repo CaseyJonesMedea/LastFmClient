@@ -11,31 +11,7 @@
                     "endOffset": 106
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-port\\values-port.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 55,
-                        "endOffset": 106
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 55,
-                    "endOffset": 106
-                },
-                "from": {
-                    "file": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-port\\values-port.xml",
+                    "file": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\values-port\\values-port.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

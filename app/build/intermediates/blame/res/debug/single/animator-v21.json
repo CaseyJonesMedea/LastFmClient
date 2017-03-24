@@ -1,10 +1,6 @@
 [
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\animator-v21\\design_appbar_state_list_animator.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\animator-v21\\design_appbar_state_list_animator.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\animator-v21\\design_appbar_state_list_animator.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\animator-v21\\design_appbar_state_list_animator.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\animator-v21\\design_appbar_state_list_animator.xml"
     }
 ]

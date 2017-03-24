@@ -1,29 +1,5 @@
 [
     {
-        "outputFile": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 45,
-                    "endOffset": 96
-                },
-                "from": {
-                    "file": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support.test\\rules\\0.5\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 229,
-                        "endColumn": 45,
-                        "endOffset": 270
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
         "map": [
             {
@@ -35,7 +11,7 @@
                     "endOffset": 96
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support.test\\rules\\0.5\\res\\values\\values.xml",
+                    "file": "C:\\Users\\kuhto.MR\\.android\\build-cache\\4b46c32df6741d7d3ffbbbf71697a3a29b6b3fb9\\output\\res\\values\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

@@ -1,15 +1,7 @@
 [
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_bottom_sheet_dialog.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_load_empty.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\section_load_empty.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_user.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\activity_user.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_load.xml",
@@ -17,31 +9,15 @@
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_media.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_menu_item_layout.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\notification_template_media.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_friends.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\section_friends.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_lines_media.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_tracks.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\section_tracks.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\toolbar_artist.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\toolbar_artist.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_layout_tab_icon.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\view_dialog_screen_load.xml",
@@ -49,55 +25,35 @@
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_list_menu_item_checkbox.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\select_dialog_multichoice_material.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_menu_item_action_area.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\select_dialog_item_material.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_user_error.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_user_error.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_menu_item_action_area.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_list_menu_item_radio.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_list_menu_item_radio.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_menu_layout.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_user_chart.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_user_chart.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_list_full.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_list_full.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_action_menu_layout.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_bar_title_item.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tab_layout_artist.xml",
@@ -105,95 +61,27 @@
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_navigation_item_separator.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_expanded_menu_layout.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_artist.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\activity_artist.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_navigation_item_separator.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tab_layout_world_chart.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\tab_layout_world_chart.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_icon_group.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_layout_tab_text.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_album.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\activity_album.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\toolbar_list.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\toolbar_list.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_list_menu_item_layout.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_layout_snackbar_include.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_navigation_item.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_bottom_navigation_item.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_custom_big.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_custom_big.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_alert_dialog_material.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_media_custom.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_list_menu_item_radio.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_bottom_navigation_item.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_footer.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\section_footer.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_search_user.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_search_user.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_list_menu_item_layout.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_layout_tab_text.xml"
-    },
-    {
-        "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_search_user.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_search_user.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_layout_tab_text.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_load_empty.xml",
@@ -204,20 +92,12 @@
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_user_friends.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_media.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_screen_content_include.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_screen_content_include.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_text_input_password_icon.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_text_input_password_icon.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_artists.xml",
@@ -225,19 +105,15 @@
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_layout_snackbar_include.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_dialog_title_material.xml"
-    },
-    {
-        "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_activity_chooser_view.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_layout_snackbar_include.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_screen_simple.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_button_world_chat.xml",
@@ -248,108 +124,52 @@
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_world_chart_artists.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_select_dialog_material.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_user_home.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_user_home.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_layout_snackbar.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_layout_snackbar.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_search_view.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_search_view.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\select_dialog_singlechoice_material.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_navigation_menu_item.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_bar_title_item.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_popup_menu_item_layout.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_icon_group.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_part_chronometer.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_list_menu_item_icon.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\notification_template_icon_group.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_mode_bar.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tab_layout_artist.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\tab_layout_artist.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_screen_content_include.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_fail_empty.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\section_fail_empty.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_navigation_item_subheader.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\view_dialog_screen_load.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\view_dialog_screen_load.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_part_time.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_navigation_menu.xml"
+        "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_search.xml",
+        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\activity_search.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_part_time.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_album_full.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_album_full.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\notification_template_part_time.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_screen_toolbar.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\select_dialog_multichoice_material.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_navigation_item_separator.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_mode_close_item_material.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_bar_up_container.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_world_chart.xml",
@@ -357,107 +177,51 @@
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_navigation_item_header.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_action_tombstone.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_artist_library.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_artist_library.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_navigation_item_header.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_album.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\activity_album.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_bottom_sheet_dialog.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_mode_close_item_material.xml"
+        "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_not_information.xml",
+        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_not_information.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_header.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\section_header.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_layout_snackbar.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_navigation_item_header.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_menu_layout.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\toolbar_list.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\toolbar_list.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_text_input_password_icon.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_action.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\select_dialog_item_material.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\select_dialog_item_material.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tab_layout_commercial.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\tab_layout_commercial.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\select_dialog_singlechoice_material.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_popup_menu_item_layout.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_friends.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\section_friends.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_footer.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\section_footer.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_tracks.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\section_tracks.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_user_friends.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_user_friends.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_menu_item_layout.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_load.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_load.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_select_dialog_material.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_select_dialog_material.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_list_full.xml",
@@ -469,7 +233,7 @@
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_navigation_item_subheader.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_navigation_item_subheader.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_user_error.xml",
@@ -477,31 +241,19 @@
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_action_tombstone.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tab_layout_user.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\tab_layout_user.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_screen_simple.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\notification_action_tombstone.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_lines_media.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
+        "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_youtube.xml",
+        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\activity_youtube.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_layout_tab_icon.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\view_dialog_log_in.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\view_dialog_log_in.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_layout_tab_icon.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\view_dialog_log_in.xml",
@@ -512,44 +264,28 @@
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_artist_library.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_screen_toolbar.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_media_custom.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\toolbar_album.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\toolbar_album.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\notification_template_media_custom.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_custom_big.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_custom_big.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\notification_template_custom_big.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_album_full.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_album_full.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tab_layout_commercial.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\tab_layout_commercial.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_fail_empty.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\section_fail_empty.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\toolbar_artist.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\toolbar_artist.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_alert_dialog_material.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_alert_dialog_material.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_list.xml",
@@ -557,47 +293,23 @@
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_expanded_menu_layout.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_artist_info.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_artist_info.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_expanded_menu_layout.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\toolbar_world_chart.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\toolbar_world_chart.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_popup_menu_header_item_layout.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_search_view.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_alert_dialog_title_material.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_list.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\activity_list.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_artists.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\section_artists.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_navigation_menu.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_list_menu_item_checkbox.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_navigation_menu.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_template_part_chronometer.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\toolbar_album.xml",
@@ -605,11 +317,7 @@
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_list_menu_item_icon.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\toolbar_user.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\toolbar_user.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_list_menu_item_icon.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_track.xml",
@@ -617,63 +325,31 @@
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_artist.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\activity_artist.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_navigation_menu_item.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_user_home.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_user_home.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_navigation_menu_item.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_alert_dialog_title_material.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_mode_bar.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_bottom_navigation_item.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_activity_chooser_view.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_header.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\section_header.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_welcome.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\activity_welcome.xml"
+        "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\toolbar_youtube.xml",
+        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\toolbar_youtube.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\notification_action.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\notification_action.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_artist_info.xml",
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_artist_info.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_world_chart_tracks.xml",
@@ -688,16 +364,8 @@
         "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\src\\main\\res\\layout\\fragment_user_chart.xml"
     },
     {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_albums.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\src\\main\\res\\layout\\section_albums.xml"
-    },
-    {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_navigation_item.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_menu_item_action_area.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout\\design_navigation_item.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\section_albums.xml",
@@ -705,7 +373,7 @@
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_dialog_title_material.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tab_layout_user.xml",

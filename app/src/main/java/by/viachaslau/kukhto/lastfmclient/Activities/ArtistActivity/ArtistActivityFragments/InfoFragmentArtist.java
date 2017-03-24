@@ -13,6 +13,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.TextUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.R;
 
@@ -56,7 +57,7 @@ public class InfoFragmentArtist extends Fragment {
         AppLog.log(TAG, "onCreateView");
         ButterKnife.bind(this, view);
         Artist artist = (Artist) getArguments().getSerializable(INFO_FRAGMENT_INFORMATION);
-        wikiInfo.setText(artist.getWikiText());
+        wikiInfo.setText(TextUtils.html2text(artist.getWikiText()));
         return view;
     }
 

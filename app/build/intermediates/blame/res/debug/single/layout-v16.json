@@ -1,10 +1,6 @@
 [
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout-v16\\notification_template_custom_big.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout-v16\\notification_template_custom_big.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout-v16\\notification_template_custom_big.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout-v16\\notification_template_custom_big.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\layout-v16\\notification_template_custom_big.xml"
     }
 ]

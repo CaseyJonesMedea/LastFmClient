@@ -84,7 +84,7 @@ public class FriendsFragmentUser extends Fragment {
 
         List<User> friends;
         private ImageLoader imageLoader;
-        private final static String TITLE = "Friends";
+        private final static String TITLE = "Following";
 
         public void setFriends(List<User> friends) {
             AppLog.log(TAG, "setFriends");

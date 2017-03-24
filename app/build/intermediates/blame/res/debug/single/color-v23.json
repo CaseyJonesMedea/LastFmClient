@@ -1,90 +1,46 @@
 [
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_color_highlight_material.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_color_highlight_material.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_borderless_text_material.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_btn_checkable.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_btn_checkable.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\color-v23\\abc_color_highlight_material.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_spinner.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_spinner.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\color-v23\\abc_tint_spinner.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_seek_thumb.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_seek_thumb.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\design_tint_password_toggle.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\color-v23\\design_tint_password_toggle.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\color-v23\\abc_tint_seek_thumb.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_default.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_default.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_default.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_default.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_thumb.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_switch_thumb.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\color-v23\\abc_tint_default.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_btn_checkable.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_btn_checkable.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_seek_thumb.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_seek_thumb.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_text_material.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_btn_colored_text_material.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_color_highlight_material.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_color_highlight_material.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\color-v23\\abc_tint_btn_checkable.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_thumb.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_switch_thumb.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\color-v23\\abc_tint_switch_thumb.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_edittext.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_edittext.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\color-v23\\abc_tint_edittext.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_text_material.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_btn_colored_text_material.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_spinner.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_spinner.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_track.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_switch_track.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_edittext.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_edittext.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\color-v23\\abc_btn_colored_text_material.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\design_tint_password_toggle.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\color-v23\\design_tint_password_toggle.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\color-v23\\design_tint_password_toggle.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_borderless_text_material.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
     },
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_track.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\color-v23\\abc_tint_switch_track.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\7ea63d9a490d8513d0aeab2b3cf2e504b1c15e80\\output\\res\\color-v23\\abc_tint_switch_track.xml"
     }
 ]

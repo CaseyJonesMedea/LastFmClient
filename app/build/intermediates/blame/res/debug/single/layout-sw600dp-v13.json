@@ -1,10 +1,6 @@
 [
     {
         "merged": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
-        "source": "E:\\Android\\AndroidProjects\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout-sw600dp-v13\\design_layout_snackbar.xml"
-    },
-    {
-        "merged": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
-        "source": "D:\\projects\\Mrsoft\\LastFmClient\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout-sw600dp-v13\\design_layout_snackbar.xml"
+        "source": "C:\\Users\\kuhto.MR\\.android\\build-cache\\01a3fa349e2a51befae42310e7e90149361e2b5b\\output\\res\\layout-sw600dp-v13\\design_layout_snackbar.xml"
     }
 ]
