@@ -450,7 +450,7 @@ public class HomeFragmentUser extends Fragment {
             if (topAlbums.size() < 5) {
                 footerHolder.rootView.setVisibility(View.INVISIBLE);
             } else {
-                footerHolder.rootView.setVisibility(View.INVISIBLE);
+                footerHolder.rootView.setVisibility(View.VISIBLE);
                 footerHolder.rootView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
