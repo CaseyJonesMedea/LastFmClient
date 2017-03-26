@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
@@ -32,6 +35,8 @@ public class WelcomePresenter implements WelcomeIPresenter {
 
     private WelcomeActivityIView iView;
     private Subscription subscription = Subscribers.empty();
+
+    private AlertDialog dialog;
 
 
     public WelcomePresenter(WelcomeActivityIView iView) {
@@ -111,33 +116,30 @@ public class WelcomePresenter implements WelcomeIPresenter {
         View view = ((Activity) iView.getContext()).getLayoutInflater().inflate(R.layout.view_dialog_log_in, null);
         EditText nameUserEnter = (EditText) view.findViewById(R.id.name_user_enter);
         EditText passwordUserEnter = (EditText) view.findViewById(R.id.password_user_enter);
-        alertDialog.setView(view);
-
-        alertDialog.setPositiveButton("LogIn", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int arg1) {
+        TextView btnLogIn = (TextView)view.findViewById(R.id.btn_log_in);
+        btnLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 UserInformation information = new UserInformation(nameUserEnter.getText().toString(), passwordUserEnter.getText().toString());
                 loadSession(information);
             }
         });
-
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int arg1) {
-
+        TextView btnCancel = (TextView)view.findViewById(R.id.btn_cancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               dialog.cancel();
             }
         });
-
+        alertDialog.setView(view);
         alertDialog.setCancelable(true);
-        alertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            public void onCancel(DialogInterface dialog) {
-
-            }
-        });
-        AlertDialog dialog = alertDialog.create();
+        dialog = alertDialog.create();
         iView.showLoginDialog(dialog);
     }
 
     @Override
     public void onDestroy() {
+        dialog = null;
         iView = null;
         RxUtils.unsubscribe(subscription);
     }

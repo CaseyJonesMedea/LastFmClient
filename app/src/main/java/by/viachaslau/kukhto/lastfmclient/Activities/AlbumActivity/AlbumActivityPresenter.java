@@ -60,6 +60,7 @@ public class AlbumActivityPresenter implements AlbumActivityIPresenter {
             public void onError(Throwable e) {
                 AppLog.log(TAG, "onError");
                 iView.showErrorFragment();
+                iView.hideLoadProgressBar();
             }
 
             @Override

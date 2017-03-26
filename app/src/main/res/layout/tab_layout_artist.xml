@@ -10,19 +10,20 @@
     <LinearLayout
         android:id="@+id/ll_info_artist"
         android:gravity="center"
+        android:orientation="horizontal"
         android:background="@drawable/rounded_button"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
 
         <ImageView
+            android:layout_marginRight="1dp"
             android:layout_gravity="center"
             android:src="@drawable/home_white"
             android:layout_marginLeft="1dp"
-            android:layout_marginRight="1dp"
             android:layout_width="20dp"
-            android:layout_height="20dp"
-            />
+            android:layout_height="20dp"/>
+
     </LinearLayout>
 
     <LinearLayout

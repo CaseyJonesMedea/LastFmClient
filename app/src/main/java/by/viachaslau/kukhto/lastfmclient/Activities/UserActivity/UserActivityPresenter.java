@@ -41,6 +41,8 @@ public class UserActivityPresenter implements UserActivityIPresenter {
 
     private User user;
 
+    private String userName;
+
     private Map<String, Fragment> fragments = new HashMap<>();
     private String fragmentInActivity;
 
@@ -54,7 +56,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
 
     private void initializeUserInformation(Intent intent) {
         AppLog.log(TAG, "initializeUserInformation");
-        String userName = intent.getStringExtra(UserActivity.USER_NAME);
+        userName = intent.getStringExtra(UserActivity.USER_NAME);
         loadUser(userName);
     }
 
@@ -114,7 +116,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
             public void onError(Throwable e) {
                 AppLog.log(TAG, "onError");
                 iView.showErrorFragment();
-                SingletonSession.clearSession();
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -146,7 +148,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
             public void onError(Throwable e) {
                 AppLog.log(TAG, "onError");
                 iView.showErrorFragment();
-                SingletonSession.clearSession();
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -178,7 +180,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
             public void onError(Throwable e) {
                 AppLog.log(TAG, "onError");
                 iView.showErrorFragment();
-                SingletonSession.clearSession();
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -262,12 +264,16 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     @Override
     public void onBtnUpdateClick() {
         AppLog.log(TAG, "onBtnUpdateClick");
-        if (fragmentInActivity.equals(HomeFragmentUser.TAG)) {
-            initHomeFragment();
-        } else if (fragmentInActivity.equals(FriendsFragmentUser.TAG)) {
-            initFriendsFragment();
-        } else if (fragmentInActivity.equals(ChartFragmentUser.TAG)) {
-            initChartFragment();
+        if (user == null) {
+            loadUser(userName);
+        } else {
+            if (fragmentInActivity.equals(HomeFragmentUser.TAG)) {
+                initHomeFragment();
+            } else if (fragmentInActivity.equals(FriendsFragmentUser.TAG)) {
+                initFriendsFragment();
+            } else if (fragmentInActivity.equals(ChartFragmentUser.TAG)) {
+                initChartFragment();
+            }
         }
     }
 

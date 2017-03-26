@@ -66,6 +66,7 @@ public class WorldChartActivityPresenter implements WorldChartActivityIPresenter
             public void onNext(List<Artist> list) {
                 AppLog.log(TAG, "onNext");
                 iView.hideLoadProgressBar();
+                fragmentInActivity = WorldChartArtistsFragment.TAG;
                 WorldChartArtistsFragment artistsFragment = WorldChartArtistsFragment.newInstance((ArrayList<Artist>) list);
                 fragments.put(WorldChartArtistsFragment.TAG, artistsFragment);
                 iView.showFragment(artistsFragment, false, WorldChartArtistsFragment.TAG);
@@ -97,6 +98,7 @@ public class WorldChartActivityPresenter implements WorldChartActivityIPresenter
             public void onNext(List<Track> list) {
                 AppLog.log(TAG, "onNext");
                 iView.hideLoadProgressBar();
+                fragmentInActivity = WorldChartTracksFragment.TAG;
                 WorldChartTracksFragment tracksFragment = WorldChartTracksFragment.newInstance((ArrayList<Track>) list);
                 fragments.put(WorldChartTracksFragment.TAG, tracksFragment);
                 iView.showFragment(tracksFragment, false, WorldChartTracksFragment.TAG);

@@ -27,10 +27,11 @@
         <!-- Used for the title and text -->
         <item name="android:textColorPrimary">@color/colorAccent</item>
         <!-- Used for the background -->
-        <item name="android:background">@color/gunmetal</item>
+        <item name="android:windowBackground">@null</item>
     </style>
 
     <style name="TextViewInAlertDialog">
+        <item name="android:textSize">20sp</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">10dp</item>
         <item name="android:textColor">@color/white</item>

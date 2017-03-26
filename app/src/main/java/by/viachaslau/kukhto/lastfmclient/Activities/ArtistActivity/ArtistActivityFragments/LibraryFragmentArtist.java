@@ -299,16 +299,16 @@ public class LibraryFragmentArtist extends Fragment {
         public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
             final ItemViewHolder itemHolder = (ItemViewHolder) holder;
             imageLoader.displayImage(similarArtists.get(position).getImageURL(ImageSize.LARGE), itemHolder.imgArtist);
-            itemHolder.imgArtist.setOnClickListener(new View.OnClickListener() {
+            itemHolder.artistName.setText(similarArtists.get(position).getName());
+            itemHolder.cell.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(View v) {
                     AppLog.log(TAG, "onItemClick");
                     Intent intent = new Intent(getContext(), ArtistActivity.class);
                     intent.putExtra(ArtistActivity.ARTIST, similarArtists.get(position).getName());
                     getActivity().startActivity(intent);
                 }
             });
-            itemHolder.artistName.setText(similarArtists.get(position).getName());
         }
 
         @Override
@@ -343,6 +343,8 @@ public class LibraryFragmentArtist extends Fragment {
         }
 
         class ItemViewHolder extends RecyclerView.ViewHolder {
+            @BindView(R.id.section_artist)
+            LinearLayout cell;
             @BindView(R.id.artist_photo)
             ImageView imgArtist;
             @BindView(R.id.artist_band)

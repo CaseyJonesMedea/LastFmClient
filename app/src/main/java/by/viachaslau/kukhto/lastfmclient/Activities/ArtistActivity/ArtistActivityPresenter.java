@@ -1,6 +1,6 @@
 package by.viachaslau.kukhto.lastfmclient.Activities.ArtistActivity;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
@@ -14,7 +14,6 @@ import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.LibraryFragmentIn
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.Activities.ArtistActivity.ArtistActivityFragments.InfoFragmentArtist;
 import by.viachaslau.kukhto.lastfmclient.Activities.ArtistActivity.ArtistActivityFragments.LibraryFragmentArtist;
-import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -32,6 +31,8 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
     private Subscription subscription = Subscribers.empty();
     private Artist artist;
 
+    private String artistName;
+
     private Map<String, Fragment> fragments = new HashMap<>();
     private String fragmentInActivity;
 
@@ -45,7 +46,7 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
 
     private void initializeArtistInformation(Intent intent) {
         AppLog.log(TAG, "initializeArtistInformation");
-        String artistName = intent.getStringExtra(ArtistActivity.ARTIST);
+        artistName = intent.getStringExtra(ArtistActivity.ARTIST);
         loadArtist(artistName);
     }
 
@@ -67,6 +68,7 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
             public void onError(Throwable e) {
                 AppLog.log(TAG, "onError");
                 iView.showErrorFragment();
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -101,6 +103,7 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
             public void onError(Throwable e) {
                 AppLog.log(TAG, "onError");
                 iView.showErrorFragment();
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -186,10 +189,14 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
     @Override
     public void onBtnUpdateClick() {
         AppLog.log(TAG, "onBtnUpdateClick");
-        if (fragmentInActivity.equals(LibraryFragmentArtist.TAG)) {
-            initLibraryFragment();
-        } else if (fragmentInActivity.equals(InfoFragmentArtist.TAG)) {
-            initInfoFragment();
+        if (artist == null) {
+            loadArtist(artistName);
+        } else {
+            if (fragmentInActivity.equals(LibraryFragmentArtist.TAG)) {
+                initLibraryFragment();
+            } else if (fragmentInActivity.equals(InfoFragmentArtist.TAG)) {
+                initInfoFragment();
+            }
         }
     }
 

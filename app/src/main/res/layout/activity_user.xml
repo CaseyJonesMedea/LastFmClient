@@ -2,6 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_fon"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
@@ -9,29 +10,25 @@
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar_user">
-
     </include>
 
     <LinearLayout
+        android:background="@drawable/worldmap"
         android:id="@+id/user_header"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:background="@color/black"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
         android:orientation="horizontal">
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_logo_user"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:paddingLeft="20dp"
             android:src="@drawable/user_logo"/>
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
                 android:id="@+id/text_name"
                 android:layout_width="match_parent"
@@ -41,7 +38,6 @@
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 app:fonts="font1"/>
-
             <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
                 android:id="@+id/text_scrobbles"
                 android:layout_width="match_parent"
@@ -53,40 +49,32 @@
                 app:fonts="font1"/>
         </LinearLayout>
     </LinearLayout>
-
-
     <LinearLayout
+        android:layout_weight="4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
         android:orientation="vertical">
-
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
+            android:layout_height="match_parent">
             <FrameLayout
                 android:id="@+id/container_user_activity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-
             <include
                 android:id="@+id/progress_load"
                 layout="@layout/fragment_load"
                 android:visibility="invisible">
-
             </include>
         </FrameLayout>
-
-        <include
-            android:id="@+id/bottom_tab"
-            layout="@layout/tab_layout_user"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="12"></include>
-
     </LinearLayout>
+
+    <include
+        android:id="@+id/bottom_tab"
+        layout="@layout/tab_layout_user"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="12" />
 </LinearLayout>
 
 

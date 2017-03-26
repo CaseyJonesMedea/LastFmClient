@@ -1,7 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_fon"
+    android:orientation="vertical">
 
     <include
         android:id="@+id/toolbar_world_chart"
@@ -10,19 +11,16 @@
     </include>
 
     <LinearLayout
+        android:layout_weight="10"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="match_parent"
         android:background="@drawable/chart_logo"
-        android:orientation="horizontal">
-    </LinearLayout>
-
-
+        android:orientation="horizontal" />
     <LinearLayout
-        android:background="@color/black"
+        android:layout_weight="4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -31,7 +29,7 @@
             <FrameLayout
                 android:id="@+id/container_chart_activity"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
             <include
                 android:id="@+id/progress_load"
@@ -40,13 +38,11 @@
 
             </include>
         </FrameLayout>
-
-        <include
-            android:id="@+id/bottom_chart"
-            layout="@layout/tab_layout_world_chart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="12" />
-
     </LinearLayout>
+    <include
+        android:id="@+id/bottom_chart"
+        layout="@layout/tab_layout_world_chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="12" />
 </LinearLayout>

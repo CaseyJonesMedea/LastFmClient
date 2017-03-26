@@ -11,11 +11,12 @@
 
     <color name="colorPrimary">#990000</color>
     <color name="colorPrimaryDark">#EC0F1E</color>
-    <color name="colorAccent">#EC0F1E</color>
+    <color name="colorAccent">#bd202b</color>
     <color name="red">#FF0000</color>
     <color name="white">#FFF</color>
+    <color name="gray">#696969</color>
     <color name="black">#000</color>
-    <color name="black_trans">#99000000</color>
+    <color name="black_trans">#33000000</color>
     <color name="light_black">#4c4c4c</color>
 
     <color name="gunmetal">#2C3539</color>
