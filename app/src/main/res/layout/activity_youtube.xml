@@ -5,8 +5,9 @@
               android:orientation="vertical">
 
     <include
-        layout="@layout/toolbar_youtube">
-    </include>
+        layout="@layout/toolbar_youtube"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
 
     <com.google.android.youtube.player.YouTubePlayerView

@@ -12,23 +12,23 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.WelcomeActivity.WelcomeActivity">
+        <activity android:name=".UI.WelcomeActivity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.UserActivity.UserActivity">
+        <activity android:name=".UI.UserActivity.UserActivity">
         </activity>
-        <activity android:name=".Activities.ArtistActivity.ArtistActivity"></activity>
-        <activity android:name=".Activities.AlbumActivity.AlbumActivity"></activity>
-        <activity android:name=".Activities.ListActivity.ListActivity"></activity>
-        <activity android:name=".Activities.WorldChardActivity.WorldChartActivity"></activity>
-        <activity android:name=".Activities.TrackActivity.TrackActivity"
+        <activity android:name=".UI.ArtistActivity.ArtistActivity"></activity>
+        <activity android:name=".UI.Album.AlbumActivity"></activity>
+        <activity android:name=".UI.ListActivity.ListActivity"></activity>
+        <activity android:name=".UI.WorldChardActivity.WorldChartActivity"></activity>
+        <activity android:name=".UI.TrackActivity.TrackActivity"
                   android:theme="@style/Theme.AppCompat.Translucent">
         </activity>
-        <activity android:name=".Activities.SearchActivity.SearchActivity"></activity>
-        <activity android:name=".Activities.YouTubeActivity.YouTubeActivity"></activity>
+        <activity android:name=".UI.SearchActivity.SearchActivity"></activity>
+        <activity android:name=".UI.YouTubeActivity.YouTubeActivity"></activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"

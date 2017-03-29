@@ -13,8 +13,9 @@ import com.nostra13.universalimageloader.utils.L;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 
+import by.viachaslau.kukhto.lastfmclient.DI.AppComponent;
+import by.viachaslau.kukhto.lastfmclient.DI.DaggerAppComponent;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
-import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Caller;
 import by.viachaslau.kukhto.lastfmclient.R;
 import io.fabric.sdk.android.Fabric;
@@ -27,16 +28,17 @@ public class App extends Application {
 
     public static final String TAG = App.class.getSimpleName();
 
+    private static AppComponent component;
 
     @Override
     public void onCreate() {
         super.onCreate();
         Fabric.with(this, new Crashlytics());
+        component = DaggerAppComponent.create();
         AppLog.newInstance(true);
         initializeImageLoader(this);
         initializeLastFm();
         SingletonPreference.newInstance(this);
-        ModelImpl.newInstance();
     }
 
     private void initializeImageLoader(Context context) {
@@ -69,5 +71,10 @@ public class App extends Application {
         Caller.getInstance().setDebugMode(true);
         Caller.getInstance().setCache(null);
     }
+
+    public static AppComponent getComponent() {
+        return component;
+    }
+
 
 }

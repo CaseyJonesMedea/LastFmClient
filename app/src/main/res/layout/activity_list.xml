@@ -6,28 +6,30 @@
 
     <include
         android:id="@+id/toolbar_list"
-        layout="@layout/toolbar_list"></include>
+        layout="@layout/toolbar_list"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_height="0dp"
+        android:layout_weight="20"
         android:orientation="vertical">
 
         <FrameLayout
             android:id="@+id/container_list_activity"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></FrameLayout>
+            android:layout_height="match_parent"/>
 
         <include
             android:id="@+id/progress_load"
             layout="@layout/fragment_load"
-            android:visibility="invisible"></include>
+            android:visibility="invisible"/>
     </FrameLayout>
 
     <include
         layout="@layout/tab_layout_commercial"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="15"></include>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
 </LinearLayout>

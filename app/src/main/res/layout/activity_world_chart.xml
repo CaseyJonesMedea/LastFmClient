@@ -1,48 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_fon"
-    android:orientation="vertical">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/background_fon"
+              android:orientation="vertical">
 
     <include
         android:id="@+id/toolbar_world_chart"
-        layout="@layout/toolbar_world_chart">
-
+        layout="@layout/toolbar_world_chart"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
     </include>
 
     <LinearLayout
-        android:layout_weight="10"
+        android:id="@+id/user_header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:gravity="center"
         android:background="@drawable/chart_logo"
-        android:orientation="horizontal" />
+        android:orientation="horizontal">
+    </LinearLayout>
+
     <LinearLayout
-        android:layout_weight="4"
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_weight="50"
+        android:layout_height="0dp"
         android:orientation="vertical">
+
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="match_parent">
 
             <FrameLayout
                 android:id="@+id/container_chart_activity"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"/>
 
             <include
                 android:id="@+id/progress_load"
                 layout="@layout/fragment_load"
                 android:visibility="invisible">
-
             </include>
         </FrameLayout>
     </LinearLayout>
+
     <include
         android:id="@+id/bottom_chart"
         layout="@layout/tab_layout_world_chart"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="12" />
+        android:layout_height="wrap_content"/>
 </LinearLayout>
+
+
+

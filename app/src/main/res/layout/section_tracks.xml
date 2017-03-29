@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/albums_photo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:paddingLeft="10dp" />
 
     <LinearLayout
@@ -27,6 +27,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textColor="@color/white"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
         <TextView
@@ -35,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:textSize="15dp"
             android:textColor="@color/white" />
 
     </LinearLayout>
