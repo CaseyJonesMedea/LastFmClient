@@ -19,5 +19,4 @@ public class ImageLoaderInstanceModule {
         AppLog.log(TAG, "provideImageLoader");
         return ImageLoader.getInstance();
     }
-
 }
