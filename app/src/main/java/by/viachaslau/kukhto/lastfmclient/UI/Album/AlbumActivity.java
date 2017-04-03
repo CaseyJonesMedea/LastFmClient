@@ -27,7 +27,7 @@ import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.R;
-import by.viachaslau.kukhto.lastfmclient.UI.UserActivity.UserActivityFragments.ErrorFragmentUser;
+import by.viachaslau.kukhto.lastfmclient.UI.User.UserActivityFragments.ErrorFragmentUser;
 
 /**
  * Created by VKukh on 04.03.2017.

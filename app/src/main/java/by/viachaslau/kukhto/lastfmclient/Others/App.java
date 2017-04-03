@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.ads.MobileAds;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -35,6 +36,7 @@ public class App extends Application {
         super.onCreate();
         Fabric.with(this, new Crashlytics());
         component = DaggerAppComponent.create();
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-1058052870374965~6990183536");
         AppLog.newInstance(true);
         initializeImageLoader(this);
         initializeLastFm();

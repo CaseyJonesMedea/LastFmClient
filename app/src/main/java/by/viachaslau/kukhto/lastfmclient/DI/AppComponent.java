@@ -4,13 +4,13 @@ package by.viachaslau.kukhto.lastfmclient.DI;
 
 import by.viachaslau.kukhto.lastfmclient.UI.Album.AlbumActivity;
 import by.viachaslau.kukhto.lastfmclient.UI.Artist.ArtistActivity;
-import by.viachaslau.kukhto.lastfmclient.UI.ListActivity.ListActivity;
-import by.viachaslau.kukhto.lastfmclient.UI.SearchActivity.SearchActivity;
-import by.viachaslau.kukhto.lastfmclient.UI.TrackActivity.TrackActivity;
-import by.viachaslau.kukhto.lastfmclient.UI.UserActivity.UserActivity;
-import by.viachaslau.kukhto.lastfmclient.UI.WelcomeActivity.WelcomeActivity;
-import by.viachaslau.kukhto.lastfmclient.UI.WorldChardActivity.WorldChartActivity;
-import by.viachaslau.kukhto.lastfmclient.UI.YouTubeActivity.YouTubeActivity;
+import by.viachaslau.kukhto.lastfmclient.UI.List.ListActivity;
+import by.viachaslau.kukhto.lastfmclient.UI.Search.SearchActivity;
+import by.viachaslau.kukhto.lastfmclient.UI.Track.TrackActivity;
+import by.viachaslau.kukhto.lastfmclient.UI.User.UserActivity;
+import by.viachaslau.kukhto.lastfmclient.UI.Welcome.WelcomeActivity;
+import by.viachaslau.kukhto.lastfmclient.UI.WorldChard.WorldChartActivity;
+import by.viachaslau.kukhto.lastfmclient.UI.YouTube.YouTubeActivity;
 import dagger.Component;
 
 /**

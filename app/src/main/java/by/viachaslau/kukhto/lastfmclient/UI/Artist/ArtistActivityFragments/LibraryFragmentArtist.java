@@ -29,8 +29,8 @@ import by.viachaslau.kukhto.lastfmclient.Others.Data;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.UI.Album.AlbumActivity;
 import by.viachaslau.kukhto.lastfmclient.UI.Artist.ArtistActivity;
-import by.viachaslau.kukhto.lastfmclient.UI.ListActivity.ListActivity;
-import by.viachaslau.kukhto.lastfmclient.UI.TrackActivity.TrackActivity;
+import by.viachaslau.kukhto.lastfmclient.UI.List.ListActivity;
+import by.viachaslau.kukhto.lastfmclient.UI.Track.TrackActivity;
 import io.github.luizgrp.sectionedrecyclerviewadapter.Section;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 

@@ -1,19 +1,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_fon"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:ads="http://schemas.android.com/apk/res-auto"
+              android:background="@drawable/background_fon"
+              android:orientation="vertical">
 
     <include
         android:id="@+id/toolbar_list"
-        layout="@layout/toolbar_list"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        layout="@layout/toolbar_list"/>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="20"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <FrameLayout
@@ -27,9 +26,14 @@
             android:visibility="invisible"/>
     </FrameLayout>
 
-    <include
-        layout="@layout/tab_layout_commercial"
-        android:layout_width="match_parent"
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id_1">
+    </com.google.android.gms.ads.AdView>
 </LinearLayout>

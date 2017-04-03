@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'io.fabric'
 
+
 repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
@@ -11,6 +12,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
+        multiDexEnabled true
         applicationId "by.viachaslau.kukhto.lastfmclient"
         minSdkVersion 15
         targetSdkVersion 25
@@ -64,4 +66,6 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') {
         transitive = true;
     }
+    compile 'com.google.firebase:firebase-core:10.2.1'
+    compile 'com.google.android.gms:play-services:10.2.1'
 }

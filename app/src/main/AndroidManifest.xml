@@ -12,23 +12,23 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.WelcomeActivity.WelcomeActivity">
+        <activity android:name=".UI.Welcome.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".UI.UserActivity.UserActivity">
+        <activity android:name=".UI.User.UserActivity">
         </activity>
         <activity android:name=".UI.Artist.ArtistActivity"></activity>
         <activity android:name=".UI.Album.AlbumActivity"></activity>
-        <activity android:name=".UI.ListActivity.ListActivity"></activity>
-        <activity android:name=".UI.WorldChardActivity.WorldChartActivity"></activity>
-        <activity android:name=".UI.TrackActivity.TrackActivity"
+        <activity android:name=".UI.List.ListActivity"></activity>
+        <activity android:name=".UI.WorldChard.WorldChartActivity"></activity>
+        <activity android:name=".UI.Track.TrackActivity"
                   android:theme="@style/Theme.AppCompat.Translucent">
         </activity>
-        <activity android:name=".UI.SearchActivity.SearchActivity"></activity>
-        <activity android:name=".UI.YouTubeActivity.YouTubeActivity"></activity>
+        <activity android:name=".UI.Search.SearchActivity"></activity>
+        <activity android:name=".UI.YouTube.YouTubeActivity"></activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"
