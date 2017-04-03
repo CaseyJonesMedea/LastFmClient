@@ -63,7 +63,8 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
     @Inject
     protected AlbumActivityPresenter presenter;
 
-    private ImageLoader imageLoader;
+    @Inject
+    protected ImageLoader imageLoader;
 
     private Animation rotation;
 
@@ -76,9 +77,8 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
         setContentView(R.layout.activity_album);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ButterKnife.bind(this);
+        App.getComponent().inject(this);
         initInitialization();
-        imageLoader = ImageLoader.getInstance();
-        App.getComponent().createActivityComponent().inject(this);
         presenter.onCreate(this, getIntent());
     }
 

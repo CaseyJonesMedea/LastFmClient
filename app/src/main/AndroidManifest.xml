@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".UI.UserActivity.UserActivity">
         </activity>
-        <activity android:name=".UI.ArtistActivity.ArtistActivity"></activity>
+        <activity android:name=".UI.Artist.ArtistActivity"></activity>
         <activity android:name=".UI.Album.AlbumActivity"></activity>
         <activity android:name=".UI.ListActivity.ListActivity"></activity>
         <activity android:name=".UI.WorldChardActivity.WorldChartActivity"></activity>

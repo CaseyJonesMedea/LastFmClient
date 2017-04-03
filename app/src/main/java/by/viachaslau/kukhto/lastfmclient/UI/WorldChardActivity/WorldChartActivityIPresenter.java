@@ -6,6 +6,8 @@ package by.viachaslau.kukhto.lastfmclient.UI.WorldChardActivity;
 
 public interface WorldChartActivityIPresenter {
 
+    void onCreate(WorldChartActivityIView iView);
+
     void onBtnUpdateClick();
 
     void onBtnChartArtistClick();

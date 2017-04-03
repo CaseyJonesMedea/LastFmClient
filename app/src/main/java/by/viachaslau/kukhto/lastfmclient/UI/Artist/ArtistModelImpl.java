@@ -1,4 +1,4 @@
-package by.viachaslau.kukhto.lastfmclient.UI.ArtistActivity;
+package by.viachaslau.kukhto.lastfmclient.UI.Artist;
 
 import java.util.ArrayList;
 import java.util.Collection;

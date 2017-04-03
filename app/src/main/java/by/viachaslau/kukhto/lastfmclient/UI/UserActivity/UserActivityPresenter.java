@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.ChartFragmentInformation;
@@ -42,12 +44,18 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     private Map<String, Fragment> fragments = new HashMap<>();
     private String fragmentInActivity;
 
+    @Inject
     protected UserModelImpl model;
 
 
-    public UserActivityPresenter(UserActivityIView iView, Intent intent) {
+    public UserActivityPresenter(UserModelImpl model) {
         AppLog.log(TAG, "createUserActivityPresenter");
-        model = new UserModelImpl();
+        this.model = model;
+    }
+
+    @Override
+    public void onCreate(UserActivityIView iView, Intent intent) {
+        AppLog.log(TAG, "onCreate");
         this.iView = iView;
         initializeUserInformation(intent);
     }

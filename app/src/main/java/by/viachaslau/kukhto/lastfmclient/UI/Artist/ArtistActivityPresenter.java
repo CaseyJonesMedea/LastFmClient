@@ -1,4 +1,4 @@
-package by.viachaslau.kukhto.lastfmclient.UI.ArtistActivity;
+package by.viachaslau.kukhto.lastfmclient.UI.Artist;
 
 
 import android.content.Intent;
@@ -11,8 +11,8 @@ import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.LibraryFragmentInformation;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
-import by.viachaslau.kukhto.lastfmclient.UI.ArtistActivity.ArtistActivityFragments.InfoFragmentArtist;
-import by.viachaslau.kukhto.lastfmclient.UI.ArtistActivity.ArtistActivityFragments.LibraryFragmentArtist;
+import by.viachaslau.kukhto.lastfmclient.UI.Artist.ArtistActivityFragments.InfoFragmentArtist;
+import by.viachaslau.kukhto.lastfmclient.UI.Artist.ArtistActivityFragments.LibraryFragmentArtist;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.observers.Subscribers;
@@ -38,11 +38,9 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
     protected ArtistModelImpl model;
 
 
-    public ArtistActivityPresenter(ArtistActivityIView iView, Intent intent) {
+    public ArtistActivityPresenter(ArtistModelImpl model) {
         AppLog.log(TAG, "createArtistActivityPresenter");
-        model = new ArtistModelImpl();
-        this.iView = iView;
-        initializeArtistInformation(intent);
+        this.model = model;
     }
 
 
@@ -149,6 +147,13 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
         });
     }
 
+
+    @Override
+    public void onCreate(ArtistActivityIView iView, Intent intent) {
+        AppLog.log(TAG, "onCreate");
+        this.iView = iView;
+        initializeArtistInformation(intent);
+    }
 
     @Override
     public void onBtnInfoClick() {

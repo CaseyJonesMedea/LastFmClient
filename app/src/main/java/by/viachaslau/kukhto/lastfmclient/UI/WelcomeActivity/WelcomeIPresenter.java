@@ -6,6 +6,8 @@ package by.viachaslau.kukhto.lastfmclient.UI.WelcomeActivity;
 
 public interface WelcomeIPresenter {
 
+    void onCreate(WelcomeActivityIView iView);
+
     void onBtnLogInClick();
 
     void onBtnRegistrationClick();

@@ -35,12 +35,18 @@ public class WorldChartActivityPresenter implements WorldChartActivityIPresenter
     protected WorldChartModelImpl model;
 
 
-    public WorldChartActivityPresenter(WorldChartActivityIView iView) {
+    public WorldChartActivityPresenter(WorldChartModelImpl model) {
         AppLog.log(TAG, "createWorldChartActivityPresenter");
-        model = new WorldChartModelImpl();
+        this.model = model;
+    }
+
+    @Override
+    public void onCreate(WorldChartActivityIView iView){
+        AppLog.log(TAG, "onCreate");
         this.iView = iView;
         initializeArtistChart();
     }
+
 
     private void initializeArtistChart() {
         AppLog.log(TAG, "initializeArtistChart");

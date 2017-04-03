@@ -1,4 +1,4 @@
-package by.viachaslau.kukhto.lastfmclient.UI.ArtistActivity.ArtistActivityFragments;
+package by.viachaslau.kukhto.lastfmclient.UI.Artist.ArtistActivityFragments;
 
 
 import android.os.Bundle;

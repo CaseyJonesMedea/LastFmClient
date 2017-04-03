@@ -28,12 +28,13 @@ public class AlbumActivityPresenter implements AlbumActivityIPresenter {
     private String artistName;
     private String albumName;
 
-    @Inject
-    AlbumModelImpl model;
+
+    private AlbumModelImpl model;
 
 
-    public AlbumActivityPresenter() {
+    public AlbumActivityPresenter(AlbumModelImpl model) {
         AppLog.log(TAG, "CreateAlbumActivityPresenter");
+        this.model = model;
     }
 
 
@@ -90,7 +91,6 @@ public class AlbumActivityPresenter implements AlbumActivityIPresenter {
     @Override
     public void onCreate(AlbumActivityIView iView, Intent intent) {
         AppLog.log(TAG, "onCreate");
-        App.getComponent().createActivityComponent().inject(this);
         this.iView = iView;
         initializeAlbumInformation(intent);
     }

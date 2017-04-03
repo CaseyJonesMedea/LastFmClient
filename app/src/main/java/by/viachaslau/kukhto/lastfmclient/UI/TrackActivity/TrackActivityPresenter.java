@@ -29,10 +29,15 @@ public class TrackActivityPresenter implements TrackActivityIPresenter {
 
     protected TrackModelImpl model;
 
-    public TrackActivityPresenter(TrackActivityIView iView, Intent intent) {
+    public TrackActivityPresenter(TrackModelImpl model) {
         AppLog.log(TAG, "createTrackActivityPresenter");
+        this.model = model;
+    }
+
+    @Override
+    public void onCreate(TrackActivityIView iView, Intent intent) {
+        AppLog.log(TAG, "onCreate");
         this.iView = iView;
-        model = new TrackModelImpl();
         track = (Track) intent.getSerializableExtra(TrackActivity.TRACK);
         url = track.getUrl();
         loadPage(url);
@@ -67,6 +72,7 @@ public class TrackActivityPresenter implements TrackActivityIPresenter {
             }
         });
     }
+
 
     @Override
     public void onDestroy() {

@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import javax.inject.Inject;
+
+import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.R;
 
@@ -18,7 +21,8 @@ public class TrackActivity extends AppCompatActivity implements TrackActivityIVi
 
     public static final String TRACK = "track";
 
-    private TrackActivityPresenter presenter;
+    @Inject
+    protected TrackActivityPresenter presenter;
 
 
     @Override
@@ -26,7 +30,8 @@ public class TrackActivity extends AppCompatActivity implements TrackActivityIVi
         AppLog.log(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track);
-        presenter = new TrackActivityPresenter(this, getIntent());
+        App.getComponent().inject(this);
+        presenter.onCreate(this, getIntent());
     }
 
     @Override

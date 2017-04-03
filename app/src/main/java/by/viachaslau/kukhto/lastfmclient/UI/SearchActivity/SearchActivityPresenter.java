@@ -36,9 +36,14 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
 
     protected SearchModelImpl model;
 
-    public SearchActivityPresenter(SearchActivityIVIew iView, EditText edtSearch, RadioButton radioButtonArtist, RadioButton radioButtonAlbum, RadioButton radioButtonTrack) {
+    public SearchActivityPresenter(SearchModelImpl model) {
         AppLog.log(TAG, "createSearchActivityPresenter");
-        model = new SearchModelImpl();
+        this.model = model;
+    }
+
+    @Override
+    public void onCreate(SearchActivityIVIew iView, EditText edtSearch, RadioButton radioButtonArtist, RadioButton radioButtonAlbum, RadioButton radioButtonTrack) {
+        AppLog.log(TAG, "onCreate");
         this.iView = iView;
         this.edtSearch = edtSearch;
         this.radioButtonArtist = radioButtonArtist;

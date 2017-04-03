@@ -1,4 +1,4 @@
-package by.viachaslau.kukhto.lastfmclient.UI.ArtistActivity;
+package by.viachaslau.kukhto.lastfmclient.UI.Artist;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -17,8 +17,12 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.DI.AppComponent;
+import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
@@ -54,9 +58,11 @@ public class ArtistActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.img_logo_artist)
     ImageView logoArtist;
 
-    private ImageLoader imageLoader;
+    @Inject
+    protected ImageLoader imageLoader;
     private ErrorFragmentUser errorFragmentUser;
-    private ArtistActivityPresenter presenter;
+    @Inject
+    protected ArtistActivityPresenter presenter;
 
     private Animation rotation;
 
@@ -65,11 +71,11 @@ public class ArtistActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         AppLog.log(TAG, "onCreate");
         setContentView(R.layout.activity_artist);
+        App.getComponent().inject(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        imageLoader = ImageLoader.getInstance();
         ButterKnife.bind(this);
         initInitialize();
-        presenter = new ArtistActivityPresenter(this, getIntent());
+        presenter.onCreate(this, getIntent());
     }
 
     private void initInitialize() {

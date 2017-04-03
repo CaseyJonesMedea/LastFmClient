@@ -5,6 +5,8 @@ import android.content.Intent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
@@ -33,15 +35,20 @@ public class ListActivityPresenter implements ListActivityIPresenter {
     private String type;
     private String name;
 
-
     protected ListModelImpl model;
 
 
-    public ListActivityPresenter(ListActivityIView iView, Intent intent) {
+    public ListActivityPresenter(ListModelImpl model) {
         AppLog.log(TAG, "createListActivityPresenter");
+        this.model = model;
+    }
+
+
+    @Override
+    public void onCreate(ListActivityIView iView, Intent intent) {
+        AppLog.log(TAG, "onCreate");
         this.iView = iView;
         fullFragmentList = new FullFragmentList();
-        model = new ListModelImpl();
         initList(intent);
     }
 

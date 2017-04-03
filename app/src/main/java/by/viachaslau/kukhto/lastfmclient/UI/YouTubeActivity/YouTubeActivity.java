@@ -16,8 +16,11 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.Others.YouTube;
@@ -40,7 +43,8 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
     private static final int RECOVERY_REQUEST = 1;
 
-    private YouTubeActivityPresenter presenter;
+    @Inject
+    protected YouTubeActivityPresenter presenter;
 
     @BindView(R.id.youtube_view)
     YouTubePlayerView youTubeView;
@@ -67,6 +71,7 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_youtube);
         AppLog.log(TAG, "onCreate" + "savedInstanceState= " + savedInstanceState);
+        App.getComponent().inject(this);
         if (savedInstanceState != null) {
             trackIsScrobble = savedInstanceState.getBoolean(TRACK_IS_SCROBBLE);
             youTubeCode = savedInstanceState.getString(YOUTUBE_CODE);
@@ -80,7 +85,7 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
             time = 0;
             trackIsScrobble = false;
         }
-        presenter = new YouTubeActivityPresenter(this, youTubeCode, track);
+        presenter.onCreate(this, youTubeCode, track);
         ButterKnife.bind(this);
         initialize();
         youTubeView.initialize(YouTube.key, this);

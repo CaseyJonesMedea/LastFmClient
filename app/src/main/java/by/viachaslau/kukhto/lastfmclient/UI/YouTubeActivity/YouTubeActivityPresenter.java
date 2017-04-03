@@ -32,15 +32,19 @@ public class YouTubeActivityPresenter implements YouTubeActivityIPresenter {
 
     private Track track;
 
-
     private Subscription subscription = Subscribers.empty();
 
     protected YouTubeModelImpl model;
 
 
-    public YouTubeActivityPresenter(YouTubeActivityIView iView, String code, Track track) {
+    public YouTubeActivityPresenter(YouTubeModelImpl model) {
         AppLog.log(TAG, "createYouTubeActivityPresenter");
-        model = new YouTubeModelImpl();
+        this.model = model;
+    }
+
+    @Override
+    public void onCreate(YouTubeActivityIView iView, String code, Track track) {
+        AppLog.log(TAG, "onCreate");
         this.iView = iView;
         this.track = track;
         initialize(code);
@@ -89,6 +93,7 @@ public class YouTubeActivityPresenter implements YouTubeActivityIPresenter {
         }
         return isLove;
     }
+
 
     @Override
     public void onBtnShareClick() {

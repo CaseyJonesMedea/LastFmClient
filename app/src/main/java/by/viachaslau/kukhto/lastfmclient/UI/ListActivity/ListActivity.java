@@ -15,8 +15,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.UI.UserActivity.UserActivityFragments.ErrorFragmentUser;
@@ -29,12 +32,11 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
 
     public static final String TAG = ListActivity.class.getSimpleName();
 
-
     public static final String NAME_USER = "nameUser";
     public static final String TITLE = "title";
 
-
-    private ListActivityPresenter presenter;
+    @Inject
+    ListActivityPresenter presenter;
 
     private ErrorFragmentUser errorFragmentUser;
 
@@ -53,9 +55,10 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
         AppLog.log(TAG, "onCreate");
         setContentView(R.layout.activity_list);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        App.getComponent().inject(this);
         ButterKnife.bind(this);
         initInitialize();
-        presenter = new ListActivityPresenter(this, getIntent());
+        presenter.onCreate(this, getIntent());
     }
 
     private void initInitialize() {

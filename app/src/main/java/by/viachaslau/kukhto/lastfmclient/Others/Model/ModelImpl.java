@@ -13,7 +13,6 @@ public abstract class ModelImpl {
     protected
     Scheduler uiThread;
 
-
     protected
     Scheduler ioThread;
 

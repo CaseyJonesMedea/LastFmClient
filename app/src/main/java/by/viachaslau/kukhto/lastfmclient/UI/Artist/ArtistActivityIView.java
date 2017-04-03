@@ -1,4 +1,4 @@
-package by.viachaslau.kukhto.lastfmclient.UI.ArtistActivity;
+package by.viachaslau.kukhto.lastfmclient.UI.Artist;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;

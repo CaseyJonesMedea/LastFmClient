@@ -14,8 +14,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.UI.UserActivity.UserActivityFragments.ErrorFragmentUser;
@@ -40,7 +43,8 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
     @BindView(R.id.ll_chart_tracks)
     LinearLayout btnChartTracks;
 
-    private WorldChartActivityPresenter presenter;
+    @Inject
+    protected WorldChartActivityPresenter presenter;
 
     private Animation rotation;
 
@@ -51,9 +55,10 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
         AppLog.log(TAG, "onCreate");
         setContentView(R.layout.activity_world_chart);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        App.getComponent().inject(this);
         ButterKnife.bind(this);
         initialize();
-        presenter = new WorldChartActivityPresenter(this);
+        presenter.onCreate(this);
     }
 
     private void initialize() {

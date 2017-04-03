@@ -15,8 +15,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.UI.SearchActivity.SearchActivityAdapters.SearchAdapter;
@@ -51,7 +54,8 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
     @BindView(R.id.radio_btn_track)
     RadioButton radioButtonTrack;
 
-    private SearchActivityPresenter presenter;
+    @Inject
+    protected SearchActivityPresenter presenter;
 
 
     @Override
@@ -60,9 +64,10 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
         AppLog.log(TAG, "onCreate");
         setContentView(R.layout.activity_search);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        App.getComponent().inject(this);
         ButterKnife.bind(this);
         initInitialize();
-        presenter = new SearchActivityPresenter(this, edtSearch, radioButtonArtist, radioButtonAlbum, radioButtonTrack);
+        presenter.onCreate(this, edtSearch, radioButtonArtist, radioButtonAlbum, radioButtonTrack);
     }
 
 

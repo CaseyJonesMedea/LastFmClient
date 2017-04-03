@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
+import javax.inject.Inject;
+
+import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.UserInformation;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Session;
@@ -27,7 +30,10 @@ import rx.observers.Subscribers;
 
 public class WelcomePresenter implements WelcomeIPresenter {
 
+    public static final String TAG = WelcomePresenter.class.getSimpleName();
+
     private WelcomeActivityIView iView;
+
     private Subscription subscription = Subscribers.empty();
 
     private AlertDialog dialog;
@@ -35,19 +41,27 @@ public class WelcomePresenter implements WelcomeIPresenter {
     protected WelcomeModelImpl model;
 
 
-    public WelcomePresenter(WelcomeActivityIView iView) {
+    public WelcomePresenter(WelcomeModelImpl model) {
+        AppLog.log(TAG, "createWelcomePresenter");
+        this.model = model;
+    }
+
+    @Override
+    public void onCreate(WelcomeActivityIView iView) {
+        AppLog.log(TAG, "onCreate");
         this.iView = iView;
-        model = new WelcomeModelImpl();
         initActivity();
     }
 
     private void initActivity() {
+        AppLog.log(TAG, "initActivity");
         if (subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getSharedPreferencesUserInfo().subscribe(new Action1<UserInformation>() {
             @Override
             public void call(UserInformation userInformation) {
+                AppLog.log(TAG, "call");
                 if (userInformation != null) {
                     loadSession(userInformation);
                 } else {
@@ -58,6 +72,7 @@ public class WelcomePresenter implements WelcomeIPresenter {
     }
 
     private void loadSession(UserInformation userInformation) {
+        AppLog.log(TAG, "loadSession");
         iView.showScreenLoad();
         if (subscription.isUnsubscribed()) {
             subscription.unsubscribe();
@@ -65,16 +80,18 @@ public class WelcomePresenter implements WelcomeIPresenter {
         subscription = model.getMobileSession(userInformation).subscribe(new Subscriber<Session>() {
             @Override
             public void onCompleted() {
-
+                AppLog.log(TAG, "onCompleted");
             }
 
             @Override
             public void onError(Throwable e) {
+                AppLog.log(TAG, "onError");
                 iView.showErrorInternetMessage();
             }
 
             @Override
             public void onNext(Session session) {
+                AppLog.log(TAG, "onNext");
                 if (session != null) {
                     SingletonSession.newInstance(session);
                     SingletonPreference.getInstance().saveUserInfo(userInformation);
@@ -89,19 +106,23 @@ public class WelcomePresenter implements WelcomeIPresenter {
     }
 
     private void goToUserActivity(String userName) {
+        AppLog.log(TAG, "goToUserActivity");
         Intent intent = new Intent(iView.getContext(), UserActivity.class);
         intent.putExtra(UserActivity.USER_NAME, userName);
         iView.getContext().startActivity(intent);
         ((WelcomeActivity) iView.getContext()).finish();
     }
 
+
     @Override
     public void onBtnLogInClick() {
+        AppLog.log(TAG, "onBtnLogInClick");
         createLogInAlertDialog();
     }
 
     @Override
     public void onBtnRegistrationClick() {
+        AppLog.log(TAG, "onBtnRegistrationClick");
         Uri address = Uri.parse(iView.getContext().getString(R.string.uri_registration));
         Intent openlinkIntent = new Intent(Intent.ACTION_VIEW, address);
         iView.getContext().startActivity(openlinkIntent);
@@ -109,6 +130,7 @@ public class WelcomePresenter implements WelcomeIPresenter {
 
 
     private void createLogInAlertDialog() {
+        AppLog.log(TAG, "createLogInAlertDialog");
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(iView.getContext(), R.style.MyAlertDialogStyle);
         View view = ((Activity) iView.getContext()).getLayoutInflater().inflate(R.layout.view_dialog_log_in, null);
         EditText nameUserEnter = (EditText) view.findViewById(R.id.name_user_enter);
@@ -136,6 +158,7 @@ public class WelcomePresenter implements WelcomeIPresenter {
 
     @Override
     public void onDestroy() {
+        AppLog.log(TAG, "onDestroy");
         dialog = null;
         iView = null;
         RxUtils.unsubscribe(subscription);
@@ -143,6 +166,7 @@ public class WelcomePresenter implements WelcomeIPresenter {
 
     @Override
     public void onRefresh() {
+        AppLog.log(TAG, "onRefresh");
         initActivity();
     }
 }

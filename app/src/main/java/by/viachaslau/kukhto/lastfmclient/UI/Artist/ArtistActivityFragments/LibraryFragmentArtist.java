@@ -1,4 +1,4 @@
-package by.viachaslau.kukhto.lastfmclient.UI.ArtistActivity.ArtistActivityFragments;
+package by.viachaslau.kukhto.lastfmclient.UI.Artist.ArtistActivityFragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +28,7 @@ import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.Others.Data;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.UI.Album.AlbumActivity;
-import by.viachaslau.kukhto.lastfmclient.UI.ArtistActivity.ArtistActivity;
+import by.viachaslau.kukhto.lastfmclient.UI.Artist.ArtistActivity;
 import by.viachaslau.kukhto.lastfmclient.UI.ListActivity.ListActivity;
 import by.viachaslau.kukhto.lastfmclient.UI.TrackActivity.TrackActivity;
 import io.github.luizgrp.sectionedrecyclerviewadapter.Section;

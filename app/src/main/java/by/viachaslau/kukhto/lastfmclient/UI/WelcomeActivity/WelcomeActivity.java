@@ -12,8 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.R;
 
@@ -34,7 +37,8 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeActivit
     @BindView(R.id.load)
     View fragmentLoad;
 
-    private WelcomePresenter presenter;
+    @Inject
+    protected WelcomePresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,9 +46,10 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeActivit
         AppLog.log(TAG, "onCreate");
         setContentView(R.layout.activity_welcome);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        App.getComponent().inject(this);
         ButterKnife.bind(this);
         initinitialize();
-        presenter = new WelcomePresenter(this);
+        presenter.onCreate(this);
     }
 
     private void initinitialize() {

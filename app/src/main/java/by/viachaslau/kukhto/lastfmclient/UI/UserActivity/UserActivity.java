@@ -17,8 +17,11 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.User;
@@ -57,8 +60,11 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
     LinearLayout loadFragment;
 
     private ErrorFragmentUser errorFragmentUser;
-    private UserActivityPresenter presenter;
-    private ImageLoader imageLoader;
+    @Inject
+    protected UserActivityPresenter presenter;
+
+    @Inject
+    protected ImageLoader imageLoader;
 
     private Animation rotation;
 
@@ -70,10 +76,10 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
         AppLog.log(TAG, "onCreate");
         setContentView(R.layout.activity_user);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        App.getComponent().inject(this);
         ButterKnife.bind(this);
         initialize();
-        imageLoader = ImageLoader.getInstance();
-        presenter = new UserActivityPresenter(this, getIntent());
+        presenter.onCreate(this, getIntent());
     }
 
     private void initialize() {
