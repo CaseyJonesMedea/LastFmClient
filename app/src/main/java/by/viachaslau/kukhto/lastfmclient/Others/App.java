@@ -34,9 +34,10 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        AppLog.log(TAG, "onCreate");
         Fabric.with(this, new Crashlytics());
         component = DaggerAppComponent.create();
-        MobileAds.initialize(getApplicationContext(), "ca-app-pub-1058052870374965~6990183536");
+        MobileAds.initialize(getApplicationContext(), getResources().getString(R.string.application_admob));
         AppLog.newInstance(true);
         initializeImageLoader(this);
         initializeLastFm();
@@ -51,12 +52,9 @@ public class App extends Application {
                         .showImageOnFail(R.drawable.user_logo)
                         .showImageOnLoading(R.drawable.user_logo)
                         .cacheInMemory(true).cacheOnDisk(true).build();
-
         config.defaultDisplayImageOptions(options);
         config.threadPoolSize(5);
-
         L.writeLogs(false);
-
         config.diskCache(new UnlimitedDiskCache(StorageUtils.getCacheDirectory(context), null, imageUri -> {
             String generate = String.valueOf(imageUri.hashCode());
             return generate;
