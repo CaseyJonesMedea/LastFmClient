@@ -70,7 +70,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     private void loadUser(String userName) {
         AppLog.log(TAG, "loadUser");
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 
@@ -78,6 +78,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
             @Override
             public void onCompleted() {
                 AppLog.log(TAG, "onCompleted");
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -91,7 +92,6 @@ public class UserActivityPresenter implements UserActivityIPresenter {
             public void onNext(User user) {
                 AppLog.log(TAG, "onNext");
                 initUser(user);
-                iView.hideLoadProgressBar();
                 iView.initUserFull(user);
                 initHomeFragment();
             }
@@ -108,7 +108,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
         AppLog.log(TAG, "initHomeFragment");
         fragmentInActivity = HomeFragmentUser.TAG;
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 
@@ -140,7 +140,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
         AppLog.log(TAG, "initChartFragment");
         fragmentInActivity = ChartFragmentUser.TAG;
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 
@@ -172,7 +172,7 @@ public class UserActivityPresenter implements UserActivityIPresenter {
         AppLog.log(TAG, "initFriendsFragment");
         fragmentInActivity = FriendsFragmentUser.TAG;
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 
@@ -204,6 +204,9 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     @Override
     public void onBtnExitClick() {
         AppLog.log(TAG, "onBtnExitClick");
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
         SingletonPreference.getInstance().clearUserInformation();
         Intent intent = new Intent(iView.getContext(), WelcomeActivity.class);
         iView.getContext().startActivity(intent);
@@ -213,6 +216,10 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     @Override
     public void onBtnHomeClick() {
         AppLog.log(TAG, "onBtnHomeClick");
+        iView.hideLoadProgressBar();
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
         fragmentInActivity = HomeFragmentUser.TAG;
         HomeFragmentUser fragmentUser = null;
         for (Map.Entry entry : fragments.entrySet()) {
@@ -232,6 +239,10 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     @Override
     public void onBtnFriendsClick() {
         AppLog.log(TAG, "onBtnFriendsClick");
+        iView.hideLoadProgressBar();
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
         fragmentInActivity = FriendsFragmentUser.TAG;
         FriendsFragmentUser fragmentUser = null;
         for (Map.Entry entry : fragments.entrySet()) {
@@ -251,6 +262,10 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     @Override
     public void onBtnUserChartClick() {
         AppLog.log(TAG, "onBtnUserChartClick");
+        iView.hideLoadProgressBar();
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
         fragmentInActivity = ChartFragmentUser.TAG;
         ChartFragmentUser fragmentUser = null;
         for (Map.Entry entry : fragments.entrySet()) {
@@ -287,6 +302,9 @@ public class UserActivityPresenter implements UserActivityIPresenter {
     @Override
     public void onBtnSearchClick() {
         AppLog.log(TAG, "onBtnSearchClick");
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
         Intent intent = new Intent(iView.getContext(), SearchActivity.class);
         iView.getContext().startActivity(intent);
     }

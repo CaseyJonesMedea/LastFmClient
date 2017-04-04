@@ -53,7 +53,7 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
     private void loadArtist(String artistName) {
         AppLog.log(TAG, "loadArtist");
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 
@@ -89,7 +89,7 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
         AppLog.log(TAG, "initInfoFragment");
         fragmentInActivity = InfoFragmentArtist.TAG;
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getArtistInfo(artist.getName()).subscribe(new Subscriber<Artist>() {
@@ -120,13 +120,14 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
         AppLog.log(TAG, "initLibraryFragment");
         fragmentInActivity = LibraryFragmentArtist.TAG;
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getLibraryFragmentInformation(artist.getName()).subscribe(new Subscriber<LibraryFragmentInformation>() {
             @Override
             public void onCompleted() {
                 AppLog.log(TAG, "onCompleted");
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -139,7 +140,6 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
             @Override
             public void onNext(LibraryFragmentInformation libraryFragmentInformation) {
                 AppLog.log(TAG, "onNext");
-                iView.hideLoadProgressBar();
                 LibraryFragmentArtist libraryFragmentArtist = LibraryFragmentArtist.newInstance(libraryFragmentInformation, artist.getName());
                 fragments.put(LibraryFragmentArtist.TAG, libraryFragmentArtist);
                 iView.showFragment(libraryFragmentArtist, false, InfoFragmentArtist.TAG);
@@ -158,6 +158,10 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
     @Override
     public void onBtnInfoClick() {
         AppLog.log(TAG, "onBtnInfoClick");
+        iView.hideLoadProgressBar();
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
         fragmentInActivity = InfoFragmentArtist.TAG;
         InfoFragmentArtist fragmentUser = null;
         for (Map.Entry entry : fragments.entrySet()) {
@@ -177,6 +181,10 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
     @Override
     public void onBtnLibraryClick() {
         AppLog.log(TAG, "onBtnLibraryClick");
+        iView.hideLoadProgressBar();
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
         fragmentInActivity = LibraryFragmentArtist.TAG;
         LibraryFragmentArtist fragmentUser = null;
         for (Map.Entry entry : fragments.entrySet()) {
@@ -210,6 +218,9 @@ public class ArtistActivityPresenter implements ArtistActivityIPresenter {
     @Override
     public void onBtnShareClick() {
         AppLog.log(TAG, "onBtnShareClick");
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
         Intent share = new Intent(android.content.Intent.ACTION_SEND);
         share.setType("text/plain");
         share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);

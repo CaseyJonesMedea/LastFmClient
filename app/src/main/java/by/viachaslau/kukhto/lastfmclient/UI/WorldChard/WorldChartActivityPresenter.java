@@ -51,14 +51,14 @@ public class WorldChartActivityPresenter implements WorldChartActivityIPresenter
     private void initializeArtistChart() {
         AppLog.log(TAG, "initializeArtistChart");
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
-
         subscription = model.getChartTopArtists().subscribe(new Subscriber<List<Artist>>() {
             @Override
             public void onCompleted() {
                 AppLog.log(TAG, "onCompleted");
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -71,7 +71,6 @@ public class WorldChartActivityPresenter implements WorldChartActivityIPresenter
             @Override
             public void onNext(List<Artist> list) {
                 AppLog.log(TAG, "onNext");
-                iView.hideLoadProgressBar();
                 fragmentInActivity = WorldChartArtistsFragment.TAG;
                 WorldChartArtistsFragment artistsFragment = WorldChartArtistsFragment.newInstance((ArrayList<Artist>) list);
                 fragments.put(WorldChartArtistsFragment.TAG, artistsFragment);
@@ -83,7 +82,7 @@ public class WorldChartActivityPresenter implements WorldChartActivityIPresenter
     private void initialozeTracksChart() {
         AppLog.log(TAG, "initialozeTracksChart");
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 
@@ -91,6 +90,7 @@ public class WorldChartActivityPresenter implements WorldChartActivityIPresenter
             @Override
             public void onCompleted() {
                 AppLog.log(TAG, "onCompleted");
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -103,7 +103,6 @@ public class WorldChartActivityPresenter implements WorldChartActivityIPresenter
             @Override
             public void onNext(List<Track> list) {
                 AppLog.log(TAG, "onNext");
-                iView.hideLoadProgressBar();
                 fragmentInActivity = WorldChartTracksFragment.TAG;
                 WorldChartTracksFragment tracksFragment = WorldChartTracksFragment.newInstance((ArrayList<Track>) list);
                 fragments.put(WorldChartTracksFragment.TAG, tracksFragment);
@@ -126,6 +125,10 @@ public class WorldChartActivityPresenter implements WorldChartActivityIPresenter
     @Override
     public void onBtnChartArtistClick() {
         AppLog.log(TAG, "onBtnChartArtistClick");
+        iView.hideLoadProgressBar();
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
         fragmentInActivity = WorldChartArtistsFragment.TAG;
         WorldChartArtistsFragment fragmentUser = null;
         for (Map.Entry entry : fragments.entrySet()) {
@@ -145,6 +148,10 @@ public class WorldChartActivityPresenter implements WorldChartActivityIPresenter
     @Override
     public void onBtnChartTracksClick() {
         AppLog.log(TAG, "onBtnChartTracksClick");
+        iView.hideLoadProgressBar();
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
         fragmentInActivity = WorldChartTracksFragment.TAG;
         WorldChartTracksFragment fragmentUser = null;
         for (Map.Entry entry : fragments.entrySet()) {

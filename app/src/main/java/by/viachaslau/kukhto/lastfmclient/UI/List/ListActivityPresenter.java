@@ -86,13 +86,14 @@ public class ListActivityPresenter implements ListActivityIPresenter {
     public void initRecentTracks(String name) {
         AppLog.log(TAG, "initRecentTracks");
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getRecentTracks(name).subscribe(new Subscriber<List<Track>>() {
             @Override
             public void onCompleted() {
                 AppLog.log(TAG, "onCompleted");
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -105,7 +106,6 @@ public class ListActivityPresenter implements ListActivityIPresenter {
             @Override
             public void onNext(List<Track> list) {
                 AppLog.log(TAG, "onNext");
-                iView.hideLoadProgressBar();
                 fullFragmentList = FullFragmentList.newTrackInstance((ArrayList<Track>) list, Data.RECENT_TRACKS, FullFragmentList.TRACK_TYPE);
                 iView.showFragment(fullFragmentList, false, FullFragmentList.TAG);
             }
@@ -115,13 +115,14 @@ public class ListActivityPresenter implements ListActivityIPresenter {
     public void initTopArtists(String name) {
         AppLog.log(TAG, "initTopArtists");
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getTopArtists(name).subscribe(new Subscriber<List<Artist>>() {
             @Override
             public void onCompleted() {
                 AppLog.log(TAG, "onCompleted");
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -134,7 +135,6 @@ public class ListActivityPresenter implements ListActivityIPresenter {
             @Override
             public void onNext(List<Artist> list) {
                 AppLog.log(TAG, "onNext");
-                iView.hideLoadProgressBar();
                 fullFragmentList = FullFragmentList.newArtistInstance((ArrayList<Artist>) list, Data.TOP_ARTISTS, FullFragmentList.ARTIST_TYPE);
                 iView.showFragment(fullFragmentList, false, FullFragmentList.TAG);
             }
@@ -144,13 +144,14 @@ public class ListActivityPresenter implements ListActivityIPresenter {
     public void initTopAlbums(String name) {
         AppLog.log(TAG, "initTopAlbums");
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getTopAlbums(name).subscribe(new Subscriber<List<Album>>() {
             @Override
             public void onCompleted() {
                 AppLog.log(TAG, "onCompleted");
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -163,7 +164,6 @@ public class ListActivityPresenter implements ListActivityIPresenter {
             @Override
             public void onNext(List<Album> list) {
                 AppLog.log(TAG, "onNext");
-                iView.hideLoadProgressBar();
                 fullFragmentList = FullFragmentList.newAlbumInstance((ArrayList<Album>) list, Data.TOP_ALBUMS, FullFragmentList.ALBUM_TYPE);
                 iView.showFragment(fullFragmentList, false, FullFragmentList.TAG);
             }
@@ -173,13 +173,14 @@ public class ListActivityPresenter implements ListActivityIPresenter {
     public void initTopTracks(String name) {
         AppLog.log(TAG, "initTopTracks");
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getTopTracks(name).subscribe(new Subscriber<List<Track>>() {
             @Override
             public void onCompleted() {
                 AppLog.log(TAG, "onCompleted");
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -192,7 +193,6 @@ public class ListActivityPresenter implements ListActivityIPresenter {
             @Override
             public void onNext(List<Track> list) {
                 AppLog.log(TAG, "onNext");
-                iView.hideLoadProgressBar();
                 fullFragmentList = FullFragmentList.newTrackInstance((ArrayList<Track>) list, Data.TOP_TRACKS, FullFragmentList.TRACK_TYPE);
                 iView.showFragment(fullFragmentList, false, FullFragmentList.TAG);
             }
@@ -202,13 +202,14 @@ public class ListActivityPresenter implements ListActivityIPresenter {
     public void initLovedTracks(String name) {
         AppLog.log(TAG, "initLovedTracks");
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getLovedTracks(name).subscribe(new Subscriber<List<Track>>() {
             @Override
             public void onCompleted() {
                 AppLog.log(TAG, "onCompleted");
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -221,7 +222,6 @@ public class ListActivityPresenter implements ListActivityIPresenter {
             @Override
             public void onNext(List<Track> list) {
                 AppLog.log(TAG, "onNext");
-                iView.hideLoadProgressBar();
                 fullFragmentList = FullFragmentList.newTrackInstance((ArrayList<Track>) list, Data.LOVED_TRACKS, FullFragmentList.TRACK_TYPE);
                 iView.showFragment(fullFragmentList, false, FullFragmentList.TAG);
             }
@@ -231,13 +231,14 @@ public class ListActivityPresenter implements ListActivityIPresenter {
     public void initSimilarArtists(String name) {
         AppLog.log(TAG, "initSimilarArtists");
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getSimilarArtists(name).subscribe(new Subscriber<List<Artist>>() {
             @Override
             public void onCompleted() {
                 AppLog.log(TAG, "onCompleted");
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -250,7 +251,6 @@ public class ListActivityPresenter implements ListActivityIPresenter {
             @Override
             public void onNext(List<Artist> list) {
                 AppLog.log(TAG, "onNext");
-                iView.hideLoadProgressBar();
                 fullFragmentList = FullFragmentList.newArtistInstance((ArrayList<Artist>) list, Data.SIMILAR_ARTISTS, FullFragmentList.ARTIST_TYPE);
                 iView.showFragment(fullFragmentList, false, FullFragmentList.TAG);
             }
@@ -260,13 +260,14 @@ public class ListActivityPresenter implements ListActivityIPresenter {
     public void initArtistTopAlbums(String name) {
         AppLog.log(TAG, "initArtistTopAlbums");
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getArtistTopAlbums(name).subscribe(new Subscriber<List<Album>>() {
             @Override
             public void onCompleted() {
                 AppLog.log(TAG, "onCompleted");
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -279,7 +280,6 @@ public class ListActivityPresenter implements ListActivityIPresenter {
             @Override
             public void onNext(List<Album> list) {
                 AppLog.log(TAG, "onNext");
-                iView.hideLoadProgressBar();
                 fullFragmentList = FullFragmentList.newAlbumInstance((ArrayList<Album>) list, Data.ARTIST_TOP_ALBUMS, FullFragmentList.ALBUM_TYPE);
                 iView.showFragment(fullFragmentList, false, FullFragmentList.TAG);
             }
@@ -289,13 +289,14 @@ public class ListActivityPresenter implements ListActivityIPresenter {
     public void initArtistTopTracks(String name) {
         AppLog.log(TAG, "initArtistTopTracks");
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getArtistTopTracks(name).subscribe(new Subscriber<List<Track>>() {
             @Override
             public void onCompleted() {
                 AppLog.log(TAG, "onCompleted");
+                iView.hideLoadProgressBar();
             }
 
             @Override
@@ -308,7 +309,6 @@ public class ListActivityPresenter implements ListActivityIPresenter {
             @Override
             public void onNext(List<Track> list) {
                 AppLog.log(TAG, "onNext");
-                iView.hideLoadProgressBar();
                 fullFragmentList = FullFragmentList.newTrackInstance((ArrayList<Track>) list, Data.ARTIST_TOP_TRACKS, FullFragmentList.TRACK_TYPE);
                 iView.showFragment(fullFragmentList, false, FullFragmentList.TAG);
             }

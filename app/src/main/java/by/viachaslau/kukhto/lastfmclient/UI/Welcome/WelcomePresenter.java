@@ -53,7 +53,7 @@ public class WelcomePresenter implements WelcomeIPresenter {
 
     private void initActivity() {
         AppLog.log(TAG, "initActivity");
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getSharedPreferencesUserInfo().subscribe(new Action1<UserInformation>() {
@@ -72,7 +72,7 @@ public class WelcomePresenter implements WelcomeIPresenter {
     private void loadSession(UserInformation userInformation) {
         AppLog.log(TAG, "loadSession");
         iView.showScreenLoad();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getMobileSession(userInformation).subscribe(new Subscriber<Session>() {

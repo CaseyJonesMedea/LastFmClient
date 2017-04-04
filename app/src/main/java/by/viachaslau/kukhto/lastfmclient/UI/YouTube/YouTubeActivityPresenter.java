@@ -53,7 +53,7 @@ public class YouTubeActivityPresenter implements YouTubeActivityIPresenter {
     private void initialize(String code) {
         AppLog.log(TAG, "initialize");
         urlYouTube = "https://www.youtube.com/watch?v=" + code;
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 
@@ -118,7 +118,7 @@ public class YouTubeActivityPresenter implements YouTubeActivityIPresenter {
 
     private void setLoveTrack() {
         AppLog.log(TAG, "setLoveTrack");
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 
@@ -146,7 +146,7 @@ public class YouTubeActivityPresenter implements YouTubeActivityIPresenter {
 
     private void setUnLoveTrack() {
         AppLog.log(TAG, "setUnLoveTrack");
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 
@@ -175,7 +175,7 @@ public class YouTubeActivityPresenter implements YouTubeActivityIPresenter {
     @Override
     public void scrobbleTrack() {
         AppLog.log(TAG, "scrobbleTrack");
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
         subscription = model.getResultTrackScrobble(track).subscribe(new Action1<ScrobbleResult>() {

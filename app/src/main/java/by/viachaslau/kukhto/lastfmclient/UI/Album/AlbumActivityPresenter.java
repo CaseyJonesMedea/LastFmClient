@@ -2,9 +2,6 @@ package by.viachaslau.kukhto.lastfmclient.UI.Album;
 
 import android.content.Intent;
 
-import javax.inject.Inject;
-
-import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.RxUtils;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
@@ -48,7 +45,7 @@ public class AlbumActivityPresenter implements AlbumActivityIPresenter {
     private void loadAlbum(String artistName, String albumName) {
         AppLog.log(TAG, "loadAlbum");
         iView.showLoadProgressBar();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 

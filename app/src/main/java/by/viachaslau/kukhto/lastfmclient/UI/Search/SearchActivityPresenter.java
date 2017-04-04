@@ -68,7 +68,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
     private void initArtistsList() {
         AppLog.log(TAG, "initArtistsList");
         iView.showLoadFragment();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 
@@ -100,7 +100,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
     private void initAlbumsList() {
         AppLog.log(TAG, "initAlbumsList");
         iView.showLoadFragment();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 
@@ -132,7 +132,7 @@ public class SearchActivityPresenter implements SearchActivityIPresenter {
     private void initTracksList() {
         AppLog.log(TAG, "initTracksList");
         iView.showLoadFragment();
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 

@@ -45,7 +45,7 @@ public class TrackActivityPresenter implements TrackActivityIPresenter {
 
     private void loadPage(String url) {
         AppLog.log(TAG, "loadPage");
-        if (subscription.isUnsubscribed()) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 
@@ -60,6 +60,7 @@ public class TrackActivityPresenter implements TrackActivityIPresenter {
             public void onError(Throwable e) {
                 AppLog.log(TAG, "onError");
                 Toast.makeText(iView.getContext(), iView.getContext().getString(R.string.error_not_video), Toast.LENGTH_LONG).show();
+                iView.closeActivity();
             }
 
             @Override
