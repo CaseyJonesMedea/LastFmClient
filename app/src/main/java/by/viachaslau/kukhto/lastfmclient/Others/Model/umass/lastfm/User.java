@@ -62,6 +62,11 @@ public class User extends ImageHolder implements Serializable{
 		this.url = url;
 	}
 
+	public User(String name, int playcount){
+		this.name = name;
+		this.playcount = playcount;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -104,6 +109,10 @@ public class User extends ImageHolder implements Serializable{
 
 	public String getImageURL() {
 		return getImageURL(ImageSize.MEDIUM);
+	}
+
+	public void setImageUrls(Map<ImageSize, String> imageUrls ){
+		this.imageUrls = imageUrls;
 	}
 
 	public String getId() {
