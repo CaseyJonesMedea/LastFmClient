@@ -1,8 +1,20 @@
 package by.viachaslau.kukhto.lastfmclient.UI.User;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import by.viachaslau.kukhto.lastfmclient.Others.Data;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.ModelImpl;
@@ -12,6 +24,7 @@ import by.viachaslau.kukhto.lastfmclient.Others.Model.modelApp.HomeFragmentInfor
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Chart;
+import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.PaginatedResult;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.User;
@@ -71,11 +84,68 @@ public class UserModelImpl extends ModelImpl implements UserModel {
     @Override
     public Observable getFriendsFragmentInformation(String user) {
         Observable<FriendsFragmentInformation> observable = Observable.fromCallable(() -> {
-            PaginatedResult<User> resultFriends = User.getFriends(user, Data.API_KEY);
-            Collection<User> friendsCollection = resultFriends.getPageResults();
-            List<User> friends = new ArrayList<>(friendsCollection);
-            return new FriendsFragmentInformation(friends);
+            try {
+                List<User> friends = findFriends(user);
+                return new FriendsFragmentInformation(friends);
+            } catch (Exception ex) {
+                List<User> friends = new ArrayList<>();
+                return new FriendsFragmentInformation(friends);
+            }
         }).subscribeOn(ioThread).observeOn(uiThread);
         return observable;
+    }
+
+    private List<User> findFriends(String user) {
+        List<User> userList = new ArrayList<>();
+        try {
+            URL url = new URL(Data.BASE_URL + "?method=user.getfriends&user=" + user + "&api_key=" + Data.API_KEY + "&format=json");
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            urlConnection.connect();
+            InputStream inputStream = urlConnection.getInputStream();
+            StringBuffer buffer = new StringBuffer();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                buffer.append(line);
+            }
+            String resultJson = buffer.toString();
+            JSONObject dataJsonObj = new JSONObject(resultJson);
+            JSONObject result = dataJsonObj.getJSONObject("friends");
+            JSONArray usersJsonObj = result.getJSONArray("user");
+            for (int i = 0; i < usersJsonObj.length(); i++) {
+                JSONObject userJson = usersJsonObj.getJSONObject(i);
+                String nameUser = userJson.getString("name");
+                int playCount = userJson.getInt("playcount");
+                JSONArray image = userJson.getJSONArray("image");
+                Map<ImageSize, String> map = new HashMap<>();
+                for (int j = 0; j < image.length(); j++) {
+                    JSONObject imageUrlObject = image.getJSONObject(j);
+                    String imageUrl = imageUrlObject.getString("#text");
+                    String imageSize = imageUrlObject.getString("size");
+                    map.put(ConvertStringToImageSize(imageSize), imageUrl);
+                }
+                User userFinal = new User(nameUser, playCount);
+                userFinal.setImageUrls(map);
+                userList.add(userFinal);
+            }
+        } catch (IOException | JSONException e) {
+            return new ArrayList<>();
+        }
+        return userList;
+    }
+
+    private ImageSize ConvertStringToImageSize(String name) {
+        if (name.equals("small")) {
+            return ImageSize.SMALL;
+        } else if (name.equals("medium")) {
+            return ImageSize.MEDIUM;
+        } else if (name.equals("large")) {
+            return ImageSize.LARGE;
+        } else if (name.equals("extralarge")) {
+            return ImageSize.EXTRALARGE;
+        } else {
+            return null;
+        }
     }
 }
