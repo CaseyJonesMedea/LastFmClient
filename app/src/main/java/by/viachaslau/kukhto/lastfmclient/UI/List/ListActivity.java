@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 import com.google.android.gms.ads.AdListener;
@@ -26,6 +27,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
+import by.viachaslau.kukhto.lastfmclient.Others.SingletonFonts;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.UI.User.UserActivityFragments.ErrorFragmentUser;
 
@@ -50,6 +52,10 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
 
     @BindView(R.id.btn_update)
     ImageView btnUpdate;
+    @BindView(R.id.i)
+    TextView i;
+    @BindView(R.id.lastfm)
+    TextView lastfm;
 
     private Animation rotation;
 
@@ -77,6 +83,8 @@ public class ListActivity extends AppCompatActivity implements ListActivityIView
         AppLog.log(TAG, "initInitialize");
         btnUpdate.setOnClickListener(this);
         rotation = AnimationUtils.loadAnimation(this, R.anim.rotation);
+        i.setTypeface(SingletonFonts.getInstance(this).getFont3());
+        lastfm.setTypeface(SingletonFonts.getInstance(this).getFont3());
     }
 
     private void replaceFragment(Fragment fragment, boolean addToBackStack, String tag) {

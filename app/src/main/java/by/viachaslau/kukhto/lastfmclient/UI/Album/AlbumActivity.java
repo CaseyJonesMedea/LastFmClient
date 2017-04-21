@@ -26,6 +26,7 @@ import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Album;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
+import by.viachaslau.kukhto.lastfmclient.Others.SingletonFonts;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.UI.User.UserActivityFragments.ErrorFragmentUser;
 
@@ -48,12 +49,14 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
     TextView scrobbles;
     @BindView(R.id.img_logo_album)
     ImageView imgAlbumLogo;
-
     @BindView(R.id.btn_update)
     ImageView btnUpdate;
     @BindView(R.id.btn_share)
     ImageView btnShare;
-
+    @BindView(R.id.i)
+    TextView i;
+    @BindView(R.id.lastfm)
+    TextView lastfm;
     @BindView(R.id.progress_load)
     LinearLayout loadFragment;
 
@@ -86,6 +89,8 @@ public class AlbumActivity extends AppCompatActivity implements AlbumActivityIVi
         btnUpdate.setOnClickListener(this);
         btnShare.setOnClickListener(this);
         rotation = AnimationUtils.loadAnimation(this, R.anim.rotation);
+        i.setTypeface(SingletonFonts.getInstance(this).getFont3());
+        lastfm.setTypeface(SingletonFonts.getInstance(this).getFont3());
     }
 
     private void replaceFragment(Fragment fragment, boolean addToBackStack, String tag) {

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -25,6 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
+import by.viachaslau.kukhto.lastfmclient.Others.SingletonFonts;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.UI.Search.SearchActivityAdapters.SearchAdapter;
 
@@ -57,6 +59,10 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
     RadioButton radioButtonAlbum;
     @BindView(R.id.radio_btn_track)
     RadioButton radioButtonTrack;
+    @BindView(R.id.i)
+    TextView i;
+    @BindView(R.id.lastfm)
+    TextView lastfm;
 
     @Inject
     protected SearchActivityPresenter presenter;
@@ -84,6 +90,8 @@ public class SearchActivity extends AppCompatActivity implements SearchActivityI
 
     private void initInitialize() {
         AppLog.log(TAG, "onCreate");
+        i.setTypeface(SingletonFonts.getInstance(this).getFont3());
+        lastfm.setTypeface(SingletonFonts.getInstance(this).getFont3());
         edtSearch.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int keyCode, KeyEvent event) {

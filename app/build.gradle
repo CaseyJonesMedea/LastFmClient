@@ -9,20 +9,20 @@ repositories {
 
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'CaseyJones'
-            keyPassword 'Medea130'
-            storeFile file('D:/projects/AndroidPlayMarket/AndroidKey.jks')
-            storePassword 'Medea130'
-        }
-    }
+//    signingConfigs {
+//        config {
+//            keyAlias 'CaseyJones'
+//            keyPassword 'Medea130'
+//            storeFile file('D:/projects/AndroidPlayMarket/AndroidKey.jks')
+//            storePassword 'Medea130'
+//        }
+//    }
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
         multiDexEnabled true
         applicationId "by.viachaslau.kukhto.lastfmclient"
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -36,7 +36,7 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             zipAlignEnabled true
-            signingConfig signingConfigs.config
+//            signingConfig signingConfigs.config
         }
     }
     compileOptions {

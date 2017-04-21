@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipe_refresh_layout"
     android:layout_width="match_parent"
-    android:background="@drawable/background_fon"
+    android:background="@drawable/fon"
     android:layout_height="match_parent">
     <FrameLayout
         android:layout_width="match_parent"
@@ -19,32 +19,47 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:src="@drawable/logo_tranceporant"/>
-            <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
-                android:layout_width="300dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="4"
-                android:gravity="center"
-                android:text="@string/welcome"
-                android:textColor="@color/white"
-                android:textSize="25dp"
-                app:fonts="font3"/>
-            <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
-                android:layout_width="300dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="3"
-                android:gravity="center"
-                android:text="@string/salutation"
-                android:textColor="@color/white"
-                android:textSize="17dp"
-                app:fonts="font3"/>
+
             <LinearLayout
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+                    android:id="@+id/i"
+                    android:textColor="@color/white"
+                    app:fonts="font3"
+                    android:layout_weight="1"
+                    android:text="@string/i"
+                    android:textSize="100dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:padding="30dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ok_like"/>
+            </LinearLayout>
+
+            <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+                android:id="@+id/lastfm"
+                android:text="@string/lastfm"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="100dp"
+                app:fonts="font2"
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <LinearLayout
+                android:paddingTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="3"

@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import javax.inject.Inject;
 
@@ -20,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
+import by.viachaslau.kukhto.lastfmclient.Others.SingletonFonts;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.UI.User.UserActivityFragments.ErrorFragmentUser;
 
@@ -42,6 +44,10 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
     LinearLayout btnChartArtists;
     @BindView(R.id.ll_chart_tracks)
     LinearLayout btnChartTracks;
+    @BindView(R.id.i)
+    TextView i;
+    @BindView(R.id.lastfm)
+    TextView lastfm;
 
     @Inject
     protected WorldChartActivityPresenter presenter;
@@ -67,6 +73,8 @@ public class WorldChartActivity extends AppCompatActivity implements WorldChartA
         btnChartArtists.setOnClickListener(this);
         btnChartTracks.setOnClickListener(this);
         rotation = AnimationUtils.loadAnimation(this, R.anim.rotation);
+        i.setTypeface(SingletonFonts.getInstance(this).getFont3());
+        lastfm.setTypeface(SingletonFonts.getInstance(this).getFont3());
     }
 
     private void replaceFragment(Fragment fragment, boolean addToBackStack, String tag) {

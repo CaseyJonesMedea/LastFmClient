@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import javax.inject.Inject;
@@ -18,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
+import by.viachaslau.kukhto.lastfmclient.Others.SingletonFonts;
 import by.viachaslau.kukhto.lastfmclient.R;
 
 /**
@@ -36,6 +38,10 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeActivit
     SwipeRefreshLayout swipe;
     @BindView(R.id.load)
     View fragmentLoad;
+    @BindView(R.id.i)
+    TextView i;
+    @BindView(R.id.lastfm)
+    TextView lastfm;
 
     @Inject
     protected WelcomePresenter presenter;
@@ -54,6 +60,8 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeActivit
 
     private void initinitialize() {
         AppLog.log(TAG, "initinitialize");
+        i.setTypeface(SingletonFonts.getInstance(this).getFont3());
+        lastfm.setTypeface(SingletonFonts.getInstance(this).getFont3());
         swipe.setOnRefreshListener(this);
         btnLogIn.setOnClickListener(this);
         btnRegistration.setOnClickListener(this);

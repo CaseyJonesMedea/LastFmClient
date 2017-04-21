@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -23,6 +24,7 @@ import butterknife.ButterKnife;
 import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Track;
+import by.viachaslau.kukhto.lastfmclient.Others.SingletonFonts;
 import by.viachaslau.kukhto.lastfmclient.Others.YouTube;
 import by.viachaslau.kukhto.lastfmclient.R;
 
@@ -56,6 +58,10 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
     private boolean trackIsScrobble;
     @BindView(R.id.float_btn)
     ImageView btnLove;
+    @BindView(R.id.i)
+    TextView i;
+    @BindView(R.id.lastfm)
+    TextView lastfm;
 
     private boolean fullScreen;
 
@@ -97,6 +103,8 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
         AppLog.log(TAG, "initialize");
         btnShare.setOnClickListener(this);
         btnLove.setOnClickListener(this);
+        i.setTypeface(SingletonFonts.getInstance(this).getFont3());
+        lastfm.setTypeface(SingletonFonts.getInstance(this).getFont3());
     }
 
     @Override

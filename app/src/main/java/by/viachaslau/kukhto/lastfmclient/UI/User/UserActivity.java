@@ -25,6 +25,7 @@ import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.User;
+import by.viachaslau.kukhto.lastfmclient.Others.SingletonFonts;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.UI.User.UserActivityFragments.ErrorFragmentUser;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -58,6 +59,11 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
     LinearLayout btnHome;
     @BindView(R.id.progress_load)
     LinearLayout loadFragment;
+    @BindView(R.id.i)
+    TextView i;
+    @BindView(R.id.lastfm)
+    TextView lastfm;
+
 
     private ErrorFragmentUser errorFragmentUser;
     @Inject
@@ -91,6 +97,8 @@ public class UserActivity extends AppCompatActivity implements UserActivityIView
         btnFriends.setOnClickListener(this);
         btnUserChart.setOnClickListener(this);
         rotation = AnimationUtils.loadAnimation(this, R.anim.rotation);
+        i.setTypeface(SingletonFonts.getInstance(this).getFont3());
+        lastfm.setTypeface(SingletonFonts.getInstance(this).getFont3());
     }
 
 

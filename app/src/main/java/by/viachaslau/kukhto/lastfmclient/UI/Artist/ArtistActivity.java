@@ -25,6 +25,7 @@ import by.viachaslau.kukhto.lastfmclient.Others.App;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.AppLog;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.Artist;
 import by.viachaslau.kukhto.lastfmclient.Others.Model.umass.lastfm.ImageSize;
+import by.viachaslau.kukhto.lastfmclient.Others.SingletonFonts;
 import by.viachaslau.kukhto.lastfmclient.R;
 import by.viachaslau.kukhto.lastfmclient.UI.User.UserActivityFragments.ErrorFragmentUser;
 
@@ -56,6 +57,10 @@ public class ArtistActivity extends AppCompatActivity implements View.OnClickLis
     TextView artistName;
     @BindView(R.id.img_logo_artist)
     ImageView logoArtist;
+    @BindView(R.id.i)
+    TextView i;
+    @BindView(R.id.lastfm)
+    TextView lastfm;
 
     @Inject
     protected ImageLoader imageLoader;
@@ -84,6 +89,8 @@ public class ArtistActivity extends AppCompatActivity implements View.OnClickLis
         btnArtistLibrary.setOnClickListener(this);
         btnArtistInfo.setOnClickListener(this);
         rotation = AnimationUtils.loadAnimation(this, R.anim.rotation);
+        i.setTypeface(SingletonFonts.getInstance(this).getFont3());
+        lastfm.setTypeface(SingletonFonts.getInstance(this).getFont3());
     }
 
     @Override

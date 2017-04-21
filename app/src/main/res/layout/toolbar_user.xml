@@ -15,24 +15,27 @@
             android:gravity="center|left"
             android:orientation="horizontal">
 
-            <TextView
+            <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+                android:id="@+id/i"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center|left"
-                android:text="@string/l"
+                android:text="@string/i"
                 android:textColor="@color/white"
                 android:textSize="25sp"/>
 
             <ImageView
+                android:padding="5dp"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/logo_last_fm_cicrcle"/>
+                android:src="@drawable/ok_like"/>
 
-            <TextView
+            <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+                android:id="@+id/lastfm"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center|left"
-                android:text="@string/tfm"
+                android:text="@string/lastfm"
                 android:textColor="@color/white"
                 android:textSize="25sp"/>
 
