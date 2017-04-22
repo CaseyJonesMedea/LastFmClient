@@ -37,7 +37,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+            <by.viachaslau.kukhto.llikelastfm.Others.CustomView.CustomFontsTextView
                 android:id="@+id/text_name_artist"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -47,7 +47,7 @@
                 android:textSize="20dp"
                 app:fonts="font1"/>
 
-            <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+            <by.viachaslau.kukhto.llikelastfm.Others.CustomView.CustomFontsTextView
                 android:id="@+id/text_name_album"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -57,7 +57,7 @@
                 android:textSize="20dp"
                 app:fonts="font1"/>
 
-            <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+            <by.viachaslau.kukhto.llikelastfm.Others.CustomView.CustomFontsTextView
                 android:id="@+id/text_year"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -67,7 +67,7 @@
                 android:textSize="15dp"
                 app:fonts="font1"/>
 
-            <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+            <by.viachaslau.kukhto.llikelastfm.Others.CustomView.CustomFontsTextView
                 android:id="@+id/text_scrobbles"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

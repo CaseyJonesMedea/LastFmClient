@@ -1,6 +1,6 @@
 <resources>
     <string name="title">last.fm</string>
-    <string name="app_name">LastFmClient</string>
+    <string name="app_name">ILikeLastFm</string>
     <string name="get_user_top_artists">GetUserTopArtists</string>
     <string name="get_top_artists">GetTopArtists</string>
     <string name="recent_tracks">Recent Tracks</string>
@@ -43,7 +43,7 @@
     <string name="error_not_video">Sorry, this track no video on YouTube!</string>
     <string name="cancel">Cancel</string>
     <string name="login">LogIn</string>
-    <string name="banner_ad_unit_id_1">ca-app-pub-1058052870374965/3897116333</string>
-    <string name="banner_ad_unit_id_2">ca-app-pub-1058052870374965/6850582730</string>
-    <string name="application_admob">ca-app-pub-1058052870374965~6990183536</string>
+    <string name="banner_ad_unit_id_1">ca-app-pub-1058052870374965/8710811939</string>
+    <string name="banner_ad_unit_id_2">ca-app-pub-1058052870374965/1187545136</string>
+    <string name="application_admob">ca-app-pub-1058052870374965~7234078732</string>
 </resources>

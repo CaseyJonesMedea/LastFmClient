@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <by.viachaslau.kukhto.lastfmclient.Others.CustomView.CustomFontsTextView
+    <by.viachaslau.kukhto.llikelastfm.Others.CustomView.CustomFontsTextView
         android:layout_gravity="center"
         app:fonts="font1"
         android:layout_weight="3"
